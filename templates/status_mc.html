@@ -1,0 +1,129 @@
+{% with title="Minecraft Status", description="Minecraft Server Status Page",
+url="/status/mc", button="Refresh" %} {% include '_top.html' %} {% endwith %}
+
+<section class="container" id="main">
+    <div id="info-text">
+        <br>
+
+        <h2 class="title" id="minecraft">Minecraft Server Status</h1>
+            <p>Don't know what <i>Minecraft</i> is? <a href="https://en.wikipedia.org/wiki/Minecraft">Wikipedia's page
+                    about Minecraft</a> and <a href="https://en.wikipedia.org/wiki/Minecraft_server">Minecraft
+                    servers</a></a></p>
+            <p>I'm currently hosting a Minecraft server, sometimes it's private (because I want to play with my
+                friends), sometimes it isn't.</p>
+            <p>Rarely, I'm even running multiple Minecraft services/servers at once, so please keep in mind that this
+                table only shows port <code>25565</code>.</p>
+            <p>Open the <a href="https://lix.freshstatus.io/">service dashboard</a> for the server status in the past
+                time.</p>
+
+            <table id="minecraft">
+                <tr>
+                    <th>Detail</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Players Online</td>
+                    <td>
+                        <details>
+                            <summary>{{ player_count }} online</i></summary>
+
+                            <ul>
+                                {% for p in players %}
+                                <li><a href="https://namemc.com/profile/{{ p }}">{{ p }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Game Type</td>
+                    <td>{{ game_type }}</td>
+                </tr>
+                <tr>
+                    <td>Plugins</td>
+                    <td>
+                        <details>
+                            <summary>{{ plugins }} loaded</summary>
+                            <ul>
+                                {% for p in plugin %}
+                                <li><a href="https://duck.com/{{ p }}+site%3Awww.spigotmc.org">{{ p }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Last players</td>
+                    <td>
+                        <details>
+                            <summary>{{ last_players }} most recent players</i></summary>
+
+                            <ul>
+                                {% for p in last_player %}
+                                <li><a href="https://namemc.com/profile/{{ p }}">{{ p }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Whitelisted</td>
+                    <td>
+                        <details>
+                            <summary>{{ whitelisted}} players</i></summary>
+
+                            <ul>
+                                {% for p in whitelist %}
+                                <li><a href="https://namemc.com/profile/{{ p }}">{{ p }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td>OPs</td>
+                    <td>
+                        <details>
+                            <summary>{{ ops }} players</i></summary>
+
+                            <ul>
+                                {% for p in op %}
+                                <li><a href="https://namemc.com/profile/{{ p }}">{{ p }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </details>
+                    </td>
+                <tr>
+                    <td>Banned</td>
+                    <td>
+                        <details>
+                            <summary>Normal bans ({{ normal_bans }})</i></summary>
+
+                            <ul>
+                                {% for p in normal_ban %}
+                                <li><a href="https://namemc.com/profile/{{ p }}">{{ p }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </details>
+
+                        <details>
+                            <summary>IP bans ({{ ip_bans }})</summary>
+
+                            <ul>
+                                {% for p in ip_ban %}
+                                <li><a href="https://namemc.com/profile/{{ p }}">{{ p }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </details>
+                    </td>
+                </tr>
+            </table>
+
+            <p>If the values are empty, the server either crashed or is (intentionally) down or it's hosted on a
+                different port.</p>
+
+    </div>
+    <br><br>
+</section>
+
+{% include '_bottom.html' %}

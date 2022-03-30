@@ -1,0 +1,62 @@
+{% with title="LixChat", description="Experimental chat! Warning: These chats might not be 100% secure and are not moderated. Please do not trust any links etc. in here!",
+url="", button="" %} {% include '_top.html' %} {% endwith %}
+
+<section class="container" id="main">
+    <h2>#{{ channel or "testing" }}</h2>
+
+    <form action="" method="GET">
+        <p>Message <input type="text" name="message" id="message"/></p>
+        <p><input type="submit" value="submit" /></p>
+    <h2 id="channel">#{{ channel or "channel" }}</h2>
+
+    <script>
+        // window.addEventListener('paste', ... or
+        document.onpaste = function(event){
+            var items = (event.clipboardData || event.originalEvent.clipboardData).items;            
+            for (index in items) {
+                var item = items[index];
+                if (item.kind === 'file') {
+                    var blob = item.getAsFile();
+                    var reader = new FileReader();
+                    
+                    reader.onload = function(event){
+                        document.getElementById("message").value = event.target.result;
+                    }; // data url!
+                    
+                    reader.readAsDataURL(blob);
+                }
+            }
+        }
+    </script>
+    
+    <form action="" method="POST">
+        <p>Message <input type="text" name="message" id="message"/></p>
+        <input type="hidden" id="media"></input>
+        <p><input type="submit" value="submit"/></p>
+    </form>
+
+    <br>
+
+    <div id="info-text">
+        {% for message in messages %}
+            <p>{{ message["user"] }}</p>
+            <blockquote>
+<<<<<<< HEAD
+                <p><em>{{ message["text"] }}</em></p>
+=======
+                {% if "://" in message["text"] or "data:image" in message["text"] %}
+                    <a href="{{ message['text'] }}">
+                        {{ message['text'] if message["text"]|length < 100 else 'Click here to view' }}
+                    <img src="{{ message['text'] }}"></img></a>
+                
+                {% else %}
+                    <p><em>{{ message["text"] }}</em></p>
+                {% endif %}
+                
+>>>>>>> fdb8235e882bccd32aba1e68210684491d2cae95
+            </blockquote>
+        {% endfor %}
+    </div>
+</section>
+
+{% include '_bottom.html' %}

@@ -1,0 +1,25 @@
+{% with title="Minecraft Console Input Log", description="Formats the file '.console_history' to prove that we don't abuse our permissions",
+url="https://onlix.me/status#minecraft", button="Minecraft Info" %} {% include '_top.html' %} {% endwith %}
+
+<section class="container" id="main">
+    <div id="info-text">
+        <h2 class="title">Server Log</h1>
+            <p>Whispers (private messages) are removed, IP-bans are censored.</p>
+            <p>Console log for server <strong>{{ server_name }}</strong>:</p>
+
+            <table id="minecraft">
+                <tr>
+                    <th>Time</th>
+                    <th>Command</th>
+                </tr>
+                {% for line in log %}
+                    <tr>
+                        <td>{{ line["time"] }}</td>
+                        <td><code>{{ line["command"] }}</code></td>
+                    </tr>
+                {% endfor %}
+            </table>    
+    </div>
+</section>
+
+{% include '_bottom.html' %}

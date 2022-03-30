@@ -1,0 +1,25 @@
+{% with title="LixVPN", description="Experimental, German VPN",
+url="", button="" %} {% include '_top.html' %} {% endwith %}
+
+<section class="container" id="main">
+    <h2>Installation</h2>
+    <pre><code>
+        sudo apt update
+        sudo apt install wget
+        sudo apt install openvpn
+        
+        wget https://onlix.me/lix.ovpn 
+        openvpn --config lix.ovpn
+    </code></pre>
+
+    <h2>Turn on</h2>
+
+    <h2>Turn off</h2>
+    <pre><code>
+        sudo killall openvpn
+    </code></pre>
+
+</section>
+
+{% include '_bottom.html' %}
+

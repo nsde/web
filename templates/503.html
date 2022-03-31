@@ -1,10 +1,43 @@
-{% with title="An error occured!", description="Oh no, there was an error :(" %} {% include '_top.html' %} {% endwith %}
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>Error 503 (Backend)</title>
+
+    <link href="/home/python/web/public/static/lila.css" rel="stylesheet">
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="/home/python/web/public/static/logo.png" sizes="180x180">
+    <link rel="icon" href="/home/python/web/public/static/logo.png" sizes="32x32">
+    <link rel="icon" href="/home/python/web/public/static/logo.png" sizes="16x16">
+    <link rel="image_src" href="/home/python/web/public/static/logo.png">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/" class="">Error</a>
+        </nav>
+
+        <h1>This website is having technical issues right now, check back later!</h1>
+        <p>This might even be intentional, so don't worry. It should be fixed soon.</p>
+    </header>
+
+    <main>
+
+<div class="text-box article-info">
+    <p><strong>Warning!</strong> I'm a backendless and static webpage and the usual website is broken right now.</p>
+</div>
 
 <div class="row">
     <div class="w-2">
-        <h3>{{ title }}</h3>
-        <h4><code>{{ description }}</code></h4>
-        <p><button onclick="window.history.back()">[JS] Back to your last page</button></p>
+        <h3>Error, my web backend is broken!</h3>
+        <h4>The website should work again in a few minutes to hours.</h4>
+        <a href="onlixx@pm.me"><button>Mail me (if it's important & the issue persists for 24+ hours)</button></a>
     </div>
     <div class="w-2">
         <svg width="200" height="200" version="1.1" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
@@ -23,15 +56,11 @@
     </div>
 </div>
 
-<h3>Search something...</h3>
-<p>Maybe you can find the page you're looking for this way!</p>
+</main>
 
-<form method="get" id="search" action="https://duckduckgo.com/">
-    <input type="hidden" name="sites" value="onlix.me" />
-    <input type="hidden" name="kt" value="p" />
-    <input type="text" name="q" maxlength="80" required
-        placeholder="Search on this website..." aria-label="Search onlix.me on DuckDuckGo" />
-    <button type="submit">Search</button>
-</form>
+<footer>
+    <p>This website is <a href="https://github.com/nsde/web">open source</a>, which means you can host my website on your computer.</p>
+</footer>
 
-{% include '_bottom.html' %}
+</body>
+</html>

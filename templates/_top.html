@@ -1,18 +1,72 @@
-{% include '_head.html' %}
-{% include '_navbar.html' %}
+<!DOCTYPE html>
+<html lang="en-US">
 
-<header class="header" id="home">
-    <section class="container">
-        {% if title %}
-            <h1 class="title">{{ title }}</h1>
-        {% endif %}
-        
-        {% if description %}
-            <p class="description" data-version="Currently">{{ description }}</p>
-        {% endif %}
-        
-        {% if button %}
-            <a class="button" href="{{ url }}" title="{{ button }}">{{ button }}</a>
-        {% endif %}
-    </section>
-</header>
+<head>
+    <title>{{ title }} · ONLIX</title>
+
+    <link href="/lila.css" rel="stylesheet">
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="msapplication-TileColor" content="#9b4dca">
+    <meta name="msapplication-TileImage" content="images/mstile-150x150.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#9b4dca">
+    <meta name="apple-mobile-web-app-title" content="{{ title }} · ONLIX">
+    <meta name="application-name" content="{{ title }} · ONLIX">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#9b4dca">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="ONLIX">
+    <meta name="description" content="{{ description }}">
+
+    <meta property="og:description"
+        content="{{ description }}">
+    <meta property="og:image" content="https://onlix.me/{{ preview or 'logo.png' }}">
+    <meta property="og:locale" content="en">
+    <meta property="og:site_name" content="onlix.me">
+    <meta property="og:title" content="{{ title }} · ONLIX">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/">
+    <meta property="article:published_time" content="2020-08-20T04:49:02.278Z">
+    <meta property="article:author" content="ONLIX">
+    <meta property="article:section" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" content="onlix.me">
+    <meta name="twitter:url" content="/">
+    <meta name="twitter:site" content="/">
+    <meta name="twitter:creator" content="ONLIX">
+    <meta name="twitter:title" content="{{ title }} · ONLIX">
+    <meta name="twitter:description"
+        content="{{ description }}">
+    <meta name="twitter:image:src" content="https://onlix.me/{{ preview or 'logo.png' }}">
+
+    <link rel="canonical" href="/">
+    <link rel="apple-touch-icon" href="/favicons/favicon.ico" sizes="180x180">
+    <link rel="icon" href="/favicons/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/favicons/favicon.ico" sizes="16x16">
+    <link rel="image_src" href="/favicons/favicon.ico">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/" class="">Home</a>
+            <a href="/contact">Contact</a>
+            <a href="https://github.com/nsde">
+                <svg class="icon" viewBox="0 0 32 32">
+                    <path
+                        d="M16 0.395c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z">
+                    </path>
+                </svg>GitHub</a>
+        </nav>
+
+        <h1>{{ title }}</h1>
+        <p>{{ description }}</p>
+    </header>
+
+    <main>

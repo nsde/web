@@ -1,0 +1,19 @@
+{% with title="$$ title $$", description="$$ description $$", preview="$$ image $$" %} {% include '_top.html' %} {% endwith %}
+
+<div class="text-box article-info">
+    <p>✍️ Author: <strong><a href="/blog/@{{ author }}">{{ author }}</a></strong></p>
+    <p>📅 Last updated: <strong>{{ last_update }}</strong></p>
+    <p>🏷️ Tags: 
+        {% for topic in topics.split(', ') %}
+        <mark onclick="window.location.href = '/blog/+{{ topic }}'">{{ topic }}</mark> 
+        {% endfor %}
+    </p>
+    <i><p>Click a tag or the author to view matching posts.</p></i>
+</div>
+
+<br>
+<img src="$$ image $$">
+
+{{ content | safe }}
+
+{% include "_bottom.html" %}

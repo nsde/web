@@ -1,0 +1,15 @@
+{% with title="Overview", description="View all posts matching the criteria below." %} {% include '_top.html' %} {% endwith %}
+
+<h3><mark>{{ type }}:</mark> {{ text or "*" }}</h3>
+
+<div class="cards">
+    {% for post in posts %}
+    <div class="card text-box" onclick="window.location.href = '../{{ post.path }}'">
+        <img src="../{{ post.path }}/image">
+        <h4>{{ post.title }}</h4>
+        <p>{{ post.description }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+{% include "_bottom.html" %}

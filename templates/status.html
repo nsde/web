@@ -4,6 +4,8 @@ url="/status", button="Refresh" %} {% include '_top.html' %} {% endwith %}
 <section class="container" id="main">
     <div id="info-text">
         <br>
+        
+        <p><a href="status/mc" class="link">Minecraft Stats</a> (only works if the Minecraft server is actually online, of course)</p>
 
         <h2 class="title">Software</h1>
         
@@ -15,10 +17,6 @@ url="/status", button="Refresh" %} {% include '_top.html' %} {% endwith %}
             <tr>
                 <td>Process Count</td>
                 <td>{{ pids }}</td>
-            </tr>
-            <tr>
-                <td>Minecraft</td>
-                <td>Click <a href="status/mc" class="link">here!</a> (might take a bit to load)</td>
             </tr>
             <tr>
                 <td>Last boot</td>

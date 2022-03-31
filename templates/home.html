@@ -1,0 +1,20 @@
+{% with title="ONLIX", description="Hello, and welcome to my website!" %} {% include '_top.html' %} {% endwith %}
+
+<div class="text-box article-info">
+    <p>Did you know? I created the (CSS) design of this website <strong>by myself</strong>! If you're interested, go <a
+            href="https://github.com/nsde/lilacss">check it out</a>.</p>
+</div>
+
+<h3>My newest blog posts</h3>
+
+<div class="cards">
+    {% for post in posts %}
+    <div class="card text-box" onclick="window.location.href = '{{ post.path }}'">
+        <img src="{{ post.path }}/image">
+        <h4>{{ post.title }}</h4>
+        <p>{{ post.description }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+{% include "_bottom.html" %}

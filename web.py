@@ -2,7 +2,16 @@ import main, misc, chat, blog, views, advanced, closed, manager
 
 import flask
 
+from flask_caching import Cache
+
 app = flask.Flask(__name__, static_url_path='/')
+
+app.config.from_mapping({
+    "DEBUG": True,
+    "CACHE_TYPE": "SimpleCache",
+    "CACHE_DEFAULT_TIMEOUT": 300
+})
+cache = Cache(app)
 
 for library in [main, misc, chat, blog, views, advanced, closed, manager]:
     library.register(app)

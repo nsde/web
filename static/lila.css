@@ -1,4 +1,6 @@
 :root {
+    --theme: "Default";
+
     --sans-font: -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir,
         "Nimbus Sans L", Roboto, Noto, "Segoe UI", Arial, Helvetica,
         "Helvetica Neue", sans-serif;
@@ -17,14 +19,16 @@
     --preformatted: #444;
     --marked: #cd85fdce;
     --disabled: #efefef;
+    --gradient-accent: linear-gradient(90deg, rgb(235, 72, 227) 0%, rgb(235, 72, 227) 50%, rgba(235, 27, 224, 0.753) 100%)
 }
 
-/* —————————————————————————————————— */
-/*              THEMES                */
+/* ============== THEMES ============ */
 
 .midnight {
-    --bg: #000000;
-    --accent-bg: #86868613;
+    --theme: "🌙 Midnight";
+
+    --bg: #0c0c0c;
+    --accent-bg: #5c5c5c13;
     --darker-bg: #00000018;
     --text: #ffffff;
     --text-light: #ffffffd8;
@@ -35,6 +39,123 @@
     --preformatted: #ccc;
     --marked: #978cffa1;
     --disabled: #111;
+    --gradient-accent: linear-gradient(90deg, #6b62f0 0%, #7270e7 50%, #7c70e7 100%)
+}
+
+.amoled {
+    --theme: "🌑 AMOLED";
+
+    --bg: #000000;
+    --accent-bg: #5c5c5c13;
+    --darker-bg: #00000018;
+    --text: #ffffff;
+    --text-light: #ffffffd8;
+    --border: #ffffff00;
+    --accent: #7c70e7;
+    --accent-light: #7270e777;
+    --code: #6b62f0;
+    --preformatted: #ccc;
+    --marked: #978cffa1;
+    --disabled: #111;
+    --gradient-accent: linear-gradient(90deg, #6b62f0 0%, #7270e7 50%, #7c70e7 100%)
+}
+
+.ocean {
+    --theme: "🌊 Ocean";
+
+    --bg: #fff;
+    --accent-bg: #e2e2e2;
+    --darker-bg: #b9b9b96c;
+    --text: #111111;
+    --text-light: #353535;
+    --border: #00000000;
+    --accent: #2598f6;
+    --accent-light: #70c1e777;
+    --code: #0f86e7;
+    --preformatted: #444;
+    --marked: #85cdfdce;
+    --disabled: #efefef;
+    --gradient-accent: linear-gradient(90deg, #2598f6 0%, #2598f6 50%, #85cdfdce 100%)
+}
+
+.fiery {
+    --theme: "🔥 Fiery";
+
+    --bg: #fff;
+    --accent-bg: #e2e2e2;
+    --darker-bg: #b9b9b96c;
+    --text: #111111;
+    --text-light: #353535;
+    --border: #00000000;
+    --accent: #f62536;
+    --accent-light: #e7708e77;
+    --code: #e70f50;
+    --preformatted: #444;
+    --marked: #fd85adce;
+    --disabled: #efefef;
+    --gradient-accent: linear-gradient(90deg, #f62536 0%, #e70f50 50%, #fd85adce 100%)
+}
+
+.fresh {
+    --theme: "🍏 Fresh";
+
+    --bg: #fff;
+    --accent-bg: #e2e2e2;
+    --darker-bg: #b9b9b96c;
+    --text: #111111;
+    --text-light: #353535;
+    --border: #00000000;
+    --accent: #41c06c;
+    --accent-light: #70e7a277;
+    --code: #00c060;
+    --preformatted: #444;
+    --marked: #abfd85ce;
+    --disabled: #efefef;
+    --gradient-accent: linear-gradient(90deg, #41c06c 0%, #00c060 50%, #70e7a277 100%)
+}
+
+.golden {
+    --theme: "👑 Golden";
+
+    --bg: #fff;
+    --accent-bg: #e2e2e2;
+    --darker-bg: #b9b9b96c;
+    --text: #111111;
+    --text-light: #353535;
+    --border: #00000000;
+    --accent: #c0ad41;
+    --accent-light: #e7e57077;
+    --code: #c0a300;
+    --preformatted: #444;
+    --marked: #fde185ce;
+    --disabled: #efefef;
+    --gradient-accent: linear-gradient(90deg, #c0ad41 0%, #c0a300 50%, #e7e57077 100%)
+}
+
+.day {
+    --bg: #fff;
+    --accent-bg: #f6f6f6;
+    --darker-bg: #b9b9b96c;
+    --text: #111111;
+    --text-light: #585858;
+    --border: #00000000;
+    --disabled: #efefef;
+}
+
+.amoled.day {
+    --text: #000;
+}
+    
+.night {
+    --bg: #181927;
+    --accent-bg: #c6b4ff13;
+    --darker-bg: #00000018;
+    --text: #dcdcdc;
+    --text-light: #ffffffd8;
+    --border: #ffffff00;
+    --preformatted: #ccc;
+    --disabled: #111;
+
 }
 
 /* —————————————————————————————————— */
@@ -52,13 +173,15 @@
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
     :root {
+        --theme: "Default";
+
         --bg: #181927;
         --accent-bg: #c6b4ff13;
         --darker-bg: #00000018;
         --text: #dcdcdc;
         --text-light: #ffffffd8;
         --border: #ffffff00;
-        --accent: #e770d7;
+        --accent: #ee75de;
         --accent-light: #e770d777;
         --code: #f062b5;
         --preformatted: #ccc;
@@ -86,9 +209,32 @@
     }
 }
 
-nav a {
-    filter: brightness(1.2);
-    background-color: var(--darker-bg);
+.theme-display::after {
+    content: var(--theme);
+}
+    
+.theme-color {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.only {
+    display: none;
+}
+
+@media (prefers-color-scheme: light) {.only.light {display: inherit;}}
+@media (prefers-color-scheme: dark) {.only.dark {display: inherit;}}
+
+@media (orientation: landscape) {.only.horizontal {display: inherit;}}
+@media (orientation: portrait) {.only.vertical {display: inherit;}}
+
+@media (scripting: initial-only) {.only.js-init {display: inherit;}}
+@media (scripting: enabled) {.only.js-on {display: inherit;}}
+@media (scripting: none) {.only.js-off {display: inherit;}}
+
+* {
+    box-sizing: border-box;
 }
 
 html {
@@ -104,8 +250,7 @@ body {
     font-size: 1.15rem;
     line-height: 1.5;
     display: grid;
-    grid-template-columns:
-    1fr min(45rem, 90%) 1fr;
+    grid-template-columns: 1fr min(45rem, 90%) 1fr;
     margin: 0;
 }
 
@@ -113,14 +258,15 @@ body>* {
     grid-column: 2;
 }
 
-body>header {
-    opacity: 1.0;
-    background-image: var(--image);
+body>header .dark {
+    color: var(--);
 }
 
 /* Make the header bg full width, but the content inline with body */
 body>header {
     /* background: var(--accent-bg); */
+    opacity: 1.0;
+    background-image: var(--image);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -200,8 +346,8 @@ div.input-box input {
     height: 100%;
     width: var(--percentage);
     --percentage: 70%;
-    animation: bar-fill 1s ;
-    background: linear-gradient(90deg, rgb(235, 72, 227) 0%, rgb(246, 108, 239) 50%, rgba(235, 27, 224, 0.753) 100%); 
+    animation: bar-fill 1s;
+    background: var(--gradient-accent); 
     border-radius: 5px;
 }
 
@@ -297,8 +443,18 @@ div.card:hover, header.a {
     cursor: pointer;
 }
 
+.hover-effect {
+    transition: .5s;
+}
+
+.hover-effect:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
 div.card img {
     width: 90%;
+    align-items: center;
 }
 
 div.card a {
@@ -339,16 +495,19 @@ p.tags::before {
 }
 
 /* Format links & buttons */
-a,
-a:visited {
+main a, footer a,
+main a:visited, footer a:visited {
     color: var(--accent);
-    
 }
 
 a:hover {
     /* text-decoration: none; */
     opacity: 80%;
     transition: .5s;
+}
+
+textarea:hover, input:hover, select:hover {
+    opacity: 0.9;
 }
 
 button,
@@ -394,9 +553,54 @@ abbr {
     cursor: help;
 }
 
-.fade-away:hover {
-    opacity: 0%;
-    transition: 1s;
+@keyframes rgb-effect {
+    from {filter: hue-rotate(0deg);}
+    to {filter: hue-rotate(360deg);}
+}
+
+.rgb-slowest {
+    animation: rgb-effect 60s linear infinite;
+}
+
+.rgb-slower {
+    animation: rgb-effect 20s linear infinite;
+}
+
+.rgb-slow {
+    animation: rgb-effect 10s linear infinite;
+}
+
+.rgb-fast {
+    animation: rgb-effect 5s linear infinite;
+}
+
+.rgb-faster {
+    animation: rgb-effect 3s linear infinite;
+}
+
+.rgb-fastest {
+    animation: rgb-effect 1s linear infinite;
+}
+
+.animate-on-hover {
+    animation-play-state: paused;
+}
+
+.animate-on-hover:hover {
+    animation-play-state: running;
+}
+
+button:focus,
+button:enabled,
+[role="button"],
+[role="button"]:not([aria-disabled="true"]),
+input[type="submit"],
+input[type="submit"]:enabled,
+input[type="reset"],
+input[type="reset"]:enabled,
+input[type="button"],
+input[type="button"]:enabled {
+    transition: .3s;
 }
 
 button:focus,
@@ -409,8 +613,7 @@ input[type="reset"]:focus,
 input[type="reset"]:enabled:hover,
 input[type="button"]:focus,
 input[type="button"]:enabled:hover {
-    filter: brightness(1.2);
-    transition: .3s;
+    filter: brightness(1.4);
     cursor: pointer;
 }
 
@@ -418,6 +621,10 @@ nav {
     font-size: 1rem;
     line-height: 2;
     padding: 1rem 0 0 0;
+}
+
+nav.stay-left {
+    position: fixed;
 }
 
 /* Use flexbox to allow items to wrap, as needed */
@@ -439,7 +646,7 @@ nav ul li {
 
 nav a,
 nav a:visited {
-    color: var(--text);
+    /* background-color: var(--bg); */
     border: 1px solid var(--border);
     border-radius: 5px;
     
@@ -452,7 +659,7 @@ nav a:visited {
 }
 
 nav a.current {
-    color: var(--accent);
+    border-bottom: var(--accent) solid;
 }
 
 nav a.colored {
@@ -465,8 +672,28 @@ nav a:hover {
     position: relative;
 }
 
+nav a.right {
+    color: var(--accent);
+}
+
+header.dark, nav a, nav a.current {
+    color: white;
+}
+
+@media only screen and (min-width: 500px) {
+    nav a.right {
+        float: right;
+    }
+}
+
 nav a:last-child {
     margin-right: 0;
+}
+
+@media only screen and (max-width: 500px) {
+    nav a {
+        margin: 0;
+    }
 }
 
 /* Format the expanding box */
@@ -746,12 +973,85 @@ pre:before {
     color: #888
 }
 
+.posts {
+    display: grid;
+    box-sizing: border-box;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    align-items: start;
+}
+
+.post {
+    background-color: var(--accent-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.post h5 {
+    margin: 0rem;
+    opacity: 0.6;
+    font-weight: normal;
+}
+
+.post h4 {
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+}
+
+.posts .post {
+    height: 100%;
+}
+
+.featured.post {
+    margin-bottom: 2rem;
+}
+
+.post .content {
+    padding: 2rem;
+    margin: 0.2rem;
+    padding-top: 0px;
+}
+
+.post img {
+    width: 100%;
+    height: 10rem;
+    box-shadow: none;
+    object-fit: cover;
+}
+
+.post:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+div.actions i.bi {
+    font-size: 1.5rem;
+    padding-right: .2rem;
+}
+
+div.post div.actions i.bi:hover {
+    opacity: 0.7;
+}
+
+i.bi.active {
+    color: var(--accent);
+}
+
 button.to-top {
-    clip-path: polygon(50% 0, 0 100%, 100% 100%);
-    border-radius: 0px;
+    /* border-radius: 0px; */
+    color: var(--accent);
+    background-color: var(--accent-bg);
     padding: .7rem;
     margin: .5rem;
     float: right;
+}
+
+button.to-top.icon {
+    clip-path: polygon(50% 0, 0 100%, 100% 100%);
+}
+
+*:focus{
+    outline: none;
 }
 
 *::selection {

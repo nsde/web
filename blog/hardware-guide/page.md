@@ -1,6 +1,6 @@
 ---
+tags: hardware, guide
 author: ONLIX
-topics: hardware, guide
 subtitle: Your hardware guide - everything you need to know before buying a PC('s parts)
 ---
 

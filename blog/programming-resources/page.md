@@ -1,6 +1,6 @@
 ---
+tags: programming, guide
 author: ONLIX
-topics: programming, guide
 subtitle: Your programming guide - resources that might become handy when (learning) programming. 
 ---
 

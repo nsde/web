@@ -1,6 +1,7 @@
 import os
 import flask
 import markdown
+import collections
 
 from datetime import datetime
 
@@ -20,7 +21,7 @@ def get_info(post: str):
     md_code = open(f'blog/{post}/page.md').read()
 
     author = md_code.split('\nauthor: ')[1].split('\n')[0]
-    topics = md_code.split('\ntopics: ')[1].split('\n')[0]
+    tags = md_code.split('\ntags: ')[1].split('\n')[0]
 
     title = md_code.split('\n# ')[1].split('\n')[0]
     description = md_code.split('\nsubtitle: ')[1].split('\n')[0]
@@ -32,7 +33,7 @@ def get_info(post: str):
         'path': f'blog/{post}',
         'title': title,
         'author': author,
-        'topics': topics,
+        'tags': tags.split(', '),
         'md_code': md_code,
         'description': description,
         'last_update': last_update
@@ -46,7 +47,7 @@ def register(app: flask.Flask):
 
         info = get_info(post)
 
-        return flask.render_template('blog.html', post=post, author=info['author'], topics=info['topics'], last_update=info['last_update'], content=info['md_code']) \
+        return flask.render_template('blog.html', post=post, author=info['author'], tags=info['tags'], last_update=info['last_update'], content=info['md_code']) \
                                                             .replace(
             '$$ title $$',          info['title'])          .replace(
             '$$ description $$',    info['description'])    .replace(
@@ -59,8 +60,17 @@ def register(app: flask.Flask):
 
     @app.route('/blog/@<user>')
     def blog_user(user):
-        return flask.render_template('posts.html', type='User', text=user, posts=[post for post in get_posts() if post['author'] == user])
+        posts = [post for post in get_posts() if post['author'] == user]
+        
+        tags = []
+        for post in posts:
+            for tag in post['tags']:
+                tags.append(tag)
+
+        tags = [tag[0] for tag in collections.Counter(tags).most_common()]
+        
+        return flask.render_template('posts.html', type='User', text=user, tags=tags, posts=posts)
 
     @app.route('/blog/+<tag>')
     def blog_tag(tag):
-        return flask.render_template('posts.html', type='Tag', text=tag, posts=[post for post in get_posts() if tag in post['topics']])
+        return flask.render_template('posts.html', type='Tag', text=tag, posts=[post for post in get_posts() if tag in post['tags']])

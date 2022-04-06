@@ -54,7 +54,11 @@
 </head>
 
 <body>
-    <header class="dark" style="--image: url('https://onlix.me/cover.png')">
+    {% if preview %}
+        <header class="dark transparent-cover" style="--image: url('https://onlix.me/{{ preview }}')">
+    {% else %}
+        <header class="dark" style="--image: url('https://onlix.me/cover.png')">
+    {% endif %}
         <nav>
             {% if title == "Home" %}
                 <a href="/" class="current"><i class="bi bi-house"></i> Home</a>
@@ -62,10 +66,16 @@
                 <a href="/"><i class="bi bi-house"></i> Home</a>
             {% endif %}
             
-            {% if title == "Contact" %}
-                <a href="/contact" class="current"><i class="bi bi-envelope"></i> Contact</a>
+            {% if "Blog" in title %}
+                <a href="/blog/@ONLIX" class="current"><i class="bi bi-newspaper"></i> Blog</a>
             {% else %}
-                <a href="/contact"><i class="bi bi-envelope"></i> Contact</a>
+                <a href="/blog/@ONLIX"><i class="bi bi-newspaper"></i> Blog</a>
+            {% endif %}
+
+            {% if title == "Contact" %}
+            <a href="/contact" class="current"><i class="bi bi-envelope"></i> Contact</a>
+            {% else %}
+            <a href="/contact"><i class="bi bi-envelope"></i> Contact</a>
             {% endif %}
 
             <a href="https://github.com/nsde"><i class="bi bi-github"></i> GitHub <i class="bi bi-box-arrow-up-right" style="opacity: 0.5;"></i></a>

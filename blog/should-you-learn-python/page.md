@@ -1,6 +1,6 @@
 ---
+tags: programming, guide
 author: ONLIX
-topics: programming, guide
 subtitle: What are the benefits of learning Python? How does it compare to other languages?
 ---
 

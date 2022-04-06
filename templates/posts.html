@@ -1,7 +1,15 @@
-{% with title="Overview", description="View all posts matching the criteria below." %} {% include '_top.html' %} {% endwith %}
+{% with title="Blog Overview", description="View all posts matching the criteria below.", preview="/blogging.jpg" %} {% include '_top.html' %} {% endwith %}
 
-<h3><mark>{{ type }}:</mark> {{ text or "*" }}</h3>
+<h3><mark style="text-transform: uppercase;">{{ "@" if type == "User" else "+" }}{{ type }}</mark> {{ text or "*" }}</h3>
 
+{% if tags %}
+    <h4>Tags:</h4>
+    {% for tag in tags %}
+        <mark class="hover-effect" onclick="window.location.href = '/blog/+{{ tag }}'">{{ tag }}</mark> 
+    {% endfor %}
+{% endif %}
+
+<h3>Posts</h3>
 <div class="posts">
     {% for post in posts %}
     <div class="post" onclick="window.location.href = '../{{ post.path }}'">
@@ -14,5 +22,8 @@
     </div>
     {% endfor %}
 </div>
+
+<br>
+<p>Thanks to StockSnap on Pixabay for the <a href="https://pixabay.com/photos/wordpress-blogging-writing-typing-923188/">cover image</a>!</p>
 
 {% include "_bottom.html" %}

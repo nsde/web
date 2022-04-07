@@ -16,7 +16,7 @@
     line-height: 1;
     vertical-align: -.125em;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    /* -moz-osx-font-smoothing: grayscale; */
   }
   
   .bi-123::before { content: "\f67f"; }

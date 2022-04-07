@@ -1,4 +1,4 @@
-{% with title="$$ title $$ · Blog", description="$$ description $$", image="$$ image $$" %} {% include '_top.html' %} {% endwith %}
+{% with title="$$ title $$ · Blog", description="$$ description $$", image="../$$ image $$" %} {% include '_top.html' %} {% endwith %}
 
 <div class="text-box article-info">
     <p>✍️ Author: <strong class="hover-effect"><a href="/blog/@{{ author }}">{{ author }}</a></strong></p>
@@ -8,7 +8,7 @@
             <mark class="hover-effect" onclick="window.location.href = '/blog/+{{ tag }}'">{{ tag }}</mark> 
         {% endfor %}
     </p>
-    <p>📷 <a href="$$ image $$">Show cover picture</a></p>
+    <p>📷 <a href="/$$ image $$">Show cover picture</a></p>
 </div>
 
 <br>

@@ -1,4 +1,11 @@
+import tools
+
+import yaml
+
 from stem.control import Controller
+
+PORT = tools.yml('config/main')['port']
+TOR_DIR = '/var/lib/tor/hidden_service/'
 
 def register(app):
     controller = Controller.from_port(address='127.0.0.1', port=9051)

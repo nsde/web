@@ -215,7 +215,7 @@
     
 .theme-color {
     background: var(--gradient-accent);
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -229,9 +229,9 @@
 @media (orientation: landscape) {.only.horizontal {display: inherit;}}
 @media (orientation: portrait) {.only.vertical {display: inherit;}}
 
-@media (scripting: initial-only) {.only.js-init {display: inherit;}}
+/* @media (scripting: initial-only) {.only.js-init {display: inherit;}}
 @media (scripting: enabled) {.only.js-on {display: inherit;}}
-@media (scripting: none) {.only.js-off {display: inherit;}}
+@media (scripting: none) {.only.js-off {display: inherit;}} */
 
 * {
     box-sizing: border-box;
@@ -260,15 +260,15 @@ body>* {
 
 /* ================ HEADER ================ */
 
-header.dark {
-    color: black;
+body.dark nav,
+body.dark header,
+body.dark nav {
+    color: red !important;
 }
 
 /* Make the header bg full width, but the content inline with body */
 body>header {
-    /* background: var(--accent-bg); */
     opacity: 1.0;
-    /* background-image: var(--image); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -386,7 +386,7 @@ body>header {
 
 body>header::before {    
     content: "";
-    background-image: var(--image);
+    background-image: linear-gradient(rgba(255, 255, 255, 0), var(--bg)), var(--image);
     background-size: cover;
     position: absolute;
     top: 0px;
@@ -397,6 +397,10 @@ body>header::before {
 
 body>header.transparent-2::before {
     opacity: 0.2;
+}
+
+body>header.transparent-35::before {
+    opacity: 0.35;
 }
 
 body>header.transparent-5::before {
@@ -481,23 +485,6 @@ div.input-box input {
     padding-left: .5rem;
     text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.829);
 }
-
-.w-10           {width: 10%};
-.w-9            {width: 11.1%}
-.w-8            {width: 12.5%}
-.w-7            {width: 14.2%}
-.w-6            {width: 16.6%;}
-.w-20, .w-5     {width: 20%;}
-.w-25, .w-4     {width: 25%}
-.w-30           {width: 30%;}
-.w-3            {width: 33.3%}
-.w-40           {width: 40%;}
-.w-50, .w-2     {width: 50%;}
-.w-60           {width: 60%;}
-.w-70           {width: 70%;}
-.w-80           {width: 80;}
-.w-90           {width: 90%;}
-.w-100, .w-1    {width: 100%;}
 
 /* Format headers */
 h1 {

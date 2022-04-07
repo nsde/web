@@ -44,19 +44,19 @@ def register(app: flask.Flask):
     def blog_main():
         return flask.redirect('/blog/@ONLIX')
 
+    @app.route('/blog/:<int:num>')
+    def blog_num(num: int):
+        return flask.redirect(f'/{get_posts()[num]["path"]}')
+
     @app.route('/blog/<post>')
     def blog_post(post):
         if not os.path.isdir(f'blog/{post}'):
-            return flask.render_template('error.html', title='Blog post not found!', description='Maybe the post got remove or renamed. In the last case, use the search box below.')
+            return flask.render_template('error.html', title='Blog post not found!', description='Maybe the post ID got removed or renamed. In this, use the search box below.')
 
         info = get_info(post)
-
-        return flask.render_template('blog.html', post=post, author=info['author'], tags=info['tags'], last_update=info['last_update'], content=info['md_code']) \
-                                                            .replace(
-            '$$ title $$',          info['title'])          .replace(
-            '$$ description $$',    info['description'])    .replace(
-            '$$ image $$',          f'/blog/{post}/image'
-        )
+        html = flask.render_template('blog.html', post=post, author=info['author'], tags=info['tags'], last_update=info['last_update'], content=info['md_code'])
+        
+        return html.replace('$$ title $$', info['title']).replace('$$ description $$', info['description']).replace('$$ image $$', f'blog/{post}/image')
     
     @app.route('/blog/<post>/image')
     def blog_post_image(post):

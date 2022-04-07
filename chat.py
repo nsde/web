@@ -1,7 +1,8 @@
 import flask
+import tools
 
 def read_chat(channel=None):
-    data = yaml.load(open('chats.yml'), Loader=yaml.FullLoader)
+    data = tools.yml('data/chats')
     data = data or {}
     return data.get(channel) or data
 
@@ -12,8 +13,7 @@ def send_message(channel, user='Guest', text=''):
         chat[channel] = []
 
     chat[channel].append({'user': user, 'text': text})
-    yaml.dump(chat, open('chats.yml', 'w'), sort_keys=False, default_flow_style=False)
-
+    tools.yml('data/chats', chat)
 
 def register(app: flask.Flask):
     @app.route('/chat/<channel>', methods=['GET', 'POST'])

@@ -1,3 +1,5 @@
+import tools
+
 import os
 import yaml
 import flask
@@ -25,12 +27,16 @@ def register(app: flask.Flask):
 
         return flask.render_template(f'error.html', title='Page not found!', description=f'Couldn\'t find this website: {error.name}')
 
+    @app.errorhandler(500)
+    def error_505(error):
+        return '500 error'
+
     @app.errorhandler(404)
     def error_404(error):
         rq = flask.request
         current_path = rq.path[1:]
 
-        redirects = yaml.load(open('redirects.yml'), Loader=yaml.FullLoader)
+        redirects = tools.yml('config/redirects')
         possible_template = f'templates/{current_path}.html'
         if current_path in redirects.keys():
             list(flask.request.args.keys())[0] if flask.request.args.keys() else False

@@ -1,4 +1,4 @@
-{% with title="Home", description="Hello I'm Felix, a student in Germany experimenting with tech, and welcome to my website!", cover_classes="dark" %} {% include '_top.html' %} {% endwith %}
+{% with title="Home", description="Hello I'm Felix, a student in Germany experimenting with tech, and welcome to my website!", dark_image=True %} {% include '_top.html' %} {% endwith %}
 
 <details>
     <summary>Because of Russian censorship, I decided to set up my own onion service</summary>
@@ -19,8 +19,10 @@
     </p>
 </details>
 
-<h3>My newest blog posts</h3>
-<a href="/blog"><button><i class="bi bi-newspaper"></i> All blog posts</button></a>
+<h3>My newest blog posts</h3> 
+<a href="/blog"><button><i class="bi bi-newspaper"></i> All posts</button></a>
+<!-- <a href="/blog/:0"><button><i class="bi bi-clock"></i> Latest post</button></a> -->
+<br><br>
 
 <div class="featured post" onclick="window.location.href = '{{ posts[0].path }}'">
     <img src="{{ posts[0].path }}/image">
@@ -45,7 +47,7 @@
     {% endfor %}
 </div>
 
-<hr>
+<br><hr>
 <p>Cover photo by <a href="https://unsplash.com/@fakurian?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Milad Fakurian</a> on <a href="https://unsplash.com/@fakurian?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
 
 {% include "_bottom.html" %}

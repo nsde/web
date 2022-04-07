@@ -1,4 +1,4 @@
-{% with title="Blog Overview", description="View all posts matching the criteria below.", preview="/blogging.jpg" %} {% include '_top.html' %} {% endwith %}
+{% with title="Blog Overview", description="View all posts matching the criteria below.", image="blogging.jpg" %} {% include '_top.html' %} {% endwith %}
 
 <h3><mark style="text-transform: uppercase;">{{ "@" if type == "User" else "+" }}{{ type }}</mark> {{ text or "*" }}</h3>
 

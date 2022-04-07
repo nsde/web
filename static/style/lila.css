@@ -260,7 +260,8 @@ body>* {
 
 /* ================ HEADER ================ */
 
-body>header .dark {
+header.dark {
+    color: black;
 }
 
 /* Make the header bg full width, but the content inline with body */
@@ -290,6 +291,91 @@ body>header p {
     margin: 1rem auto;
 }
 
+/* ================ NAVBAR ================ */
+
+nav {
+    font-size: 1rem;
+    line-height: 2;
+    padding: 1rem 0 0 0;
+}
+
+nav.stay-left {
+    position: fixed;
+}
+
+/* Use flexbox to allow items to wrap, as needed */
+nav ul,
+nav ol {
+    align-content: space-around;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav a,
+nav a:visited {
+    /* background-color: var(--bg); */
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    
+    margin: 0 1rem 1rem 0;
+    padding: 0.1rem 1rem;
+    display: inline-block;
+    text-decoration: none;
+    
+    transition: .3s;
+}
+
+nav a.current {
+    border-bottom: var(--accent) solid;
+}
+
+nav a.colored {
+    border-color: var(--accent);
+}
+
+nav a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    position: relative;
+}
+
+nav a.right {
+    color: var(--accent);
+}
+
+nav a:not(.dark),
+nav a:visited:not(.dark),
+nav a:active:not(.dark),
+nav a.current:not(.dark) {
+    color: var(--text);
+}
+
+@media only screen and (min-width: 500px) {
+    nav a.right {
+        float: right;
+    }
+}
+
+nav a:last-child {
+    margin-right: 0;
+}
+
+@media only screen and (max-width: 500px) {
+    nav a {
+        margin: 0;
+    }
+}
+
+
 /* ================ COVER ================ */
 
 body>header {
@@ -309,8 +395,16 @@ body>header::before {
     left: 0px;
 }
 
-body>header.transparent-cover::before {
+body>header.transparent-2::before {
     opacity: 0.2;
+}
+
+body>header.transparent-5::before {
+    opacity: 0.5;
+}
+
+body>header.transparent-8::before {
+    opacity: 0.8;
 }
 
 body>header * {
@@ -457,6 +551,8 @@ h3 {
         font-size: 1.25rem;
     }
 }
+
+/* ================== CARDS ================== */
 
 div.cards {
     display: flex;
@@ -646,85 +742,6 @@ input[type="button"]:focus,
 input[type="button"]:enabled:hover {
     filter: brightness(1.4);
     cursor: pointer;
-}
-
-nav {
-    font-size: 1rem;
-    line-height: 2;
-    padding: 1rem 0 0 0;
-}
-
-nav.stay-left {
-    position: fixed;
-}
-
-/* Use flexbox to allow items to wrap, as needed */
-nav ul,
-nav ol {
-    align-content: space-around;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline-block;
-}
-
-nav a,
-nav a:visited {
-    /* background-color: var(--bg); */
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    
-    margin: 0 1rem 1rem 0;
-    padding: 0.1rem 1rem;
-    display: inline-block;
-    text-decoration: none;
-    
-    transition: .3s;
-}
-
-nav a.current {
-    border-bottom: var(--accent) solid;
-}
-
-nav a.colored {
-    border-color: var(--accent);
-}
-
-nav a:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-    position: relative;
-}
-
-nav a.right {
-    color: var(--accent);
-}
-
-header.dark, nav a, nav a.current {
-    color: white;
-}
-
-@media only screen and (min-width: 500px) {
-    nav a.right {
-        float: right;
-    }
-}
-
-nav a:last-child {
-    margin-right: 0;
-}
-
-@media only screen and (max-width: 500px) {
-    nav a {
-        margin: 0;
-    }
 }
 
 /* Format the expanding box */
@@ -1024,6 +1041,7 @@ pre:before {
 .post h5 {
     margin: 0rem;
     opacity: 0.6;
+    margin-top: .5rem;
     font-weight: normal;
 }
 

@@ -1,0 +1,1 @@
+Hello there! You found me. I am located in /static/test.txt.

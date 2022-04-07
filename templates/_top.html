@@ -4,35 +4,35 @@
 <head>
     <title>{{ title }} · ONLIX</title>
 
-    <link href="/lila.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.css">
+    <link href="/style/lila.css"  rel="stylesheet">
+    <link href="/style/bi.css"    rel="stylesheet">
 
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="msapplication-TileColor" content="#9b4dca">
-    <meta name="msapplication-TileImage" content="images/mstile-150x150.png">
+    <meta name="msapplication-TileColor" content="#3a324b">
+    <meta name="msapplication-TileImage" content="https://onlix.me/favicons/150.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#9b4dca">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#3a324b">
     <meta name="apple-mobile-web-app-title" content="{{ title }} · ONLIX">
     <meta name="application-name" content="{{ title }} · ONLIX">
     <meta name="format-detection" content="telephone=no">
-    <meta name="theme-color" content="#9b4dca">
+    <meta name="theme-color" content="#3a324b">
     <meta name="robots" content="index, follow">
     <meta name="author" content="ONLIX">
     <meta name="description" content="{{ description }}">
 
     <meta property="og:description"
         content="{{ description }}">
-    <meta property="og:image" content="https://onlix.me/{{ preview or 'logo.png' }}">
+    <meta property="og:image" content="https://onlix.me/images/{{ image or 'logo.png' }}">
     <meta property="og:locale" content="en">
     <meta property="og:site_name" content="onlix.me">
     <meta property="og:title" content="{{ title }} · ONLIX">
     <meta property="og:type" content="website">
     <meta property="og:url" content="/">
-    <meta property="article:published_time" content="2020-08-20T04:49:02.278Z">
+    <!-- <meta property="article:published_time" content="2020-08-20T04:49:02.278Z"> -->
     <meta property="article:author" content="ONLIX">
     <meta property="article:section" content="website">
 
@@ -44,7 +44,7 @@
     <meta name="twitter:title" content="{{ title }} · ONLIX">
     <meta name="twitter:description"
         content="{{ description }}">
-    <meta name="twitter:image:src" content="https://onlix.me/{{ preview or 'logo.png' }}">
+    <meta name="twitter:image:src" content="https://onlix.me/images/{{ image or 'logo.png' }}">
 
     <link rel="canonical" href="/">
     <link rel="apple-touch-icon" href="/favicons/favicon.ico" sizes="180x180">
@@ -53,11 +53,16 @@
     <link rel="image_src" href="/favicons/favicon.ico">
 </head>
 
-<body>
-    {% if preview %}
-        <header class="dark transparent-cover" style="--image: url('https://onlix.me/{{ preview }}')">
+{% if dark_image %}
+    <body class="dark">
+{% else %}
+    <body>
+{% endif %}
+
+    {% if image %}
+        <header class="{{ cover_classes or 'transparent-5' }}" style="--image: url('https://onlix.me/images/{{ image or 'logo.png' }}')">
     {% else %}
-        <header class="dark" style="--image: url('https://onlix.me/cover.png')">
+        <header style="--image: url('https://onlix.me/images/wonderful.jpg')">
     {% endif %}
         <nav>
             {% if title == "Home" %}
@@ -67,9 +72,9 @@
             {% endif %}
             
             {% if "Blog" in title %}
-                <a href="/blog/@ONLIX" class="current"><i class="bi bi-newspaper"></i> Blog</a>
+                <a href="/blog" class="current"><i class="bi bi-newspaper"></i> Blog</a>
             {% else %}
-                <a href="/blog/@ONLIX"><i class="bi bi-newspaper"></i> Blog</a>
+                <a href="/blog"><i class="bi bi-newspaper"></i> Blog</a>
             {% endif %}
 
             {% if title == "Contact" %}
@@ -85,4 +90,5 @@
         <p>{{ description }}</p>
     </header>
 
-    <main>
+    <main class="amoled">
+<!-- End of _top.html -->

@@ -1,16 +1,26 @@
-{% with title="Home", description="Hello I'm Felix, a student in Germany experimenting with tech, and welcome to my website!" %} {% include '_top.html' %} {% endwith %}
+{% with title="Home", description="Hello I'm Felix, a student in Germany experimenting with tech, and welcome to my website!", cover_classes="dark" %} {% include '_top.html' %} {% endwith %}
 
-<p>My website currently only contains a blog, in which I give advice on software, hardware and more tech topics.
-I'm usually a quite lazy, but I really wanted to learn HTML & CSS, so I made this whole
-website pretty much from scratch. No stolen templates, no website builder, no third party CSS framework.
-<br><br>
-I started re-programming my whole blog in February of this year, so I had to learn a lot to get used to
-web development. Because of that, there might be some slight problems, so please
-<a href="https://github.com/nsde/web/issues/new">report issues</a>
-on my GitHub! Thanks.
-</p>
+<details>
+    <summary>Because of Russian censorship, I decided to set up my own onion service</summary>
+    <a href="http://e2zzi4xbsxhqiqcwkfronjfi5pyqgyyxsfym6f2tzw5pruqm4edgqhyd.onion/">e2zzi4xbsxhqiqcwkfronjfi5pyqgyyxsfym6f2tzw5pruqm4edgqhyd.onion</a>
+    <p><i>You can only open this link using the Tor browser.</i></p>
+</details>
+
+<details>
+    <summary>About my website</summary>
+    <p>My website currently only contains a blog, in which I give advice on software, hardware and more tech topics.
+        I'm usually a quite lazy, but I really wanted to learn HTML & CSS, so I made this whole
+        website pretty much from scratch. No stolen templates, no website builder, no third party CSS framework.
+        <br><br>
+        I started re-programming my whole blog in February of this year, so I had to learn a lot to get used to
+        web development. Because of that, there might be some slight problems, so please
+        <a href="https://github.com/nsde/web/issues/new">report issues</a>
+        on my GitHub! Thanks.
+    </p>
+</details>
 
 <h3>My newest blog posts</h3>
+<a href="/blog"><button><i class="bi bi-newspaper"></i> All blog posts</button></a>
 
 <div class="featured post" onclick="window.location.href = '{{ posts[0].path }}'">
     <img src="{{ posts[0].path }}/image">
@@ -34,5 +44,8 @@ on my GitHub! Thanks.
     </div>
     {% endfor %}
 </div>
+
+<hr>
+<p>Cover photo by <a href="https://unsplash.com/@fakurian?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Milad Fakurian</a> on <a href="https://unsplash.com/@fakurian?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
 
 {% include "_bottom.html" %}

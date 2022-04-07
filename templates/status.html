@@ -1,58 +1,49 @@
 {% with title="Status Page", description="Technical server-information",
 url="/status", button="Refresh" %} {% include '_top.html' %} {% endwith %}
 
-<section class="container" id="main">
-    <div id="info-text">
-        <br>
-        
-        <p><a href="status/mc" class="link">Minecraft Stats</a> (only works if the Minecraft server is actually online, of course)</p>
+    <p><a href="status/mc" class="link">Minecraft Stats</a> (only works if the Minecraft server is actually online, of course)</p>
 
-        <h2 class="title">Software</h1>
-        
-        <table id="software">
+    <h2>Software</h1>
+    
+    <table id="software">
+        <tr>
+            <th>Detail</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Process Count</td>
+            <td>{{ pids }}</td>
+        </tr>
+        <tr>
+            <td>Last boot</td>
+            <td>{{ boot_days }} days ago</td>
+        </tr>
+        <tr>
+            <td>Operating System</td>
+            <td>{{ os }}</td>
+        </tr>
+    </table>
+    
+    <br>
+
+    <h2>Hardware</h1>
+        <table id="hardware">
             <tr>
-                <th>Detail</th>
-                <th>Value</th>
+                <th>Part</th>
+                <th>Status</th>
             </tr>
             <tr>
-                <td>Process Count</td>
-                <td>{{ pids }}</td>
+                <td>CPU</td>
+                <td>{{ cpus }}/{{ threads }} vCores @ {{ cpu }}%</td>
             </tr>
             <tr>
-                <td>Last boot</td>
-                <td>{{ boot_days }} days ago</td>
+                <td>RAM</td>
+                <td>{{ ram }}</td>
             </tr>
             <tr>
-                <td>Operating System</td>
-                <td>{{ os }}</td>
+                <td>NVMe</td>
+                <td>{{ disk }}</td>
             </tr>
         </table>
-        
-        <br>
-
-        <h2 class="title">Hardware</h1>
-        
-            <table id="hardware">
-                <tr>
-                    <th>Part</th>
-                    <th>Status</th>
-                </tr>
-                <tr>
-                    <td>CPU</td>
-                    <td>{{ cpus }}/{{ threads }} vCores @ {{ cpu }}%</td>
-                </tr>
-                <tr>
-                    <td>RAM</td>
-                    <td>{{ ram }}</td>
-                </tr>
-                <tr>
-                    <td>NVMe</td>
-                    <td>{{ disk }}</td>
-                </tr>
-            </table>
-    
-    </div>
-    <br><br>
-</section>
 
 {% include '_bottom.html' %}

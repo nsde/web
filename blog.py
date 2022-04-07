@@ -40,6 +40,10 @@ def get_info(post: str):
     }
 
 def register(app: flask.Flask):
+    @app.route('/blog')
+    def blog_main():
+        return flask.redirect('/blog/@ONLIX')
+
     @app.route('/blog/<post>')
     def blog_post(post):
         if not os.path.isdir(f'blog/{post}'):

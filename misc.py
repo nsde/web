@@ -9,7 +9,6 @@ def register(app: flask.Flask):
         scraped_posts = []
 
         for post in posts.split('\n')[:-3]:
-            print(post)
             post_time = ' '.join(post.split()[1:3])
             post_text = post.split('> ')[1].split(' https://t.co/')[0]
             post_url = post.split()[-1]
@@ -56,8 +55,8 @@ def register(app: flask.Flask):
         bsn = '\n'
 
         if css_code:
-            open('static/lila.css', 'w').write(css_code) 
+            open('static/style/lila.css', 'w').write(css_code) 
 
-            return f'''<style>*{bg_code}</style><h1 style="color: lightgreen;">Success, added {open("static/lila.css").read().count(bsn)-css_code.count(bsn)} lines</h1>'''            
+            return f'''<style>*{bg_code}</style><h1 style="color: lightgreen;">Success, added {open("static/style/lila.css").read().count(bsn)-css_code.count(bsn)} lines</h1>'''            
         else:
             return f'''<style>*{bg_code}</style><h1 style="color: red;">Error {error}</h1>'''

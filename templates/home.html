@@ -1,4 +1,6 @@
-{% with title="Home", description="Hello I'm Felix, a student in Germany experimenting with tech, and welcome to my website!", dark_image=True %} {% include '_top.html' %} {% endwith %}
+{% with title="Home", description="Hello I'm Felix, a student in Germany experimenting with tech, and welcome to my website!", dark_image=False %} {% include '_top.html' %} {% endwith %}
+
+<h2>My website</h2>
 
 <details>
     <summary>Because of Russian censorship, I decided to set up my own onion service</summary>
@@ -19,9 +21,8 @@
     </p>
 </details>
 
-<h3>My newest blog posts</h3> 
+<h2>My newest blog posts</h2> 
 <a href="/blog"><button><i class="bi bi-newspaper"></i> All posts</button></a>
-<!-- <a href="/blog/:0"><button><i class="bi bi-clock"></i> Latest post</button></a> -->
 <br><br>
 
 <div class="featured post" onclick="window.location.href = '{{ posts[0].path }}'">

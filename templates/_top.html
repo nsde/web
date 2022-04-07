@@ -58,12 +58,8 @@
 {% else %}
     <body>
 {% endif %}
+        <header class="{{ cover_classes or 'transparent-5' }}" style="--image: url('https://onlix.me/images/{{ image or 'wave.jpg' }}')">
 
-    {% if image %}
-        <header class="{{ cover_classes or 'transparent-5' }}" style="--image: url('https://onlix.me/images/{{ image or 'logo.png' }}')">
-    {% else %}
-        <header style="--image: url('https://onlix.me/images/wonderful.jpg')">
-    {% endif %}
         <nav>
             {% if title == "Home" %}
                 <a href="/" class="current"><i class="bi bi-house"></i> Home</a>
@@ -85,10 +81,10 @@
 
             <a href="https://github.com/nsde"><i class="bi bi-github"></i> GitHub <i class="bi bi-box-arrow-up-right" style="opacity: 0.5;"></i></a>
         </nav>
-
         <h1>{{ title }}</h1>
         <p>{{ description }}</p>
+        <button onclick="window.location.href='#main'"><i style="font-size: 1rem;" class="bi bi-arrow-down"></i></button>
     </header>
 
-    <main class="amoled">
+    <main class="amoled" id="main">
 <!-- End of _top.html -->

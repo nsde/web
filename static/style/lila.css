@@ -263,7 +263,7 @@ body>* {
 body.dark nav,
 body.dark header,
 body.dark nav {
-    color: red !important;
+    color: white;
 }
 
 /* Make the header bg full width, but the content inline with body */
@@ -386,13 +386,23 @@ body>header {
 
 body>header::before {    
     content: "";
-    background-image: linear-gradient(rgba(255, 255, 255, 0), var(--bg)), var(--image);
-    background-size: cover;
     position: absolute;
     top: 0px;
     right: 0px;
     bottom: 0px;
     left: 0px;
+}
+
+@media (prefers-color-scheme: dark) {
+    body>header::before {
+        background-image: linear-gradient(rgba(255, 255, 255, 0), var(--accent-bg)), var(--image);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body>header::before {
+        background-image: linear-gradient(rgba(0, 0, 0, 0), var(--accent-bg)), var(--image);
+    }
 }
 
 body>header.transparent-2::before {
@@ -858,19 +868,6 @@ input[type="checkbox"]:checked::after {
     border-bottom: solid var(--bg) 0.08em;
     font-size: 1.8em;
     transform: rotate(45deg);
-}
-
-input[type="radio"]:checked::after {
-    /* creates a colored circle for the checked radio button  */
-    /* content: " ";
-    width: 0.25em;
-    height: 0.25em;
-    border-radius: 100%;
-    position: absolute;
-    top: 0.125em;
-    background: var(--bg);
-    left: 0.125em;
-    font-size: 32px; */
 }
 
 /* Make the textarea wider than other inputs */

@@ -15,4 +15,21 @@
 
 {{ content | safe }}
 
+{% if posts %}
+<hr>
+<h3>Similar posts</h3>
+<div class="posts">
+    {% for post in posts[:3] %}
+    <div class="post" onclick="window.location.href = '../{{ post.path }}'">
+        <img src="../{{ post.path }}/image">
+        <div class="content">
+            <h5>{{ post.last_update }}</h5>
+            <h4>{{ post.title }}</h4>
+            <p>{{ post.description }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
 {% include "_bottom.html" %}

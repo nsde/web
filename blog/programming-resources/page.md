@@ -23,6 +23,8 @@ Sometimes, the documentation can also be found in the "Wiki" tab of the project'
     - Converters, Generators & more
 
 - [repl.it](https://repl.it)
+    - Code online and collaborate in real-time
+    - Supports a huge amount of languages
 
 ### Hosting
 - [Heroku.com](https://www.heroku.com/)
@@ -38,7 +40,6 @@ Sometimes, the documentation can also be found in the "Wiki" tab of the project'
     - biggest "question and answer website" for programmers by far, 14 million accounts, 21 million questions, 31 million answers
     - mostly for if you're having an error
     - also useful for code snippets others asked for as well
-    - 
 
 - [GitHub.com](https://github.com/)
     - platform for sharing code, contributing to coding projects (called "repositories") and more
@@ -46,51 +47,53 @@ Sometimes, the documentation can also be found in the "Wiki" tab of the project'
     - this website was built using GitHub!
 
 ## Tutorials
-- [Corey Schafer @ YouTube](https://youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g)
-    - 200+ videos
-    - usually 15-30 minutes long videos
-    - mostly Python, a bit JavaScript
-
-- [RealPython.com](https://realpython.com/)
-    - awesome, high-quality tutorials 
-    - approx. 4K tutorials (vaguely checked using a search engine)
-    - Python only, as the name suggests
-
 - [FreeCodeCamp.org](https://www.freecodecamp.org/)
-    - 8K+ tutorials
+    - 8,000+ tutorials
     - certificates available
     - a lot of languages
+
+
+- [RealPython.com](https://realpython.com/)
+    - 4,000 tutorials (vaguely guessed using a search engine)
+    - awesome, high-quality tutorials 
+    - Python only, as the name suggests
+
 
 - [TechWithTim @ YouTube](https://youtube.com/channel/UC4JX40jDee_tINbkjycV4Sg)
     - 600+ videos 
     - with YouTube videos
     - mostly Python, a bit Java
 
+- [Corey Schafer @ YouTube](https://youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g)
+    - 200+ videos
+    - usually 15-30 minutes long videos
+    - mostly Python, a bit JavaScript
+
 - [Fireship @ YouTube](https://youtube.com/channel/UCsBjURrPoezykLs9EqgamOA) / [Fireship.io](https://fireship.io/)
     - 100+ videos (with written online tutorials)
     - mostly web development, with a variety of frameworks
-
-- [W3Schools](https://www.w3schools.com/)
-    - 80+ in-depth tutorials
-    - certificates available
-    - with code runner
 
 - [Programiz](https://www.programiz.com/)
     - several programming languages
     - with app
     - a bit like W3Schools, but with a nicer UI
 
+- [W3Schools](https://www.w3schools.com/)
+    - 80+ in-depth tutorials
+    - certificates available
+    - with code runner
+
 ## Tutorials (German)
 Auch für die Deutschen unter euch ist etwas dabei!
 - [The Morpehus Tutorials @ YouTube](https://youtube.com/channel/UCLGY6_j7kZfA1dmmjR1J_7w)
-    - ~200K Abonnenten
+    - 200.000 Abonnenten
     - Tutorials über **alles mögliche**, von Spieleentwicklung bis hin zu Web. Aber auch für Linux & ethical hacking-Interessierte ist **viel dabei**!
     - C, Java, JavaScript, C#, Python, HTML/CSS, PHP und viele mehr!
 
 - [Algorithmen verstehen @ YouTube](https://youtube.com/channel/UCswWBF6ZkGnLG3sLRR65xRw)
-    - ~80K Abonnenten
+    - 75.000 Abonnenten
     - **Verschiedene Themenbereiche** der Informatik - Kryptographie, Sicherheit & Privatsphäre, KI, einiges über Mathematik und vieles mehr
     - Python
 
-***
+## Sources
 Sources mostly from the website itself or from Wikipedia

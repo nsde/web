@@ -1,20 +1,22 @@
-{% with title="Minecraft Console Input Log", description="Formats the file '.console_history' to prove that we don't abuse our permissions" {% include '_top.html' %} {% endwith %}
+{% with title="Minecraft Console Input Log", description="Formats the file '.console_history' to prove that we don't abuse our permissions" %}
+    {% include '_top.html' %}
+{% endwith %}
 
-<h2>Server Log</h1>
+<h2>Server Log</h2>
     <p>Whispers (private messages) are removed, IP-bans are censored.</p>
     <p>Console log for server <strong>{{ server_name }}</strong>:</p>
 
-    <table id="minecraft">
+<table id="minecraft">
+    <tr>
+        <th>Time</th>
+        <th>Command</th>
+    </tr>
+    {% for line in log %}
         <tr>
-            <th>Time</th>
-            <th>Command</th>
+            <td>{{ line["time"] }}</td>
+            <td><code>{{ line["command"] }}</code></td>
         </tr>
-        {% for line in log %}
-            <tr>
-                <td>{{ line["time"] }}</td>
-                <td><code>{{ line["command"] }}</code></td>
-            </tr>
-        {% endfor %}
-    </table>    
+    {% endfor %}
+</table>
 
 {% include '_bottom.html' %}

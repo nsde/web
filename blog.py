@@ -54,8 +54,12 @@ def register(app: flask.Flask):
             return flask.render_template('error.html', title='Blog post not found!', description='Maybe the post ID got removed or renamed. In this, use the search box below.')
 
         info = get_info(post)
-        html = flask.render_template('blog.html', post=post, author=info['author'], tags=info['tags'], last_update=info['last_update'], content=info['md_code'])
-        
+        recommended_posts = []
+
+        # for tag in info['tags']:
+        #     recommended_posts.append([post for post in get_posts() if tag in post['tags']][0])
+
+        html = flask.render_template('blog.html', post=post, author=info['author'], tags=info['tags'], last_update=info['last_update'], content=info['md_code'], posts=recommended_posts)
         return html.replace('$$ title $$', info['title']).replace('$$ description $$', info['description']).replace('$$ image $$', f'blog/{post}/image')
     
     @app.route('/blog/<post>/image')

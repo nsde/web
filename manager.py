@@ -42,10 +42,10 @@ def register(app: flask.Flask):
             list(flask.request.args.keys())[0] if flask.request.args.keys() else False
             return flask.redirect(redirects[current_path])
             
-        try:
-            return flask.render_template(f'{current_path}.html')
-        except:
-            return flask.render_template(f'error.html', title='File not found!', description=f'Couldn\'t find this file.')
+        return flask.render_template(f'{current_path}.html')
+        # try:
+        # except:
+        #     return flask.render_template(f'error.html', title='File not found!', description=f'Couldn\'t find this file.')
 
     # @app.before_first_request
     # def before_first_request():

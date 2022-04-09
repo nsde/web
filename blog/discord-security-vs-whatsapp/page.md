@@ -29,7 +29,7 @@ Thanks to PhotoMIX-Company on Pixabay for the [picture](https://pixabay.com/phot
             <td>✅</td>
         </tr>
         <tr>
-            <td>The service doesn't read it's user's messages</td>
+            <td>Service can't read private messages</td>
             <td>❌</td>
             <td>✅</td>
         </tr>
@@ -39,7 +39,7 @@ Thanks to PhotoMIX-Company on Pixabay for the [picture](https://pixabay.com/phot
             <td>❌</td>
         </tr>
         <tr>
-            <td>Third party tracking</td>
+            <td>No third party tracking</td>
             <td>❌</td>
             <td>❌</td>
         </tr>
@@ -67,7 +67,7 @@ Thanks to PhotoMIX-Company on Pixabay for the [picture](https://pixabay.com/phot
 </table>
 
 ## Conclusion
-Neither are really private & secure. WhatsApp claims it is, even though some of their practices are really questionable. I'd personally say Discord is a bit less secure than WhatsApp, but the best is to just avoid both of them if possible.
+Neither are really private & secure. WhatsApp claims it is, even though some of their practices are really questionable. I'd personally say **Discord is a bit less secure than WhatsApp**, but the best is to just avoid both of them if possible.
 
 ## Alternatives
 The two alternatives I'm mentioned here pass almost all the criteria listed in the table above, so go check them out!

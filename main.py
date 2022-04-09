@@ -1,8 +1,6 @@
 import blog
 
-import os
 import flask
-import requests
 
 def register(app: flask.Flask):
     @app.route('/')

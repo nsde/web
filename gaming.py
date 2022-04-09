@@ -7,6 +7,7 @@ import time
 import flask
 import psutil
 import distro
+import requests
 
 try:
     from mcipc.query import Client
@@ -95,3 +96,42 @@ def register(app: flask.Flask):
         log.reverse()
 
         return flask.render_template(f'mcclog.html', log=log, server_name=MINECRAFT_SERVER_NAME)
+
+    @app.route('/dbd')
+    def dbd():
+        posts = subprocess.check_output(f'twint -u dbdcodes', shell=True).decode('utf-8')
+        scraped_posts = []
+
+        for post in posts.split('\n')[:-3]:
+            post_time = ' '.join(post.split()[1:3])
+            post_text = post.split('> ')[1].split(' https://t.co/')[0]
+            post_url = post.split()[-1]
+            
+            post_blood = 0
+            post_shards = 0
+
+            if 'k Bloodpoints' in post_text:
+                post_blood = int(post_text.split(' For ')[1].split('k Bloodpoints')[0])
+
+            if ',000 Bloodpoints' in post_text:
+                post_blood = int(post_text.split(' For ')[1].split(',000 Bloodpoints')[0])
+
+            if ' Iridescent Shards' in post_text:
+                post_shards = int(post_text.split(' Iridescent Shards')[0].split()[-1].replace('k', '000'))
+            
+            detected = (not (post_blood or post_shards))
+
+            if not post_text.startswith('@'):
+                scraped_posts.append({
+                    'time': post_time,
+                    'text': post_text,
+                    'url': post_url,
+                    
+                    'blood': '♦️'*(post_blood//25) or ' ',
+                    'shards': '💠'*(post_shards//170) or ' ',
+                    
+                    'style': 'color: gray;' if detected else '',
+                    'detected': 'ℹ️' if detected else ''
+                })
+
+        return flask.render_template('dbd.html', posts=scraped_posts)

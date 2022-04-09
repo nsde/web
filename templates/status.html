@@ -1,5 +1,4 @@
-{% with title="Status Page", description="Technical server-information",
-url="/status", button="Refresh" %} {% include '_top.html' %} {% endwith %}
+{% with title="Status Page", description="Technical server-information", image="hardware.jpg" %} {% include '_top.html' %} {% endwith %}
 
     <p><a href="status/mc" class="link">Minecraft Stats</a> (only works if the Minecraft server is actually online, of course)</p>
 
@@ -22,6 +21,39 @@ url="/status", button="Refresh" %} {% include '_top.html' %} {% endwith %}
             <td>Operating System</td>
             <td>{{ os }}</td>
         </tr>
+        <tr>
+            <td>Upload Limit</td>
+            <td>100 MB</td>
+        </tr>
+        <tr>
+            <td>Rate Limiting</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td>DNSSec</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td>Onion Routing</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td>IPv6</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td>HTTPS support</td>
+            <td>✅ 2 & 3 (with QUIC)</td>
+        </tr>
+        <tr>
+            <td>SLL/TLS</td>
+            <td>✅ End-to-end encrypted, self signed certificate</td>
+        </tr>
+        <tr>
+            <td>Always HTTPS</td>
+            <td>✅</td>
+        </tr>
+        
     </table>
     
     <br>

@@ -11,7 +11,7 @@
     --accent-bg: #c6a0d723;
     --darker-bg: #ffffff6c;
     --text: #111111;
-    --text-light: #585858;
+    --text-light: #3e3a4f;
     --border: #00000000;
     --accent: #A855F7;
     --accent-light: #e770d777;
@@ -963,9 +963,11 @@ code,
 pre,
 pre span,
 kbd,
-samp {
+samp,
+p code,
+pre code {
     font-family: var(--mono-font);
-    color: var(--code);
+    color: var(--text);
 }
 
 kbd {
@@ -984,6 +986,7 @@ pre {
     background: var(--accent-bg);
     /* border: 1px solid var(--border); */
     border-radius: 10px;
+    color: var(--text);
 }
 
 /* Fix embedded code within pre */
@@ -994,7 +997,13 @@ pre code {
     padding: 0;
 }
 
-pre:before {
+p code {
+    padding: 0.3rem;
+    border-radius: 5px;
+    background-color: var(--accent-bg) !important;
+}
+
+/* pre:before {
     counter-increment: line;
     counter-reset: line;
     content: counter(line);
@@ -1003,7 +1012,7 @@ pre:before {
     padding: 0 .5em;
     margin-right: .5em;
     color: #888
-}
+} */
 
 
 /* ================ POSTS ================ */

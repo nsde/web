@@ -8,6 +8,7 @@ import flask
 import psutil
 import distro
 import requests
+import subprocess
 
 try:
     from mcipc.query import Client

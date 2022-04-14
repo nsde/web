@@ -19,7 +19,7 @@ app.config.from_mapping({
 limiter = Limiter(
     app=app,
     key_func=get_remote_address,
-    default_limits=['10000 per day', '600 per hour', '30 per minute']
+    default_limits=['10000 per day', '600 per hour', '60 per minute']
 )
 
 # === FLASK LIBRARIES ===

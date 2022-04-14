@@ -18,23 +18,27 @@ def get_posts():
     return posts
 
 def get_info(post: str):
+    path = f'blog/{post}'
     md_code = open(f'blog/{post}/page.md').read()
 
     author = md_code.split('\nauthor: ')[1].split('\n')[0]
-    tags = md_code.split('\ntags: ')[1].split('\n')[0]
+    tags = md_code.split('\ntags: ')[1].split('\n')[0].split(', ')
 
     title = md_code.split('\n# ')[1].split('\n')[0]
     description = md_code.split('\nsubtitle: ')[1].split('\n')[0]
 
-    md_code = markdown.markdown(md_code.split('\n---\n')[1])
+    markdown_seperator = '\n---\n'
+    markdown_code = f'[TOC]\n\n{md_code.split(markdown_seperator)[1]}'.replace('$$ path $$', path)
+    html_code = markdown.markdown(markdown_code, extensions=['toc']).replace('<div class="toc">', '<h3>Table of Contents</h3>\n<div class="toc text-box">')
+    
     last_update = datetime.fromtimestamp(os.path.getmtime(f'blog/{post}/page.md')).strftime('%a %d/%m/%Y')
 
     return {
-        'path': f'blog/{post}',
+        'path': path,
         'title': title,
         'author': author,
-        'tags': tags.split(', '),
-        'md_code': md_code,
+        'tags': tags,
+        'md_code': html_code,
         'description': description,
         'last_update': last_update
     }
@@ -62,9 +66,9 @@ def register(app: flask.Flask):
         html = flask.render_template('blog.html', post=post, author=info['author'], tags=info['tags'], last_update=info['last_update'], content=info['md_code'], posts=recommended_posts)
         return html.replace('$$ title $$', info['title']).replace('$$ description $$', info['description']).replace('$$ image $$', f'blog/{post}/image')
     
-    @app.route('/blog/<post>/image')
-    def blog_post_image(post):
-        return flask.send_file(f'blog/{post}/image.jpg', mimetype='image/jpg')
+    @app.route('/blog/<post>/<image>')
+    def blog_post_image(post, image):
+        return flask.send_file(f'blog/{post}/{"image.jpg" if image == "image" else image }', mimetype=f'image/{"jpg" if image == "image" else image.split(".")[-1]}')
 
     @app.route('/blog/@<user>')
     def blog_user(user):

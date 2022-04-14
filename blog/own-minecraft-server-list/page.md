@@ -1,12 +1,12 @@
 ---
 tags: programming, tutorial, flask, minecraft
 author: ONLIX
-subtitle: Code your own Minecraft server list!
+subtitle: Create your own Minecraft server list using Flask and the mcstatus API!
 ---
 
 [Picture by Shubham Dhage on Unsplash](https://unsplash.com/photos/fQL1DKNUQZw/).
 
-# Program your own Minecraft Server List!
+# Code your own Minecraft Server List
 
 ## Preparation
 
@@ -70,7 +70,7 @@ Uh, so the next function may look a bit weird, but trust me, I'll explain it lat
     def color_codes(text: str): # formatting
         text = text.strip(' ') # some descriptions have a lot of spaces to center the text in-game but we don't want this here
 
-        num = 0 # count of spans we used
+        num = 0 # number of spans we used
 
         codes = {
             '0': 'color: #000000',

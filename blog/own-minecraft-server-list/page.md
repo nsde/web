@@ -68,7 +68,7 @@ Let's start with importing the required libraries and setting up our backend.
 Uh, so the next function may look a bit weird, but trust me, I'll explain it later.
 
     def color_codes(text: str): # formatting
-        text = text.strip(' ') # some descriptions have a lot of spaces to center the text in-game but we don't want this here
+        text = text.strip(' <>') # some descriptions have a lot of spaces to center the text in-game but we don't want this here; the <> if for security purposes
 
         num = 0 # number of spans we used
 
@@ -168,7 +168,7 @@ Okay, we're almost done with the Python code! Just one more line to run the serv
 
 Most of the time, Flask ports such as 3000 or 5000 are being used, but you can customize it to pretty much whatever you want to - under the assumption that the port isn't taken yet and the port is in the valid range.
 
-> **Linux pro tip ·** If you want to allow your firewall to access a specific port, try `ufw allow 1111/tcp`.
+> **Linux pro tip ·** If you want to expose your app to the local network you can try running `sudo ufw allow 1111/tcp` to open the port, this may not be necessary depending on your distribution or firewall-settings.
 
 `debug=True` makes it so that every time one of the server's files (no matter if it's a Python or HTML file) are changed, the server restarts to apply the change. This is really useful when testing the server.
 

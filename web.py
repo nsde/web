@@ -9,7 +9,7 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
 app = flask.Flask(__name__, static_url_path='/')
-
+app.config['MAX_CONTENT_LENGTH'] = 2 * 1000 * 1000 * 1000 # 2 GB
 app.config.from_mapping({
     "CACHE_TYPE": "SimpleCache",
     "DEBUG": True,

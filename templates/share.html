@@ -1,0 +1,15 @@
+{% with title="LixShare", description="Share your files on my server!", image="mobile.jpg" %} {% include '_top.html' %} {% endwith %}
+
+<h3>Simply choose a file to get started</h3>
+<h5>Limit: 2 GB / file</h5>
+
+<p>By submitting a file, you agree to <a href="/legal">the legal document</a>!</p>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit" value="Upload">
+</form>
+
+<p><a href="/contact">Report abuse</a></p>
+
+{% include "_bottom.html" %}

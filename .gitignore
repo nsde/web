@@ -1,6 +1,14 @@
 # Large Files
 share/
 
+# Closed source
+closed.py
+*.closed
+*.closed.*
+*closed*
+/closed
+/*.closed
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

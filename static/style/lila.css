@@ -11,7 +11,7 @@
     --accent-bg: #c6a0d723;
     --darker-bg: #ffffff6c;
     --text: #111111;
-    --text-light: #3e3a4f;
+    --text-light: #585858;
     --border: #00000000;
     --accent: #A855F7;
     --accent-light: #e770d777;
@@ -215,7 +215,7 @@
     
 .theme-color {
     background: var(--gradient-accent);
-    background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -229,9 +229,9 @@
 @media (orientation: landscape) {.only.horizontal {display: inherit;}}
 @media (orientation: portrait) {.only.vertical {display: inherit;}}
 
-/* @media (scripting: initial-only) {.only.js-init {display: inherit;}}
+@media (scripting: initial-only) {.only.js-init {display: inherit;}}
 @media (scripting: enabled) {.only.js-on {display: inherit;}}
-@media (scripting: none) {.only.js-off {display: inherit;}} */
+@media (scripting: none) {.only.js-off {display: inherit;}}
 
 * {
     box-sizing: border-box;
@@ -260,15 +260,14 @@ body>* {
 
 /* ================ HEADER ================ */
 
-body.dark nav,
-body.dark header,
-body.dark nav {
-    color: white;
+body>header .dark {
 }
 
 /* Make the header bg full width, but the content inline with body */
 body>header {
+    /* background: var(--accent-bg); */
     opacity: 1.0;
+    /* background-image: var(--image); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -291,91 +290,6 @@ body>header p {
     margin: 1rem auto;
 }
 
-/* ================ NAVBAR ================ */
-
-nav {
-    font-size: 1rem;
-    line-height: 2;
-    padding: 1rem 0 0 0;
-}
-
-nav.stay-left {
-    position: fixed;
-}
-
-/* Use flexbox to allow items to wrap, as needed */
-nav ul,
-nav ol {
-    align-content: space-around;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline-block;
-}
-
-nav a,
-nav a:visited {
-    /* background-color: var(--bg); */
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    
-    margin: 0 1rem 1rem 0;
-    padding: 0.1rem 1rem;
-    display: inline-block;
-    text-decoration: none;
-    
-    transition: .3s;
-}
-
-nav a.current {
-    border-bottom: var(--accent) solid;
-}
-
-nav a.colored {
-    border-color: var(--accent);
-}
-
-nav a:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-    position: relative;
-}
-
-nav a.right {
-    color: var(--accent);
-}
-
-nav a:not(.dark),
-nav a:visited:not(.dark),
-nav a:active:not(.dark),
-nav a.current:not(.dark) {
-    color: var(--text);
-}
-
-@media only screen and (min-width: 500px) {
-    nav a.right {
-        float: right;
-    }
-}
-
-nav a:last-child {
-    margin-right: 0;
-}
-
-@media only screen and (max-width: 500px) {
-    nav a {
-        margin: 0;
-    }
-}
-
-
 /* ================ COVER ================ */
 
 body>header {
@@ -386,6 +300,8 @@ body>header {
 
 body>header::before {    
     content: "";
+    background-image: var(--image);
+    background-size: cover;
     position: absolute;
     top: 0px;
     right: 0px;
@@ -393,32 +309,8 @@ body>header::before {
     left: 0px;
 }
 
-@media (prefers-color-scheme: dark) {
-    body>header::before {
-        background-image: linear-gradient(rgba(255, 255, 255, 0), var(--accent-bg)), var(--image);
-    }
-}
-
-@media (prefers-color-scheme: light) {
-    body>header::before {
-        background-image: linear-gradient(rgba(0, 0, 0, 0), var(--accent-bg)), var(--image);
-    }
-}
-
-body>header.transparent-2::before {
+body>header.transparent-cover::before {
     opacity: 0.2;
-}
-
-body>header.transparent-35::before {
-    opacity: 0.35;
-}
-
-body>header.transparent-5::before {
-    opacity: 0.5;
-}
-
-body>header.transparent-8::before {
-    opacity: 0.8;
 }
 
 body>header * {
@@ -496,6 +388,23 @@ div.input-box input {
     text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.829);
 }
 
+.w-10           {width: 10%};
+.w-9            {width: 11.1%}
+.w-8            {width: 12.5%}
+.w-7            {width: 14.2%}
+.w-6            {width: 16.6%;}
+.w-20, .w-5     {width: 20%;}
+.w-25, .w-4     {width: 25%}
+.w-30           {width: 30%;}
+.w-3            {width: 33.3%}
+.w-40           {width: 40%;}
+.w-50, .w-2     {width: 50%;}
+.w-60           {width: 60%;}
+.w-70           {width: 70%;}
+.w-80           {width: 80;}
+.w-90           {width: 90%;}
+.w-100, .w-1    {width: 100%;}
+
 /* Format headers */
 h1 {
     font-size: 3rem;
@@ -548,8 +457,6 @@ h3 {
         font-size: 1.25rem;
     }
 }
-
-/* ================== CARDS ================== */
 
 div.cards {
     display: flex;
@@ -741,6 +648,85 @@ input[type="button"]:enabled:hover {
     cursor: pointer;
 }
 
+nav {
+    font-size: 1rem;
+    line-height: 2;
+    padding: 1rem 0 0 0;
+}
+
+nav.stay-left {
+    position: fixed;
+}
+
+/* Use flexbox to allow items to wrap, as needed */
+nav ul,
+nav ol {
+    align-content: space-around;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav a,
+nav a:visited {
+    /* background-color: var(--bg); */
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    
+    margin: 0 1rem 1rem 0;
+    padding: 0.1rem 1rem;
+    display: inline-block;
+    text-decoration: none;
+    
+    transition: .3s;
+}
+
+nav a.current {
+    border-bottom: var(--accent) solid;
+}
+
+nav a.colored {
+    border-color: var(--accent);
+}
+
+nav a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    position: relative;
+}
+
+nav a.right {
+    color: var(--accent);
+}
+
+header.dark, nav a, nav a.current {
+    color: white;
+}
+
+@media only screen and (min-width: 500px) {
+    nav a.right {
+        float: right;
+    }
+}
+
+nav a:last-child {
+    margin-right: 0;
+}
+
+@media only screen and (max-width: 500px) {
+    nav a {
+        margin: 0;
+    }
+}
+
 /* Format the expanding box */
 details {
     background: var(--accent-bg);
@@ -870,6 +856,19 @@ input[type="checkbox"]:checked::after {
     transform: rotate(45deg);
 }
 
+input[type="radio"]:checked::after {
+    /* creates a colored circle for the checked radio button  */
+    /* content: " ";
+    width: 0.25em;
+    height: 0.25em;
+    border-radius: 100%;
+    position: absolute;
+    top: 0.125em;
+    background: var(--bg);
+    left: 0.125em;
+    font-size: 32px; */
+}
+
 /* Make the textarea wider than other inputs */
 textarea {
     width: 80%;
@@ -963,11 +962,9 @@ code,
 pre,
 pre span,
 kbd,
-samp,
-p code,
-pre code {
+samp {
     font-family: var(--mono-font);
-    color: var(--text);
+    color: var(--code);
 }
 
 kbd {
@@ -986,7 +983,6 @@ pre {
     background: var(--accent-bg);
     /* border: 1px solid var(--border); */
     border-radius: 10px;
-    color: var(--text);
 }
 
 /* Fix embedded code within pre */
@@ -997,13 +993,7 @@ pre code {
     padding: 0;
 }
 
-p code {
-    padding: 0.3rem;
-    border-radius: 5px;
-    background-color: var(--accent-bg) !important;
-}
-
-/* pre:before {
+pre:before {
     counter-increment: line;
     counter-reset: line;
     content: counter(line);
@@ -1012,7 +1002,7 @@ p code {
     padding: 0 .5em;
     margin-right: .5em;
     color: #888
-} */
+}
 
 
 /* ================ POSTS ================ */
@@ -1034,7 +1024,6 @@ p code {
 .post h5 {
     margin: 0rem;
     opacity: 0.6;
-    margin-top: .5rem;
     font-weight: normal;
 }
 

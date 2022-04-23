@@ -28,12 +28,17 @@ def get_info(post: str):
     description = md_code.split('\nsubtitle: ')[1].split('\n')[0]
 
     markdown_seperator = '\n---\n'
-    markdown_code = f'[TOC]\n\n{md_code.split(markdown_seperator)[1]}'.replace('$$ path $$', path)
+    input_markdown = md_code.split(markdown_seperator)[1]
+    markdown_code = f'[TOC]\n\n{input_markdown}'.replace('$$ path $$', path)
+
     html_code = markdown.markdown(markdown_code, extensions=['toc']).replace('<div class="toc">', '<h3>Table of Contents</h3>\n<div class="toc text-box">')
     
     last_update = datetime.fromtimestamp(os.path.getmtime(f'blog/{post}/page.md')).strftime('%a %d/%m/%Y')
 
+    wip = len(input_markdown) < 300
+
     return {
+        'wip': wip,
         'path': path,
         'title': title,
         'author': author,

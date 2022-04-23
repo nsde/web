@@ -3,12 +3,6 @@
 <h2>My website</h2>
 
 <details>
-    <summary>Because of Russian censorship, I decided to set up my own onion service</summary>
-    <a href="http://e2zzi4xbsxhqiqcwkfronjfi5pyqgyyxsfym6f2tzw5pruqm4edgqhyd.onion/">e2zzi4xbsxhqiqcwkfronjfi5pyqgyyxsfym6f2tzw5pruqm4edgqhyd.onion</a>
-    <p><i>You can only open this link using the Tor browser.</i></p>
-</details>
-
-<details>
     <summary>About my website</summary>
     <p>My website currently only contains a blog, in which I give advice on software, hardware and more tech topics.
         I'm usually a quite lazy, but I really wanted to learn HTML & CSS, so I made this whole
@@ -30,7 +24,9 @@
     
     <div class="content">
         <h5>{{ posts[0].last_update }}</h5>
-        <h4>{{ posts[0].title }}</h4>
+        <h4>{{ posts[0].title }}            {% if posts[0].wip %}
+            <mark style="color: white; font-weight: bold;"><i class="bi bi-stars"></i> Coming soon...</mark>
+        {% endif %}</h4>
         <p>{{ posts[0].description }}</p>
     </div>
 </div>

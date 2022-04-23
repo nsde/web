@@ -1,0 +1,23 @@
+{% with title="LixModules", description="Which modules of the backend are active", image="hardware.jpg" %} {% include '_top.html' %} {% endwith %}
+
+<h3>Backend modules</h3>
+
+<div class="posts">
+    {% for module in modules %}
+        <div class="post" onclick="window.location.href='{{ module.url }}'">
+            <div class="content">
+                <h4>{{ "⬢" if module.status else "⬡" }} {{ module.name }}</h4>
+                <p>
+                    {% for dec in module.decs %}
+                    <a href="https://onlix.me{{ dec }}"><button style="display: inline;">{{ dec }}</button></a>
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<br>
+<i><i class="bi bi-github"></i> Click on a module to view its code on GitHub</i>
+
+{% include "_bottom.html" %}

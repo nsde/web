@@ -28,7 +28,7 @@ def register(app: flask.Flask):
         return flask.render_template(f'error.html', title='Page not found!', description=f'Couldn\'t find this website: {error.name}')
 
     @app.errorhandler(500)
-    def error_505(error):
+    def error_500(error):
         return '500 error'
 
     @app.errorhandler(404)

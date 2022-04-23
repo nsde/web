@@ -1,12 +1,12 @@
-import tools
-
-import flask
-
 from flask_qrcode import QRcode
 from flask_caching import Cache
 
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+
+import flask
+
+import tools
 
 app = flask.Flask(__name__, static_url_path='/')
 app.config['MAX_CONTENT_LENGTH'] = 2 * 1000 * 1000 * 1000 # 2 GB
@@ -27,9 +27,9 @@ QRcode(app)
 cache = Cache(app)
 # === MODULES ===
 
-modules = 'main misc chat blog views gaming closed manager tor'
+modules = tools.yml('config/modules')['active']
 
-for module in modules.split():
+for module in modules:
     exec(f'import {module}')
     exec(f'{module}.register(app)')
 

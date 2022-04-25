@@ -7,14 +7,26 @@ subtitle: Create your own Minecraft server list using Flask and the mcstatus API
 [Picture by Shubham Dhage on Unsplash](https://unsplash.com/photos/fQL1DKNUQZw/).
 
 # Code your own Minecraft Server List
+## Introduction
+
+<p><strong>Simplicity:</strong> ⭐⭐⭐⭐<span style="color: rgba(0, 0, 0, 0.2);">⭐</p>
+
+**107 lines** of code (67 Python + 40 HTML) 
+
+**Too lazy to follow the entire tutorial or to copy everything one by one? [Here's the entire code!](https://github.com/nsdea/own-minecraft-server-list)**
+***
+
+If you're playing Minecraft, you've probably come across websites like [NameMC](https://namemc.com/minecraft-servers) or [MinecraftServers.org](https://minecraftservers.org/). These all have one thing in common: they display the status of Minecraft servers, including statistics such as their player count, latency, MOTD (message of the day/server description) and more.
+
+These sites can be especially useful if you want to keep track of a few servers you often play on with your friends.
+
+This becomes insanely handy when using free hosting services with your friends such as *Aternos* or *Minehut* - you can easily get an overview of if your server is online, how many friends are playing at the moment and if its lagging.
+
+Cool right? And it's only about 100 lines of code!
 
 ## Preparation
 
-**Too lazy to follow the entire tutorial or don't want to copy everything one by one? [Here's the entire code!](https://github.com/nsdea/own-minecraft-server-list)**
-
-***
-
-It's actually not that difficult to do! Using [*Flask*](https://pypi.org/project/Flask/) and [*mcstatus*](https://pypi.org/project/mcstatus/), we're going to build our own server list.
+We're going to work with the libraries [*Flask*](https://pypi.org/project/Flask/) and [*mcstatus*](https://pypi.org/project/mcstatus/).
 
 First, we need to install these packages. You need to have [pip installed](https://www.liquidweb.com/kb/install-pip-windows) for the following commands to work. I'm going to assume that you already have a newer *Python* version (I'd recommend at least 3.7+) and *pip* installed correctly.
 
@@ -22,7 +34,12 @@ So, open up your command line and enter the following commands to install the re
 
     pip3 install flask mcstatus
 
-If the command above fails, try `pip` instead of `pip3`.
+or, it the command above is not working:
+
+    pip3 install flaskm
+    pip3 install mcstatus
+
+If the commands above still fail, try `pip` instead of `pip3`.
 The output looks like this for me:
 
 
@@ -260,8 +277,6 @@ Well, the tutorial is now done. But if you want to practice a bit more, here are
 - <mark>HTML</mark> <mark>Python</mark> Add a text input box for `/only/<ip>` so that users can view the statistics of a certain server more easily.
 
 - <mark>HTML</mark> <mark>CSS</mark> <mark>Python</mark> Display a proper error message when the user tries to view the info of a server which is currently offline or unavailable. You can grey-out these servers in the list.
-
-You can even send me a pull request to [the GitHub repository](https://github.com/nsdea/own-minecraft-server-list) so I can add sample solutions.
 
 ## Conclusion
 You've now learned how to use *Flask*, *Jinja2*, the *mcstatus* library and *HTML*. Questions? Issues? Tips to improve this tutorial? [Open an issue](https://github.com/nsdea/own-minecraft-server-list/issues/new/choose)! I hope you've learned something. See you next time!

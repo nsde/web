@@ -1,9 +1,9 @@
-{% with title="Blog Overview", description="View all posts matching the criteria below.", image="blogging.jpg" %} {% include '_top.html' %} {% endwith %}
+{% with title="Blog Overview", description="View all blog posts matching the criteria below.", image="blogging.jpg" %} {% include '_top.html' %} {% endwith %}
 
 <h3><mark style="text-transform: uppercase;">{{ "@" if type == "User" else "+" }}{{ type }}</mark> {{ text or "*" }}</h3>
 
 {% if tags %}
-    <h4>Tags:</h4>
+    <h4>All tags:</h4>
     {% for tag in tags %}
         <mark class="hover-effect" onclick="window.location.href = '/blog/+{{ tag }}'">{{ tag }}</mark> 
     {% endfor %}
@@ -22,6 +22,10 @@
     </div>
     {% endfor %}
 </div>
+<br>
+<blockquote>
+    <strong>Notice ·</strong> The date is actually just the last time the post was updated, not created! 
+</blockquote>
 
 <br>
 <p>Thanks to StockSnap on Pixabay for the <a href="https://pixabay.com/photos/wordpress-blogging-writing-typing-923188/">cover image</a>!</p>

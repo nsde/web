@@ -1,5 +1,5 @@
 ---
-tags: programming, tutorial, flask, social media
+tags: programming, tutorial, flask, social media, python
 author: ONLIX
 subtitle: Create your own Reddit frontend using Flask and the Reddit API!
 ---
@@ -7,7 +7,7 @@ subtitle: Create your own Reddit frontend using Flask and the Reddit API!
 [Cover image by Brett Jordan on Unsplash](https://unsplash.com/photos/0FytazjHhxs).
 
 
-# Code your own Reddit frontend!
+# Code your own Reddit Frontend
 ## Introduction
 
 <p><strong>Simplicity:</strong> ⭐⭐⭐<span style="color: rgba(0, 0, 0, 0.2);">⭐⭐</p>
@@ -75,224 +75,310 @@ Alright, before we can actually start, we need to organize our project. Set up t
         📄 web.py
         📄 reddit.py
 
-***
-## THIS BLOG POST IS UNDER CONSTRUCTION
 
 > **Tip ·** Do not name Python files by a module/library. For example, don't create a Python file called `flask.py` or `mcstatus.py`. This is because then, Python will try to import the wrong module.
 
 > **Notice ·** You might need to enable "show hidden files" in your file explorer's settings. [Here's how! (Windows 10/11)](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-97fbc472-c603-9d90-91d0-1166d1d9f4b5#WindowsVersion=Windows_11)
 
+Again, I won't go into detail about some parts of the code which I have already explained in <a href="https://onlix.me/blog/own-minecraft-server-list">how to create a Minecraft server list</a>.
 
-## Python Backend
+### API credentials
 
-Great! We're now ready to start coding.
-First, let's talk about the first file. `web.py`. This file is used for managing the backend code. The server is being created using `flask` because of its simplicity. Also, `mcstatus` is needed for the Minecraft server API.
+> **Warning ·** Keep these credentials super secure and private! If you don't, the bot could get used by malicious people to spread malware or other illegal content!
 
-Let's start with importing the required libraries and setting up our backend.
+- Create a Reddit bot app ([here's how to, you just to watch it until 4:57](https://youtu.be/3FpqXyJsd1s)) and store all needed credentials safely, for example using [Bitwarden](https://bitwarden.com/) (or just copy them).
 
+- Rename `env_template.txt` to `.env` and change its content accordingly to the values you just saved or copied.
+
+- Make sure you copied them correctly! Double-check or view another tutorial. These pages might help: [https://www.reddit.com/wiki/api](https://www.reddit.com/wiki/api) and [https://praw.readthedocs.io/en/stable/getting_started/authentication.html](https://praw.readthedocs.io/en/stable/getting_started/authentication.html)
+
+## Python Backend (`web.py`)
+
+    import reddit
 
     import flask
-    import mcstatus
 
     app = flask.Flask(__name__, static_url_path='/')
 
-`__name__` is just a needed argument for initializing the Flask server.
+Again (2.0), I won't go over some code here as I already explained most Flask features in my tutorial about <a href="https://onlix.me/blog/own-minecraft-server-list">how to create a Minecraft server list</a>.
 
-`static_url_path` makes it so that we can access the local folder `/serverlist/static/` online directly in the root (`localhost:1111/`). This makes the URLs a bit shorter: `/serverlist/static/style.css` will be accessible by viewing  `localhost:1111/style.css`.
-
-### Functions
-
-Uh, so the next function may look a bit weird, but trust me, I'll explain it later.
-
-    def color_codes(text: str): # formatting
-        text = text.strip(' <>') # some descriptions have a lot of spaces to center the text in-game but we don't want this here; the <> if for security purposes
-
-        num = 0 # number of spans we used
-
-        codes = {
-            '0': 'color: #000000',
-            '1': 'color: #0000AA',
-            '2': 'color: #00AA00',
-            '3': 'color: #00AAAA',
-            '4': 'color: #AA0000',
-            '5': 'color: #AA00AA',
-            '6': 'color: #FFAA00',
-            '7': 'color: #AAAAAA',
-            '8': 'color: #555555',
-            '9': 'color: #5555FF',
-
-            'a': 'color: #55FF55',
-            'b': 'color: #55FFFF',
-            'c': 'color: #FF5555',
-            'd': 'color: #FF55FF',
-            'e': 'color: #FFFF55',
-            'f': 'color: #FFFFFF',
-            
-            'l': 'font-weight: bold',
-            'm': 'text-decoration:line-through',
-            'n': 'text-decoration:underline',
-            'o': 'font-style:italic'
-        }
-
-        for code in codes.keys():
-            text = text.replace(f'§{code}', f'<span style="{codes[code]};">') # add all spans
-            num += 1
-
-        return text + num*'</span>' # close all spans
-
-Looks confusing, right? Don't worry, it's simpler than you might think.
-
-Minecraft gives servers the opportunity to customize their server description with colors and other formatting options such as **bold** oder ~~strike through~~ text. [Here's](https://minecraft.fandom.com/wiki/Formatting_codes) more info on how this works.
-
-So, the server could set a description like this:
-
-    §lOur Server! §oJoin now
-
-Which will result in:
-> **Our Server!** *Join now*
-
-Alright. You probably can see where this is going. This function just converts the raw description to a readable `HTML` code using a `dict`ionary in Python (to replace the keys and values).
-
-
-Another function is needed. Don't worry. This one is easier to understand.
-
-    def get_infos(*ips):
-        server_data = []
-
-        for ip in ips:
-            data = mcstatus.JavaServer.lookup(ip).status()
-            text = color_codes(data.description)
-            ping = data.latency
-
-            if ping > 0:    color = 'cyan'
-            if ping > 20:   color = 'lightgreen'
-            if ping > 100:  color = 'yellow'
-            if ping > 200:  color = 'orange'
-            if ping > 500:  color = 'red'
-
-            server_data.append({'ip': ip, 'data': data, 'text': text, 'color': color})
-        
-        return server_data
-
-We're doing nothing more than just using the `mcstatus` library to retrieve the server data. The ping (also called *latency*) is the delay for the server to respond to a certain request measured in milliseconds. If the server's slow, the `color` is set to `red`. If the server is super fast it's `color` set to `lightgreen` or even `cyan`. Pretty easy, huh?
-
-
-### Pages
-
-Okay, let's move on. To host the pages, just a few lines are needed:
-
-    # Shows stats of a few featured servers
-    @app.route('/') # can be accessed via: "localhost:1111/"
+    @app.route('/')
     def index():
-        return flask.render_template('index.html', servers=get_infos('hypixel.net', 'gommehd.net', '2b2t.org', 'neruxvace.net')) # render the homepage with all default/featured servers
+        return flask.redirect('/r/tech') # don't use r/all, because it crashes... maybe you find a fix for that ;)
+    
+This is just the default home page which redirects the website viewer to `r/tech` by default. You can change this, of course!
 
-    # Shows only stats of a specific server
-    @app.route('/only/<ip>') # can be accessed via: "localhost:1111/only/hypixel.net" (for example)
-    def server(ip): 
-        return flask.render_template('index.html', servers=get_infos(ip)) # render the page with just the specified server
+    @app.route('/r/<name>')
+    def r(name):
+        sort = flask.request.args.get('sort') or 'hot'
+        return flask.render_template('index.html', posts=reddit.posts(name, sort=sort), sub=reddit.sub(name), sort=sort)
 
-A Flask `@app.route` gives us a the opportunity of adding a new subpath. This means if we type have the route `/example/site`, we'd have to type `localhost:1111/example/site` (or `127.0.0.1:1111/example/site` of course) on our web browser to access the site. 
+A function for displaying a subreddit. By the way `flask.request.args` finds out what `?sort=hot` in the URL is (or for the example of YouTube: `?v=`): a [query string](https://en.wikipedia.org/wiki/Query_string). We need this for the buttons in the navbar for changing the mode of the sorting system (*hot*, *top* or *new*). 
 
-All standard web browser render `HTML` code to display a page to the visitor. This means, we need to pass such code. The problem is: we have dynamic content with variables (the `servers` parameter) to pass. Jinja2 is helping us with that by filling out the template we'll [soon](#html-frontend) create with these values.
+    @app.route('/u/<name>')
+    def u(name):
+        sort = flask.request.args.get('sort') or 'hot'
+        return flask.render_template('index.html', posts=reddit.posts(name, sort=sort, is_user=True), sub=reddit.user(name), sort=sort)
 
-In the second function, we also specify parameters for the URL which can be used: we can visit anything from `localhost:1111/only/hypixel.net` to `localhost:1111/only/gommehd.net` and the backend will process the data and render a new webpage.
-
-Okay, we're almost done with the Python code! Just one more line to run the server:
+Same for here.
 
     app.run(port=1111, debug=True)
 
-`port=1111` hosts the server the specified port. Basically the number when typing `localhost:1111` or `127.0.0.1:1111`. If you get an `OSError` saying `OSError: [Errno 98] Address already in use`, just try to change the port. Obviously, this also means you have to change all other parts in the code where you mentioned port. In addition to that, a new URL is going to be needed for viewing the website.
+Let's move on with the module which makes it easier for use to use the Reddit API! 
 
-Most of the time, Flask ports such as 3000 or 5000 are being used, but you can customize it to pretty much whatever you want to - under the assumption that the port isn't taken yet and the port is in the valid range.
+## Backend helper for API (`reddit.py`)
 
-> **Linux pro tip ·** If you want to expose your app to the local network you can try running `sudo ufw allow 1111/tcp` to open the port, this may not be necessary depending on your distribution or firewall-settings.
+    import os
+    import praw
+    import datetime
+    import markdown
 
-`debug=True` makes it so that every time one of the server's files (no matter if it's a Python or HTML file) are changed, the server restarts to apply the change. This is really useful when testing the server.
+We'll need `os` for loading the environment variables, `PRAW` for the API wrapping, `datetime` for formatting time and `markdown` for converting markdown to HTML so we can display text correctly.
 
-## HTML Frontend
-To set up the frontend, we're going to need website structure. Thanks to Jinja2, we can use variables. We need to add the following to our `index.html`:
+    from dotenv import load_dotenv
+
+    load_dotenv()
+
+The function above retrieves the data from the file `.env` and sets the environment variables accordingly.
+
+    client = praw.Reddit(
+        client_id=os.getenv('ID'),
+        client_secret=os.getenv('SECRET'),
+        user_agent='script',
+        username=os.getenv('NAME'),
+        password=os.getenv('PASS')
+    )
+
+    client.validate_on_submit = True
+
+Initializes the API wrapper with our credentials which were set into the environment variables.
+
+    def sub(name):
+        data = client.subreddit(name)
+        setattr(data, 'subscribers', f'{data.subscribers:,}') # convert to comma-separated number
+        setattr(data, 'name', data.display_name)
+        setattr(data, 'type_char', 'r') # r = subreddit, u = user
+        setattr(data, 'description', markdown.markdown(data.description))
+        
+        return data
+
+The function above is used for retrieving details about a subreddit. I set some attributes to make it easier to use within the actual API-frontend (the HTML file). Next, let's make a function for accessing information from a user on Reddit.
+
+    def user(name):
+        data = client.redditor(name)
+        setattr(data, 'subscribers', f'{data.comment_karma + data.link_karma:,} Karma') # convert to comma-separated number
+        setattr(data, 'type_char', 'u') # r = subreddit, u = user
+        setattr(data, 'description', f'''
+            {"🌟 Reddit Premium" if data.is_gold else ""}
+            {"✅ Verified" if data.has_verified_email else ""}
+            {"👮 Mod" if data.is_mod else ""}
+            {"🔧 Reddit Employee" if data.is_employee else ""}
+            {"🤝 Friends" if data.is_friend else ""}
+        ''')
+
+        return data
+
+The goes for here, use for an user. I set "subscribers" to the user karma so we don't have to check if the frontend is displaying an user or subreddit. 
+
+    def posts(name, sort='hot', is_user=False): # fetch posts from subreddit
+        if is_user:
+            sub = client.redditor(name)
+        else:
+            sub = client.subreddit(name)
+
+We need to check if the post that should be displayed are from a subreddit or an user.
+
+        posts = []
+
+        fetch = sub.hot # default sort
+        if sort == 'top': fetch = sub.top
+        if sort == 'new': fetch = sub.new
+
+This is for making the choice to switch between "hot", "top" or "new" sort available.
+
+        for p in fetch(limit=10): # only first 10 posts, to improve speed. you can change this to a higher number if you want more posts
+            setattr(p, 'time', datetime.datetime.fromtimestamp(p.created_utc).strftime('%b %d %Y %H:%M')) # when the post was created
+
+We need to convert the time from unix to a formatted string humans can actually understand properly.
+
+            if isinstance(p, praw.models.reddit.comment.Comment):
+                setattr(p, 'text', p.body_html)
+                setattr(p, 'url', p.permalink)
+                setattr(p, 'subreddit', p.subreddit.display_name)
+
+Some fixes for if the post is actually a comment.
+
+            else:
+                setattr(p, 'text', markdown.markdown(p.selftext)) # convert markdown to HTML
+
+Some Reddit description texts are saved in markdown, but we need to convert it into HTML so we can display it correctly. 
+
+            setattr(p, 'score', f'{p.score:,}')
+            setattr(p, 'num_comments', f'{p.num_comments:,}')
+
+Self-explanatory. By the way, the `:,` adds commas for large numbers: 123456 → 123,456
+
+            posts.append(p)
+
+        return posts
+
+Alright. We're done with this file!
+
+## HTML Frontend (`templates/index.html`)
+
+Let's get started with our last file (we have to create for ourselves) for this project - the Jinja2 HTML template!  
 
     <!DOCTYPE html>
     <html lang="en">
 
     <head>
-        <title>Server List</title>
+        <title>RedditFrontend</title>
         <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+        <link rel="favicon" href="/logo.png">
+        <link rel="icon" type="image/png" href="/logo.png"/>
 
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="initial-scale=1.0">
+
     </head>
+        
+...Just standard HTML head stuff...
 
-This is just the basic start of the HTML document. The only important thing is `<link rel="stylesheet" href="/style.css">`, which sets the path to our CSS file. More on that later.
+    <body class="midnight">
 
-    <body>
-        <header>
-            <h1>Minecraft Server List</h1>
-            <p>This app was created using <i>Flask</i> and <i>mcstatus</i></p>
+My CSS framework that we use (LilaCSS) has a few [pre-defined color schemes](https://lilacss.netlify.app). We just set it to "midnight". You can change it how you want to (just check out [the demo]((https://lilacss.netlify.app))), for example `"ocean night"`.
+
+        <header class="transparent-2" style="--image: url('{{ sub.banner_img }}')">
+
+`transparent-2` makes the subreddit banner darker so we can read the text in the foreground properly.    
+
+            <nav>
+                <a href="?sort=hot" class="{{ 'current' if sort == 'hot' else '' }}"><i class="bi bi-graph-up"></i> Hot</a>
+                <a href="?sort=top" class="{{ 'current' if sort == 'top' else '' }}"><i class="bi bi-star"></i> Top</a>
+                <a href="?sort=new" class="{{ 'current' if sort == 'new' else '' }}"><i class="bi bi-stars"></i> New</a>   
+            </nav>
+        
+Adds the three buttons for choosing the sort order and redirecting the user accordingly.
+
+            <h1>{{sub.type_char}}/{{ sub.name }}</h1>
+            <details>
+                <summary>Click here to show the community description.</summary>
+                <p>{{ sub.description | safe }}</p>
+            </details>
+            <p><strong><i class="bi bi-people-fill"></i> {{ sub.subscribers }}</strong></p>
+            <!-- <a href="https://reddit.com/r/{{ sub.display_name }}"><button><i class="bi bi-arrow-up-right-circle"></i> Open in normal Reddit</button></a> -->
         </header>
-
-This is, as you can imagine, just the simple header of the website with a bit of info.
+        
+As explained in my tutorial on [how to build a Minecraft Serverlist](https://onlix.me/blog/own-minecraft-server-list), `| safe` allows [Jinja2](https://jinja.palletsprojects.com/en/) to use actual HTML code inside of the template.
 
         <main>
             <div class="posts">
-                {% for server in servers %}
+                {% for post in posts %}
+                <div class="post">
+                    {% if post.url.startswith('https://i.') %}
+                    <img src="{{ post.url }}" style="{{ 'filter: blur(20px);' if post.over_18 else '' }}">
 
-Now it's starting to get a bit of complicated - we're looping through every single server in our list. The list is passed using Jinja2 with `render_template` at the end of every `@app.route` function.
+Obviously blurs media marked as "NSFW".
 
-The `div` is obviously there to make it look more organized when applying our CSS. Let's move on!
-
-                <div class="post" onclick="navigator.clipboard.writeText('{{ server.ip }}'); alert('Copied IP {{ server.ip }}!');">
-
-Right here, we're adding a `div` for the server in our loop for the info widgets. The `onclick` parameter defines a inline-JavaScript code which is being ran every time the user clicks on the `post`: the server address (IP) is copied to the clipboard. This is useful for when you want to join the Minecraft server.
-
-                    <img src="{{ server.data.favicon }}">
-
-Add the server logo.
+                    {% else %}
+                    <br>
+                    {% endif %}
 
                     <div class="content">
 
-This is needed for the CSS to work properly - otherwise the box might look quite weird.
+Next, we need to show a <mark>tag</mark> in which subreddit the post was submitted if we're on an user page.
 
-                        <h5>{{ server.data.version.name }}</h5>
-                        <h4><code>{{ server.ip }}</code></h4>
+                        {% if post.subreddit %}
+                        <a href="https://reddit.com{{ post.url }}" class="plain">
+                            <mark><strong>{{ post.subreddit }}</strong></mark>
+                        {% else %}
+                        <a href="/u/{{ post.author.name }}" class="plain">
+                        {% endif %}
 
-A bit more information about the server.
+The following code displays the profile picture of the user that submitted the post.
 
-                        <h4 style="color: {{ server.color }};">{{ server.data.latency | round }} ms</h4>
+                            <img src="{{ post.author.icon_img }}" style="width: 20px; border: 100%; position: relative; top: 5px;">&nbsp;
+                            
+And the user name as well as the date when the post was submitted:
 
-We're using **inline CSS** to quickly change the color of the ping text depending on its value, for slow connections, it will be red, and for fast ones obviously green. 
+                            <h5 style="display: inline;"><strong>u/{{ post.author.name }} ·</strong> {{ post.time }}</h5>
+                        </a>
 
-                        <h4>{{ server.data.players.online }}/{{ server.data.players.max }} online</h4>
+These if-statements are there to display *flairs* on Reddit:
 
-How how many players are currently connected to the Minecraft server.
+                        <h6 style="margin: 0; display: inline;">
+                            {% if post.link_flair_text %}
+                            <mark>{{ post.link_flair_text }}</mark>
+                            {% endif %}
+                            
+                            {% if post.is_original_content %}
+                            <mark>OC</mark>
+                            {% endif %}
+                            
+                            {% if post.over_18 %}
+                            <mark>NSFW</mark>
+                            {% endif %}
+                            
+                            {% if post.locked %}
+                            <mark>🔒</mark>
+                            {% endif %}
 
-                        <p>{{ server.text | safe }}</p>
+                            {% if post.distinguished %}
+                            <mark>🏅</mark>
+                            {% endif %}
+                        </h6>
+                        
+And the post title which redirects to the original Reddit post when clicked: 
 
-You might ask what the `| safe ` does. It simply allows Jinja2 to render HTML code. This is considered unsafe because malicious code could be inserted here, so Jinja2 requires us to use this tag. 
+                        <h4 onclick="window.location.href = '{{ post.url }}'">{{ post.title }}</h4>
 
-This paragraph shows the server description formatted using the function `color_codes()`. If we didn't have this function, the output would look quite weird because of all the formatting used in Minecraft server descriptions.
+As well as text content, converted from markdown into HTML:
 
+                        <p>{{ post.text | safe }}</p>
+
+Lastly, up- and downvote arrows.
+
+                        <p style="font-size: 1.5rem;">
+                            <i class="bi bi-arrow-up vote" style="color: rgb(219, 72, 72);" onclick=""></i>
+                            {{ post.score}}
+                            <i class="bi bi-arrow-down vote" style="color: rgb(20, 114, 207);" onclick=""></i>&nbsp;&nbsp;
+                            <i class="bi bi-chat-left-text"></i>
+                            {{ post.num_comments }}
+                        </p>
                     </div>
                 </div>   
                 {% endfor %}
             </div>
         </main>
+        <footer>
+
+You can leave an informational message in here if you want to, or links to your social media or privacy policy:
+
+            <p>by <a href="https://onlix.me">ONLIX</a></p>
+        </footer>
     </body>
     </html>
 
-There we go! In theory, we are already done and our website is working fine. But wait - it looks horrible! This is because it does not have a CSS file. The only fine left! But don't worry. You can just use my self made framework *LilaCSS*. 
+## Last tweaks
 
-Just copy everything from [here](https://raw.githubusercontent.com/nsdea/own-minecraft-server-list/main/serverlist/static/style.css) to `serverlist/static/style.css`. If everything worked correctly, the new style should be applied now and the website should look something like this (I changed a few lines for simplicity, but it should look almost the same):
+You can add `logo.png` in the directory `reddit/static/` if you want the website to have a little icon next to the tab. [Here's the icon I designed.](https://raw.githubusercontent.com/nsdea/own-reddit-frontend/main/reddit/static/logo.png)
+
+To style the website, just copy everything from [here](https://raw.githubusercontent.com/nsdea/own-reddit-frontend/main/reddit/static/style.css) to `reddit/static/style.css`. If everything worked correctly, the new style should be applied now and the website should look something like this (I changed a few lines, but not too much):
 
 ![Result](/$$ path $$/result.png)
+
+## Exercises for you!
+
+I'm done with this project, but I'd really recommend you to try master the following challenges:
 
 - <mark>HTML</mark> <mark>CSS</mark> Use a grid layout for media.
 - <mark>HTML</mark> <mark>Python</mark> Create a overview homepage with popular subreddits.
 - <mark>HTML</mark> <mark>CSS</mark> <mark>Python</mark> Display a comment section upon click of the comment button. 
 - <mark>HTML</mark> <mark>CSS</mark> <mark>Python</mark> <mark>JavaScript</mark> Add a login box so that the up -and downvote buttons actually work. Of course, you can also add much more, such as a feature for commenting and saving posts, posting of your own content and customizing a overview homepage with user-defined subreddits.  
 
-You can even send me a pull request to [the GitHub repository](https://github.com/nsdea/own-reddit-frontend) so I can add sample solutions.
+You can even send me a pull request to [the GitHub repository](https://github.com/nsdea/own-reddit-frontend) so I can add sample solutions!
 
 ## Conclusion
-You've now learned how to use *Flask*, *Jinja2*, the *mcstatus* library and *HTML*. Questions? Issues? Tips to improve this tutorial? [Open an issue](https://github.com/nsdea/own-minecraft-server-list/issues/new/choose)! I hope you've learned something. See you next time!
+You've now learned how to use *Flask*, *Jinja2*, the *mcstatus* library and *HTML*. Questions? Issues? Tips to improve this tutorial? [Open an issue](https://github.com/nsdea/own-reddit-frontend/issues/new/choose)! I hope you've learned something. See you next time!

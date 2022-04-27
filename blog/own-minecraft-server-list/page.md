@@ -1,5 +1,5 @@
 ---
-tags: programming, tutorial, flask, minecraft
+tags: programming, tutorial, flask, minecraft, python
 author: ONLIX
 subtitle: Create your own Minecraft server list using Flask and the mcstatus API!
 ---

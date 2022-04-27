@@ -45,8 +45,8 @@ def register(app: flask.Flask):
     #     bsn = '\n'
 
     #     if css_code:
-    #         open('static/style/lila.css', 'w').write(css_code) 
+    #         open('static/styles/lila.css', 'w').write(css_code) 
 
-    #         return f'''<style>*{bg_code}</style><h1 style="color: lightgreen;">Success, added {open("static/style/lila.css").read().count(bsn)-css_code.count(bsn)} lines</h1>'''            
+    #         return f'''<style>*{bg_code}</style><h1 style="color: lightgreen;">Success, added {open("static/styles/lila.css").read().count(bsn)-css_code.count(bsn)} lines</h1>'''            
     #     else:
     #         return f'''<style>*{bg_code}</style><h1 style="color: red;">Error {error}</h1>'''

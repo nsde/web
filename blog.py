@@ -13,7 +13,8 @@ def get_posts():
 
     posts = []
     for post in sorted(post_dates, key=post_dates.get, reverse=True):
-        posts.append(get_info(post))
+        if not post.endswith('.closed'): 
+            posts.append(get_info(post))
     
     return posts
 

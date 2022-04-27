@@ -1,5 +1,11 @@
 {% with title="$$ title $$ · Blog", description="$$ description $$", image="../$$ image $$" %} {% include '_top.html' %} {% endwith %}
 
+<link rel="stylesheet" href="/styles/highlight-dark.css">
+<link rel="stylesheet" href="/styles/highlight-light.css" media="(prefers-color-scheme: light)">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/highlight.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <div class="text-box article-info">
     <p>✍️ Author: <strong class="hover-effect"><a href="/blog/@{{ author }}">{{ author }}</a></strong></p>
     <p>📅 Last updated: <strong>{{ last_update }}</strong></p>

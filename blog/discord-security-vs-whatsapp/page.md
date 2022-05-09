@@ -24,18 +24,48 @@ Thanks to PhotoMIX-Company on Pixabay for the [picture](https://pixabay.com/phot
             <td><a href="https://tosdr.org/en/service/198" style="color: red;">E</td>
         </tr>
         <tr>
+            <td>2FA/MFA</td>
+            <td>✅</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td>Ad-free</td>
+            <td>✅</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td>You can request your data</td>
+            <td>✅</td>
+            <td>✅</td>
+        </tr>
+        <tr>
             <td>Encrypted messages</td>
             <td>❌</td>
             <td>✅</td>
         </tr>
         <tr>
-            <td>Service can't read private messages</td>
+            <td>Service can't read private message content</td>
             <td>❌</td>
             <td>✅</td>
         </tr>
         <tr>
+            <td>You can completely remove all of your data</td>
+            <td>❌</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td>Doesn't have your credit card info</td>
+            <td>❌</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td>Registration without phone</td>
+            <td>✅</td>
+            <td>❌</td>
+        </tr>
+        <tr>
             <td>Independent from tech giants</td>
-            <td>❔</td>
+            <td>❔¹</td>
             <td>❌</td>
         </tr>
         <tr>
@@ -65,6 +95,8 @@ Thanks to PhotoMIX-Company on Pixabay for the [picture](https://pixabay.com/phot
         </tr>
     </tbody>
 </table>
+
+¹ This one isn't fully clear. While for example Sony has some shares and other programming libraries from third party companies are used, Discord is still pretty independent when it comes to financial topics.
 
 ## Conclusion
 Neither are really private & secure. WhatsApp claims it is, even though some of their practices are really questionable. I'd personally say **Discord is a bit less secure than WhatsApp**, but the best is to just avoid both of them if possible.

@@ -5,7 +5,6 @@ distro
 qrcode
 pyyaml
 requests
-anonfile
 markdown
 Turbo-Flask
 Flask-Limiter

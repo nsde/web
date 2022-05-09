@@ -11,6 +11,10 @@ def register(app: flask.Flask):
     def home():        
         return flask.render_template('home.html', posts=blog.get_posts()[:5])
 
+    @app.route('/en')
+    def home_en():
+        return flask.redirect('/')
+
     @app.route('/modules')
     def modules():
         modules = []

@@ -9,7 +9,8 @@ def get_posts():
     post_dates = {}
 
     for post in os.listdir('blog/'):
-        post_dates[post] = os.path.getmtime(f'blog/{post}/page.md')
+        if os.path.isdir(f'blog/{post}'):
+            post_dates[post] = os.path.getmtime(f'blog/{post}/page.md')
 
     posts = []
     for post in sorted(post_dates, key=post_dates.get, reverse=True):

@@ -19,16 +19,6 @@ Thanks to PhotoMIX-Company on Pixabay for the [picture](https://pixabay.com/phot
     </thead>
     <tbody>
         <tr>
-            <td>Terms of Service Grade/Rating</td>
-            <td><a href="https://tosdr.org/en/service/536" style="color: red;">E</td>
-            <td><a href="https://tosdr.org/en/service/198" style="color: red;">E</td>
-        </tr>
-        <tr>
-            <td>2FA/MFA</td>
-            <td>✅</td>
-            <td>✅</td>
-        </tr>
-        <tr>
             <td>Ad-free</td>
             <td>✅</td>
             <td>✅</td>
@@ -39,7 +29,12 @@ Thanks to PhotoMIX-Company on Pixabay for the [picture](https://pixabay.com/phot
             <td>✅</td>
         </tr>
         <tr>
-            <td>Encrypted messages</td>
+            <td>You can request a removal of your data</td>
+            <td>❔¹</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td>Encrypted message content</td>
             <td>❌</td>
             <td>✅</td>
         </tr>
@@ -49,13 +44,12 @@ Thanks to PhotoMIX-Company on Pixabay for the [picture](https://pixabay.com/phot
             <td>✅</td>
         </tr>
         <tr>
-            <td>You can completely remove all of your data</td>
-            <td>❌</td>
+            <td>Service can't listen to voice calls</td>
+            <td>✅</td>
             <td>✅</td>
         </tr>
-        <tr>
-            <td>Doesn't have your credit card info</td>
-            <td>❌</td>
+            <td>2FA/MFA</td>
+            <td>✅</td>
             <td>✅</td>
         </tr>
         <tr>
@@ -64,8 +58,13 @@ Thanks to PhotoMIX-Company on Pixabay for the [picture](https://pixabay.com/phot
             <td>❌</td>
         </tr>
         <tr>
+            <td>No collection of credit card info</td>
+            <td>❌</td>
+            <td>✅</td>
+        </tr>
+        <tr>
             <td>Independent from tech giants</td>
-            <td>❔¹</td>
+            <td>❔²</td>
             <td>❌</td>
         </tr>
         <tr>
@@ -74,7 +73,7 @@ Thanks to PhotoMIX-Company on Pixabay for the [picture](https://pixabay.com/phot
             <td>❌</td>
         </tr>
         <tr>
-            <td>Encrypted metadata</td>
+            <td>Encrypted message metadata</td>
             <td>❌</td>
             <td>❌</td>
         </tr>
@@ -93,10 +92,22 @@ Thanks to PhotoMIX-Company on Pixabay for the [picture](https://pixabay.com/phot
             <td>❌</td>
             <td>❌</td>
         </tr>
+        <tr>
+            <td><i>ToS;DRos</i> Terms of Service Grade</td>
+            <td><a href="https://tosdr.org/en/service/536" style="color: red;">E</td>
+            <td><a href="https://tosdr.org/en/service/198" style="color: red;">E</td>
+        </tr>
+        <tr>
+            <td><strong>Score</strong></td>
+            <td>6</td>
+            <td>8</td>
+        </tr>
     </tbody>
 </table>
 
-¹ This one isn't fully clear. While for example Sony has some shares and other programming libraries from third party companies are used, Discord is still pretty independent when it comes to financial topics.
+¹ This one isn't fully clear. While for example Sony has some shares and other programming libraries from third party companies (e.g. *Twemoji*) are used, Discord is still more or less independent in general. Still, as this might change in the future, as we've seen with Elon Musk buying Twitter, sadly not a checkmark for Discord this time.
+
+² Discord doesn't delete your messages. It changes your username in the pattern "Deleted User XYZ123456" which isn't making your account private at all (since you can often easily tell who that user was). Even the user's direct messages are still visible to the recipient (just the username & profile picture is changed). Because of these limitations, I don't think Discord deserves to get a checkmark for this criteria.
 
 ## Conclusion
 Neither are really private & secure. WhatsApp claims it is, even though some of their practices are really questionable. I'd personally say **Discord is a bit less secure than WhatsApp**, but the best is to just avoid both of them if possible.

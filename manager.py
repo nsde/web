@@ -21,12 +21,6 @@ def register(app: flask.Flask):
         secure_headers.framework.flask(response)
         return response
 
-    @app.errorhandler(jinja2.exceptions.TemplateNotFound)
-    def template_not_found(error):
-        path = error.name.replace('.html', '')
-
-        return flask.render_template(f'error.html', title='Page not found!', description=f'Couldn\'t find this website: {error.name}')
-
     @app.errorhandler(500)
     def error_500(error):
         return '500 error'
@@ -42,10 +36,10 @@ def register(app: flask.Flask):
             list(flask.request.args.keys())[0] if flask.request.args.keys() else False
             return flask.redirect(redirects[current_path])
             
-        return flask.render_template(f'{current_path}.html')
-        # try:
-        # except:
-        #     return flask.render_template(f'error.html', title='File not found!', description=f'Couldn\'t find this file.')
+        try:
+            return flask.render_template(f'{current_path}.html')
+        except:
+            return flask.render_template(f'error.html', title='Path or file not found!', description=f'There path ({error.__dict__}) is not available.')
 
     # @app.before_first_request
     # def before_first_request():

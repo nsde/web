@@ -4,9 +4,11 @@
 
 {% if tags %}
     <h4>All tags:</h4>
+    <div class="marks">
     {% for tag in tags %}
         <mark class="hover-effect" onclick="window.location.href = '/blog/+{{ tag }}'">{{ tag }}</mark> 
     {% endfor %}
+    </div>
 {% endif %}
 
 <h3>Posts</h3>
@@ -17,7 +19,7 @@
         <div class="content">
             <h5>{{ post.last_update }}</h5>
             <h4>{{ post.title }}</h4>
-            <p>{{ post.description }}</p>
+            <p  class="too-long">{{ post.description }}</p>
         </div>
     </div>
     {% endfor %}

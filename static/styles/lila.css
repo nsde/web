@@ -13,13 +13,14 @@
     --text: #111111;
     --text-light: #3e3a4f;
     --border: #00000000;
-    --accent: #A855F7;
-    --accent-light: #e770d777;
-    --code: #9333EA;
+    --accent: #5630c7;
+    --accent-light: #ac70e777;
+    --code: #5833ea;
     --preformatted: #444;
     --marked: #cd85fdce;
     --disabled: #efefef;
-    --gradient-accent: linear-gradient(90deg, rgb(235, 72, 227) 0%, rgb(235, 72, 227) 50%, rgba(235, 27, 224, 0.753) 100%)
+    --text-long: linear-gradient(180deg, rgba(17,17,17,1) 0%, rgba(17, 17, 17, 0.397) 71%, rgba(17, 17, 17, 0) 100%);
+    --gradient-accent: linear-gradient(90deg, rgb(235, 72, 227) 0%, rgb(235, 72, 227) 50%, rgba(235, 27, 224, 0.753) 100%);
 }
 
 /* ============== THEMES ============ */
@@ -187,6 +188,7 @@
         --preformatted: #ccc;
         --marked: #ff8cf9a1;
         --disabled: #111;
+        --text-long: linear-gradient(180deg, rgba(220,220,220,1) 0%, rgba(220, 220, 220, 0.666) 71%, rgba(220, 220, 220, 0) 100%);
     }
     
     img,
@@ -577,7 +579,7 @@ div.card:hover, header.a {
 
 .hover-effect:hover {
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.8;
 }
 
 div.card img {
@@ -920,6 +922,10 @@ mark {
     background: var(--marked);
 }
 
+div.marks mark {
+    line-height: 2;
+}
+
 main img,
 main video {
     max-width: 100%;
@@ -1219,4 +1225,23 @@ button.to-top.icon {
 
 .code {
     font-family: monospace;
+}
+
+.small {
+    font-size: small;
+}
+
+.medium {
+    font-size: medium;
+}
+
+.large {
+    font-size: large;
+}
+
+.too-long {
+    background: var(--text-long);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
 }

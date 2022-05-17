@@ -1253,3 +1253,7 @@ button.to-top.icon {
     -webkit-text-fill-color: transparent;
 
 }
+
+.circle {
+    border-radius: 50%;
+}

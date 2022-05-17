@@ -1,8 +1,10 @@
 from flask_qrcode import QRcode
 from flask_caching import Cache
 
+
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 import flask
 
@@ -15,6 +17,7 @@ app.config.from_mapping({
     "DEBUG": True,
     "CACHE_DEFAULT_TIMEOUT": 300
 })
+app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1)
 
 limiter = Limiter(
     app=app,
@@ -29,9 +32,18 @@ cache = Cache(app)
 
 modules = tools.yml('config/modules')['active']
 
+tools.yml('data/error_modules', {})
+
 for module in modules:
-    exec(f'import {module}')
-    exec(f'{module}.register(app)')
+    try:
+        exec(f'import {module}')
+        exec(f'{module}.register(app)')
+    except Exception as e:
+        print(f'[ERROR] {module}: {e}')
+        
+        error_yml = tools.yml('data/error_modules')
+        error_yml[module] = str(e)
+        tools.yml('data/error_modules.yml', error_yml)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=tools.yml('config/main')['port'], debug=True)

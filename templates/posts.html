@@ -12,14 +12,14 @@
 {% endif %}
 
 <h3>Posts</h3>
-<div class="posts">
+<div class="posts zoom-effect">
     {% for post in posts %}
     <div class="post" onclick="window.location.href = '../{{ post.path }}'">
         <img src="../{{ post.path }}/image">
         <div class="content">
             <h5>{{ post.last_update }}</h5>
             <h4>{{ post.title }}</h4>
-            <p  class="too-long">{{ post.description }}</p>
+            <p>{{ post.description }}</p>
         </div>
     </div>
     {% endfor %}

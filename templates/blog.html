@@ -22,7 +22,7 @@
 {% if posts %}
 <hr>
 <h3>Similar posts</h3>
-<div class="posts">
+<div class="posts zoom-effect">
     {% for post in posts[:3] %}
     <div class="post" onclick="window.location.href = '../{{ post.path }}'">
         <img src="../{{ post.path }}/image">

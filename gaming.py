@@ -16,6 +16,30 @@ except: # server offline
     pass
 
 def register(app: flask.Flask):
+    @app.route('/shopcraft')
+    def shopcraft():
+        return flask.render_template('mc-shop.html', articles=[
+            {
+                'image': 'https://imgs.search.brave.com/PVJIp0wz0OfZVeyZuQEIs7fVtZN1qd9z9xvdciIJu8M/rs:fit:160:160:1/g:ce/aHR0cDovL2ltZzMu/d2lraWEubm9jb29r/aWUubmV0L19fY2Iy/MDEyMTExMDE5MDEx/NC9taW5lY3JhZnQv/aW1hZ2VzLzgvOGYv/R2hhc3RfVGVhci5w/bmc',
+                'price': '4',
+                'title': '1x Ghast Träne',
+                'description': 'Egal ob du sie für Regenerations-Tränke (zum Heilen) oder Enderkristalle (welche sehr OP für PvP sind) brauchst, Ghasttränen sind ein ziemlich wertvolles Gut.'
+            },
+            {
+                'image': '/images/minecraft/shulker_shell.webp',
+                'price': '2',
+                'title': '2x Shulker Schalen',
+                'description': 'Shulker kann man nie genug haben - unabhängig davon, ob für einen Shop, ein Lager oder deine Endertruhe. '
+            },
+            {
+                'image': '/images/minecraft/chest.webp',
+                'price': 'GRATIS',
+                'title': '1x Truhe',
+                'description': 'Gratis je Kauf von 2 Shulkerschalen! Das heißt, du kannst deine Shulkerschalen sofort umcraften.',
+                'special': True
+            }
+        ])
+
     @app.route('/status/mc')
     def status_mc():
         ops = [x['name'] for x in json.loads(open(f'/home/minecraft/{MINECRAFT_SERVER_NAME}/ops.json').read())]

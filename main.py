@@ -3,6 +3,8 @@ import blog
 import os
 import tools
 import flask
+import requests
+import markupsafe
 
 def register(app: flask.Flask):
     DEFAULT_MODULES = ['tools', 'web']
@@ -10,10 +12,6 @@ def register(app: flask.Flask):
     @app.route('/')
     def home():        
         return flask.render_template('home.html', posts=blog.get_posts()[:5])
-
-    @app.route('/en')
-    def home_en():
-        return flask.redirect('/')
 
     @app.route('/modules')
     def modules():
@@ -35,11 +33,20 @@ def register(app: flask.Flask):
                         if not '<' in dec:
                             decs.append(dec)
 
+                status = 'inactive'
+
+                if name in tools.yml('config/modules')['active']:
+                    status = 'active'
+                
+                if name in tools.yml('data/error_modules'):
+                    status = 'error'
+
                 modules.append({
                     'name': name.title(),
-                    'status': name in tools.yml('config/modules')['active'],
+                    'status': status,
                     'decs': decs,
-                    'url': f'https://github.com/nsde/web/blob/master/{m}'
+                    'url': f'https://github.com/nsde/web/blob/master/{m}',
+                    'error': tools.yml('data/error_modules').get(name)
                 })
 
         return flask.render_template('modules.html', modules=modules)

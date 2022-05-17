@@ -1,0 +1,29 @@
+{% with title="SMP Shop", description="Schau dich hier einfach in dem Minecraft-Shop des SMPs um!" %}
+    {% include '_top.html' %}
+{% endwith %}
+
+<h2></h2>
+    
+<div class="posts zoom-effect">
+    {% for article in articles %}
+    <div class="post" onclick="window.location.href = '#'">
+        <img src="{{ article.image }}">
+        <div class="content">
+            {% if article.get('special') %}
+                <h5>{{ article.price }} <i class="bi bi-gem yellow rgb-fastest"></i> <mark>Special</mark></h5>
+            {% else %}
+                <h5>{{ article.price }} <i class="bi bi-gem teal"></i></h5>
+            {% endif %}
+            
+            <h4>{{ article.title }}</h4>
+            
+            {% if article.description | length > 150 %}
+                <p class="too-long">{{ article.description[:150] }}...</p>
+            {% else %}
+                <p>{{ article.description }}</p>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% include '_bottom.html' %}

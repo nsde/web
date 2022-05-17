@@ -40,23 +40,3 @@ def register(app: flask.Flask):
             return flask.render_template(f'{current_path}.html')
         except:
             return flask.render_template(f'error.html', title='Path or file not found!', description=f'There path ({error.__dict__}) is not available.')
-
-    # @app.before_first_request
-    # def before_first_request():
-    #     threading.Thread(target=update_load).start()
-
-    # def update_load():
-    #     with app.app_context():
-    #         while True:
-    #             time.sleep(5)
-    #             turbo.push(turbo.replace(flask.render_template('chat.html'), 'load'))
-
-    # @app.before_first_request
-    # def before_first_request():
-    #     threading.Thread(target=update_load).start()
-
-    # def update_load():
-    #     with app.app_context():
-    #         while True:
-    #             time.sleep(5)
-    #             turbo.push(turbo.replace(flask.render_template('chat.html'), 'load'))

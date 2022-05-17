@@ -22,7 +22,7 @@ def yml(path: str, edit_to=None):
     if not edit_to:
         return yaml.safe_load(open(path))
     
-    yaml.dump(chat, open(path, 'w'), sort_keys=False, default_flow_style=False, indent=4)
+    yaml.dump(path, open(path, 'w'), sort_keys=False, default_flow_style=False, indent=4)
 
 def generate_qr(data):
     qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=4)
@@ -36,4 +36,5 @@ def generate_qr(data):
     img_data = img_buf.read()
     img_data = base64.b64encode(img_data)
     img_data = img_data.decode()
+
     return f'data:image/png;base64,{img_data}'

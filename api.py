@@ -5,10 +5,6 @@ import flask
 import httpx
 
 def register(app: flask.Flask):
-    @app.route('/api/putin')
-    def putin():
-        return flask.jsonify(httpx.get('https://en.wikipedia.org/wiki/Vladimir_Putin').text
-
     @app.route('/api/request')
     def api_request():
         return flask.jsonify(dict((key, value) for key, value in flask.request.__dict__.iteritems() if not callable(value) and not key.startswith('__')))

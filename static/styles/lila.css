@@ -181,7 +181,7 @@
         --darker-bg: #00000018;
         --text: #dcdcdc;
         --text-light: #ffffffd8;
-        --border: #ffffff00;
+        --border: hsla(0, 0%, 100%, 0);
         --accent: #ee75de;
         --accent-light: #e770d777;
         --code: #f062b5;
@@ -1251,7 +1251,6 @@ button.to-top.icon {
     background: var(--text-long);
     background-clip: text;
     -webkit-text-fill-color: transparent;
-
 }
 
 .circle {

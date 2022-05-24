@@ -39,4 +39,4 @@ def register(app: flask.Flask):
         try:
             return flask.render_template(f'{current_path}.html')
         except:
-            return flask.render_template(f'error.html', title='Path or file not found!', description=f'There path ({error.__dict__}) is not available.')
+            return flask.render_template(f'error.html', title='Path or file not found!', description=f'Sorry, you probably visited an old or invalid site!')

@@ -1,13 +1,14 @@
-import json
 import blog
 import tools
+
+import os
 import flask
-import httpx
+import markupsafe
 
 def register(app: flask.Flask):
-    @app.route('/api/request')
-    def api_request():
-        return flask.jsonify(dict((key, value) for key, value in flask.request.__dict__.iteritems() if not callable(value) and not key.startswith('__')))
+    @app.route('/api/post')
+    def api_text():
+        return markupsafe.escape(flask.request.args.get('text'))
 
     @app.route('/api/qr/<data>')
     def api_useless(data):
@@ -17,8 +18,8 @@ def register(app: flask.Flask):
 
     @app.route('/api/blog')
     def api_blog():
-        return flask.jsonify(blog.get_posts())
+        return blog.get_posts()
 
     @app.route('/api/blog/<post>')
     def api_blog_post(post):
-        return flask.jsonify((blog.get_info(post)))
+        return (blog.get_info(post))

@@ -1,10 +1,10 @@
 while true
 do
 	echo "START.SH BEGIN"
-	cd "/home/python/web/public"
+	cd "/home/python/web/public/"
 	python3 web.py
 	echo "START.SH BROKE"
 	sleep 3
-	pip install -r requirements.txt
+	pip3 install -r requirements.txt
 	echo "START.SH END"
 done

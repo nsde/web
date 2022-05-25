@@ -6,5 +6,4 @@ qrcode
 pyyaml
 requests
 markdown
-Turbo-Flask
 Flask-Limiter

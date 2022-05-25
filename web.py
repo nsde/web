@@ -1,7 +1,6 @@
 from flask_qrcode import QRcode
 from flask_caching import Cache
 
-
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from werkzeug.middleware.proxy_fix import ProxyFix
@@ -11,7 +10,7 @@ import flask
 import tools
 
 app = flask.Flask(__name__, static_url_path='/')
-app.config['MAX_CONTENT_LENGTH'] = 2 * 1000 * 1000 * 1000 # 2 GB
+app.config['MAX_CONTENT_LENGTH'] = 1 * 1000 * 1000 * 1000 # 1 GB
 app.config.from_mapping({
     "CACHE_TYPE": "SimpleCache",
     "DEBUG": True,
@@ -43,7 +42,7 @@ for module in modules:
         
         error_yml = tools.yml('data/error_modules')
         error_yml[module] = str(e)
-        tools.yml('data/error_modules.yml', error_yml)
+        tools.yml('data/error_modules', error_yml)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=tools.yml('config/main')['port'], debug=True)

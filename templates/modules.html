@@ -4,7 +4,7 @@
 
 <div class="posts">
     {% for module in modules %}
-        <div class="post" onclick="window.location.href='{{ module.url }}'">
+        <div class="post">
             <div class="content">
                 <h4>
                 {% if module.status == "active" %}
@@ -15,14 +15,17 @@
                     <i class="bi bi-toggle2-off yellow"></i>
                 {% endif %}
                 
-                {{ module.name }}</h4>
+                {{ module.name }} <i class="bi bi-github blue" onclick="window.location.href='{{ module.url }}'"></i></h4>
 
                 {% if module.decs %}
-                    <p>
-                        {% for dec in module.decs %}
-                        <a href="https://onlix.me{{ dec }}"><button style="display: inline;">{{ dec }}</button></a>
-                        {% endfor %}
-                    </p>
+                    {% for dec in module.decs %}
+                    <a href="https://onlix.me{{ dec }}"><button style="display: inline;"><i class="bi bi-boxes"></i> {{ dec }}</button></a>
+                    {% endfor %}
+                {% endif %}
+
+                {% if module.error %}
+                <br>
+                <i class="bi bi-bug red"></i> <code>{{ module.error }}</code>
                 {% endif %}
             </div>
         </div>
@@ -30,6 +33,6 @@
 </div>
 
 <br>
-<i><i class="bi bi-github"></i> Click on a module to view its code on GitHub</i>
+<i><i class="bi bi-github"></i> Click on a module's GitHub icon to view its source code.</i>
 
 {% include "_bottom.html" %}

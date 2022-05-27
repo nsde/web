@@ -44,6 +44,10 @@ for module in modules:
         error_yml[module] = str(e)
         tools.yml('data/error_modules', error_yml)
 
+@limiter.request_filter
+def ip_whitelist():
+    return tools.ip(flask.request) in tools.yml('config/no-ratelimit-ips')
+
 @app.before_request
 def block_method():
     if tools.ip(flask.request) in tools.yml('config/banned-ips'):

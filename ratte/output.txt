@@ -1,0 +1,7 @@
+
+===
+Tkinter is required for pymsgbox
+===
+New device connected: 79.210.39.142
+===
+Tkinter is required for pymsgbox

@@ -26,7 +26,7 @@
     --light-bg: #202020;
     --text: #111111;
     --text-light: #3e3a4f;
-    --border: #00000000;
+    --border: #211e582f;
     --accent: #5630c7;
     --accent-light: #ac70e777;
     --code: #5833ea;
@@ -219,7 +219,7 @@
         --darker-bg: #00000018;
         --text: #dcdcdc;
         --text-light: #ffffffd8;
-        --border: hsla(0, 0%, 100%, 0);
+        --border: hsla(0, 0%, 100%, 0.099);
         --accent: #ee75de;
         --accent-light: #e770d777;
         --code: #f062b5;

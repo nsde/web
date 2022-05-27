@@ -1,6 +1,2 @@
-chat: No module named 'chat'
-closed: No module named 'closed'
-novaport: expected an indented block after 'for' statement on line 32 (novaport.py,
-    line 35)
 manager: No module named 'secure'
 tor: No module named 'stem'

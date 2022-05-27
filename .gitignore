@@ -1,5 +1,10 @@
-# Security and clutter
+# Clutter
+error_modules.yml
+
+# Security/Privacy
 logs/*
+config/banned-ips.yml
+data/error_modules.yml
 
 # Large Files
 share/*
@@ -13,6 +18,7 @@ closed.py
 /*.closed
 
 # Could contain secret UGC
+data/views/*
 views.yml
 chats.yml
 

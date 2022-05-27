@@ -4,6 +4,8 @@ error_modules.yml
 # Security/Privacy
 logs/*
 config/banned-ips.yml
+config/no-ratelimit-ips.yml
+no-ratelimit-ips.yml
 data/error_modules.yml
 
 # Large Files

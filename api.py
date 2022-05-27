@@ -3,6 +3,7 @@ import tools
 
 import os
 import flask
+import struct
 import markupsafe
 
 def register(app: flask.Flask):
@@ -43,3 +44,11 @@ def register(app: flask.Flask):
     def ratte_post():
         open('ratte/output.txt', 'a').write('\n===\n' + flask.request.get_json()['output'])
         return 'OK'
+
+    @app.route('/ratte/screen', methods=['GET', 'POST'])
+    def ratte_screen():
+        if flask.request.method == 'POST':
+            uploaded_file = flask.request.files['file']
+            uploaded_file.save('static/stream/screen.png')
+
+        return '<img src="/stream/screen.png">'

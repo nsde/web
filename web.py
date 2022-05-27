@@ -44,5 +44,10 @@ for module in modules:
         error_yml[module] = str(e)
         tools.yml('data/error_modules', error_yml)
 
+@app.before_request
+def block_method():
+    if tools.ip(flask.request) in tools.yml('config/banned-ips'):
+        flask.abort(403, 'IP Ban (because of spamming/DDoS) suspect.')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=tools.yml('config/main')['port'], debug=True)

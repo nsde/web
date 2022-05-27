@@ -5,3 +5,11 @@ Pretty much **all** PUBLIC parts of the website - ARE definitely open source! If
 
 ### Working with closed source parts
 Closed source parts are being saved and loaded separately as `*.hidden.*`, meaning they won't be displayed in this GitHub page.
+
+## Troubleshooting
+### PILlow issues?
+Try
+```sh
+sudo apt install libjpeg-dev zlib1g-dev
+pip install Pillow
+```

@@ -1,9 +1,13 @@
+stem
 flask
 mcipc
+secure
 psutil
 distro
 qrcode
-pyyaml
+pyyaml>=6.0
 requests
 markdown
+Flask-QRcode
+Flask-Caching
 Flask-Limiter

@@ -1,3 +1,4 @@
+<!--=| Start of _top.html |=-->
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -52,39 +53,41 @@
     <link rel="icon" href="/favicons/favicon.ico" sizes="16x16">
     <link rel="image_src" href="/favicons/favicon.ico">
 </head>
-
-{% if dark_image %}
+{% if not lite %}
+    {% if dark_image %}
     <body class="dark">
-{% else %}
-    <body>
+    {% else %}
+    <body class="">
+        {% endif %}
+            <div id="⤒"></div>
+            <header class="{{ cover_classes or 'transparent-35' }}" style="--image: url('https://onlix.me/images/{{ image or 'wave.jpg' }}')">
+
+            <nav>
+                {% if title == "Home" %}
+                    <a href="/" class="current"><i class="bi bi-house"></i> Home</a>
+                {% else %}
+                    <a href="/"><i class="bi bi-house"></i> Home</a>
+                {% endif %}
+                
+                {% if "Blog" in title %}
+                    <a href="/blog" class="current"><i class="bi bi-newspaper"></i> Blog</a>
+                {% else %}
+                    <a href="/blog"><i class="bi bi-newspaper"></i> Blog</a>
+                {% endif %}
+
+                {% if title == "Contact" %}
+                <a href="/contact" class="current"><i class="bi bi-envelope"></i> Contact</a>
+                {% else %}
+                <a href="/contact"><i class="bi bi-envelope"></i> Contact</a>
+                {% endif %}
+
+                <a href="https://github.com/nsde" target="_blank"><i class="bi bi-github"></i> GitHub <i class="bi bi-box-arrow-up-right small" style="opacity: 0.5;"></i></a>
+            </nav>
+            <h1>{{ title }}</h1>
+            <p>{{ description }}</p>
+            <!-- <button onclick="window.location.href='#main'"><i style="font-size: 1rem;" class="bi bi-arrow-down"></i></button> -->
+        </header>
+
+        <main id="main">
 {% endif %}
-        <header class="{{ cover_classes or 'transparent-35' }}" style="--image: url('https://onlix.me/images/{{ image or 'wave.jpg' }}')">
-
-        <nav>
-            {% if title == "Home" %}
-                <a href="/" class="current"><i class="bi bi-house"></i> Home</a>
-            {% else %}
-                <a href="/"><i class="bi bi-house"></i> Home</a>
-            {% endif %}
-            
-            {% if "Blog" in title %}
-                <a href="/blog" class="current"><i class="bi bi-newspaper"></i> Blog</a>
-            {% else %}
-                <a href="/blog"><i class="bi bi-newspaper"></i> Blog</a>
-            {% endif %}
-
-            {% if title == "Contact" %}
-            <a href="/contact" class="current"><i class="bi bi-envelope"></i> Contact</a>
-            {% else %}
-            <a href="/contact"><i class="bi bi-envelope"></i> Contact</a>
-            {% endif %}
-
-            <a href="https://github.com/nsde" target="_blank"><i class="bi bi-github"></i> GitHub <i class="bi bi-box-arrow-up-right small" style="opacity: 0.5;"></i></a>
-        </nav>
-        <h1>{{ title }}</h1>
-        <p>{{ description }}</p>
-        <!-- <button onclick="window.location.href='#main'"><i style="font-size: 1rem;" class="bi bi-arrow-down"></i></button> -->
-    </header>
-
-    <main id="main">
-<!-- End of _top.html -->
+<!--=| End of _top.html |=-->

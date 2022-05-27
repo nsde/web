@@ -1,0 +1,83 @@
+{% with lite=True, title="NOVΛPORT", description="Import NOVΛLIX exports.", image="container.jpg" %} {% include '_top.html' %} {% endwith %}
+
+<body class="cord no-grid">
+    <div class="guild-bar">
+        <div class="branding">
+            <a href="/"><img src="https://cdn.discordapp.com/avatars/657900196189044736/20322d04bedc90c910d2c47cd0f08d4d.webp?size=128"></a>
+        </div>
+        
+        <div class="guilds">
+            <div class="current guild">
+                <img src="https://cdn.discordapp.com/avatars/795743605221621782/25c91f77d540aa4dae14e938f861a05a.webp?size=128">
+            </div>
+        </div>   
+    </div>
+
+    <div class="channel-bar">        
+        <div class="guild-header">
+            <span>NOVΛPORT</span>
+        </div>
+        
+        <div class="channels">
+            <div class="current channel">
+                <span><i class="bi bi-hash"></i>upload</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="channel-box">
+        <div class="channel-top">
+            <div class="name">
+                <span class="name"><i class="bi bi-hash"></i>upload</span>
+            </div>
+        </div>
+        <div class="messages">
+            <div class="message">
+                <img class="avatar" src="https://cdn.discordapp.com/avatars/657900196189044736/20322d04bedc90c910d2c47cd0f08d4d.webp?size=80">
+                <div class="box">
+                    <span class="author">ONLIX</span>
+                    <span class="time">27/05/2022</span>
+                    <div class="content">
+                        <span class="text">Welcome to NOVΛPORT! You can use this tool to view NOVΛLIX exports.</span>
+                    </div>
+                    <div class="reactions">
+                        <div class="reaction">
+                            <span class="emoji">👍</span>
+                            <span class="count">5</span>
+                        </div>
+                        <div class="reaction">
+                            <span class="emoji">✨</span>
+                            <span class="count">3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="message">
+                <img class="avatar" src="https://cdn.discordapp.com/avatars/657900196189044736/20322d04bedc90c910d2c47cd0f08d4d.webp?size=80">
+                <div class="box">
+                    <span class="author">ONLIX</span>
+                    <span class="time">27/05/2022</span>
+                    <div class="content">
+                        <span class="text">If you haven't already, type <code>/export</code> in your server and paste the blue link.</span>
+                        <br>
+                        <span class="text">Depending on your server size, the export can take a few minutes.</span>
+                        <br>
+                        <span class="text">To get started, just paste your link 👇 right here!</span>
+                        <form action="/novaport/upload" method="GET">
+                            <input type="text" id="code" name="code" placeholder="https://onlix.me/view/example1">
+                            {% if error %}
+                                <span class="text small red" onclick="alert('{{ error }}')">Incorrect code or link, try again!</span>
+                            {% endif %}
+                            <button type="submit">View</button>
+                            </div>                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <x id="↓"></x>
+</body>
+
+
+{% with lite=True %} {% include "_bottom.html" %} {% endwith %}

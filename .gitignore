@@ -1,3 +1,6 @@
+# Security and clutter
+logs/*
+
 # Large Files
 share/*
 
@@ -8,6 +11,10 @@ closed.py
 *closed*
 /closed
 /*.closed
+
+# Could contain secret UGC
+views.yml
+chats.yml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

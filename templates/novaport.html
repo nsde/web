@@ -1,0 +1,65 @@
+{% with lite=True, title="NOVΛPORT", description="Import NOVΛLIX exports.", image="container.jpg" %} {% include '_top.html' %} {% endwith %}
+
+<body class="cord no-grid">
+    <div class="guild-bar">
+        <div class="branding">
+            <a href="/"><img src="https://cdn.discordapp.com/avatars/657900196189044736/20322d04bedc90c910d2c47cd0f08d4d.webp?size=128"></a>
+        </div>
+        
+        <div class="guilds">
+            <div class="guilds">
+                <div class="current guild">
+                    <img src="https://cdn.discordapp.com/avatars/795743605221621782/25c91f77d540aa4dae14e938f861a05a.webp?size=128">
+                </div>
+            </div>
+        </div>   
+    </div>
+
+    <div class="channel-bar">        
+        <div class="guild-header">
+            <span>{{ export_code }}</span>
+        </div>
+        
+        <div class="channels">
+            {% for channel in channel_list %}
+                <div class="{{ 'current' if channel.current else ''}} channel">
+                    <span onclick="window.location='{{ channel }}'"><i class="bi bi-hash"></i>{{ channel }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="channel-box">
+        <div class="channel-top">
+            <div class="name">
+                <span class="name"><i class="bi bi-hash"></i>{{ current_channel }}</span>
+                </div>
+        </div>
+        <div class="messages">
+            {% for message in messages %}
+                <div class="message">
+                    <img class="avatar" src="https://cdn-icons-png.flaticon.com/512/906/906361.png?w=826&t=st=1653605075~exp=1653605675~hmac=a2065014464b8d73326209a22eeda4a2f952e2e4338a207ccbe0040550b6a92c">
+                    <div class="box">
+                        <span class="author">{{ message.author }}</span>
+                        <span class="time">{{ message.time }}</span>
+                        <div class="content">
+                            <span class="text">{{ message.html | safe }}</span>
+                        </div>
+                        <div class="reactions">
+                            {% for reaction in message.reactions%}
+                                <div class="reaction">
+                                    <span class="emoji">{{ reaction.emoji }}</span>
+                                    <span class="count">{{ reaction.count }}</span>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <x id="↓"></x>
+</body>
+
+
+{% with lite=True %} {% include "_bottom.html" %} {% endwith %}

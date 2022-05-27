@@ -1,11 +1,12 @@
 active:
   - main
   - misc
-  - chat
+  # - chat
   - blog
   - views
   - gaming
-  - closed
+  # - closed
   - manager
   - tor
   - api
+  - novaport

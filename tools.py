@@ -21,7 +21,7 @@ def yml(path: str, edit_to=None):
 
     if not edit_to:
         try:
-            return yaml.safe_load(open(path))
+            return yaml.load(open(path).read(), Loader=yaml.SafeLoader)
         except FileNotFoundError:
             open(path, 'w').write('{}')
             return {}

@@ -32,11 +32,16 @@ def register(app: flask.Flask):
 
         redirects = tools.yml('config/redirects')
         possible_template = f'templates/{current_path}.html'
+        
         if current_path in redirects.keys():
             list(flask.request.args.keys())[0] if flask.request.args.keys() else False
             return flask.redirect(redirects[current_path])
-            
+        
+        template = f'{current_path}.html'
+
         try:
-            return flask.render_template(f'{current_path}.html')
-        except:
-            return flask.render_template(f'error.html', title='Path or file not found!', description=f'Sorry, you probably visited an old or invalid site!')
+            return flask.render_template(template)
+        except Exception as e:
+            if template == e:
+                return flask.render_template(f'error.html', title='Path or file not found!', description=f'Sorry, you probably visited an old or invalid site!')
+            return flask.render_template(f'error.html', title='Problems with the template', description=f'Sorry, this isn\'t your fault! An issue occurred while trying to render the template.')

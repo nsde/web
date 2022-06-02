@@ -21,12 +21,14 @@ def yml(path: str, edit_to=None):
 
     if not edit_to:
         try:
-            return yaml.load(open(path).read(), Loader=yaml.SafeLoader)
-        except FileNotFoundError:
+            with open(path) as f:
+                return yaml.load(f.read(), Loader=yaml.SafeLoader)
+        except:
             open(path, 'w').write('{}')
             return {}
 
-    yaml.dump(edit_to, open(path, 'w'), sort_keys=False, default_flow_style=False, indent=4)
+    with open(path, 'w') as f:
+        yaml.dump(edit_to, f, sort_keys=False, default_flow_style=False, indent=4)
 
 def generate_qr(data):
     qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=4)

@@ -7,6 +7,7 @@ config/banned-ips.yml
 config/no-ratelimit-ips.yml
 no-ratelimit-ips.yml
 data/error_modules.yml
+data/log.yml
 
 # Large Files
 share/*

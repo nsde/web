@@ -2,6 +2,7 @@ from flask_qrcode import QRcode
 from flask_caching import Cache
 
 from flask_limiter import Limiter
+from logging.config import dictConfig
 from flask_limiter.util import get_remote_address
 from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -50,8 +51,33 @@ def ip_whitelist():
 
 @app.before_request
 def block_method():
-    if tools.ip(flask.request) in tools.yml('config/banned-ips'):
-        flask.abort(403, 'IP Ban (because of spamming/DDoS) suspect.')
+    ip = tools.ip(flask.request)
+    yaml_log = tools.yml('data/log')
+    
+    if not yaml_log.get(ip):
+        yaml_log[ip] = 0
+
+    yaml_log[ip] += 1
+    tools.yml('data/log', yaml_log)
+
+    if ip in tools.yml('config/banned-ips'):
+        flask.abort(403, 'IP ban')
+
+dictConfig({
+    'version': 1,
+    'formatters': {'default': {
+        'format': '%(levelname)s in %(message)s',
+    }},
+    'handlers': {'wsgi': {
+        'class': 'logging.StreamHandler',
+        'stream': 'ext://flask.logging.wsgi_errors_stream',
+        'formatter': 'default'
+    }},
+    'root': {
+        'level': 'WARN',
+        'handlers': ['wsgi']
+    }
+})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=tools.yml('config/main')['port'], debug=True)

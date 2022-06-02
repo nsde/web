@@ -22,7 +22,7 @@ app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1)
 limiter = Limiter(
     app=app,
     key_func=get_remote_address,
-    default_limits=['10000 per day', '600 per hour', '60 per minute']
+    default_limits=['10000 per day', '600 per hour', '60 per minute', '5 per second']
 )
 
 # === FLASK LIBRARIES ===

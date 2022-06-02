@@ -319,16 +319,18 @@ body.dark nav {
 
 /* Make the header bg full width, but the content inline with body */
 body>header {
-    opacity: 1.0;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     
-    position: relative;
     text-align: center;
+    position: relative;
     padding: 0 0.5rem 2rem 0.5rem;
     box-sizing: border-box;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 50px 50px 0 rgba(0, 0, 0, 0.1);
+
+    align-items: center;
+    justify-content: center;
 }
 
 body>header:not(.no-grid) {
@@ -343,6 +345,58 @@ body>header h1 {
 body>header p {
     max-width: 40rem;
     margin: 1rem auto;
+}
+
+/* ================ COVER ================ */
+
+body>header::before {    
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+
+@media (prefers-color-scheme: dark) {
+    body>header::before {
+        background-image: linear-gradient(rgba(255, 255, 255, 0), var(--accent-bg)), var(--image);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body>header::before {
+        background-image: linear-gradient(rgba(0, 0, 0, 0), var(--accent-bg)), var(--image);
+    }
+}
+
+body>header.transparent-2::before {
+    opacity: 0.2;
+}
+
+body>header.transparent-3::before {
+    opacity: 0.3;
+}
+
+body>header.transparent-35::before {
+    opacity: 0.35;
+}
+
+body>header.transparent-5::before {
+    opacity: 0.5;
+}
+
+body>header.transparent-8::before {
+    opacity: 0.8;
+}
+
+body>header * {
+    position: relative;
 }
 
 /* ================ NAVBAR ================ */
@@ -430,58 +484,6 @@ nav a:last-child {
 }
 
 
-/* ================ COVER ================ */
-
-body>header {
-    position: relative; 
-    align-items: center;
-    justify-content: center;
-}
-
-body>header::before {    
-    content: "";
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-}
-
-@media (prefers-color-scheme: dark) {
-    body>header::before {
-        background-image: linear-gradient(rgba(255, 255, 255, 0), var(--accent-bg)), var(--image);
-    }
-}
-
-@media (prefers-color-scheme: light) {
-    body>header::before {
-        background-image: linear-gradient(rgba(0, 0, 0, 0), var(--accent-bg)), var(--image);
-    }
-}
-
-body>header.transparent-2::before {
-    opacity: 0.2;
-}
-
-body>header.transparent-3::before {
-    opacity: 0.35;
-}
-
-body>header.transparent-35::before {
-    opacity: 0.35;
-}
-
-body>header.transparent-5::before {
-    opacity: 0.5;
-}
-
-body>header.transparent-8::before {
-    opacity: 0.8;
-}
-
-body>header * {
-    position: relative;
-}
 
 /* ================ MAIN ================ */
 

@@ -24,31 +24,3 @@ def register(app: flask.Flask):
     @app.route('/api/blog/<post>')
     def api_blog_post(post):
         return (blog.get_info(post))
-
-    #-=== TESTING ===-#
-    @app.route('/ratte/get')
-    def ratte_get():
-        return open('ratte/input.txt').read()
-
-    @app.route('/ratte/hi')
-    def ratte_hi():
-        open('ratte/output.txt', 'w').write('')
-        return 'OK'
-
-    @app.route('/ratte/ran')
-    def ratte_ran():
-        open('ratte/input.txt', 'w').write('')
-        return 'OK'
-
-    @app.route('/ratte/post', methods=['POST'])
-    def ratte_post():
-        open('ratte/output.txt', 'a').write('\n===\n' + flask.request.get_json()['output'])
-        return 'OK'
-
-    @app.route('/ratte/screen', methods=['GET', 'POST'])
-    def ratte_screen():
-        if flask.request.method == 'POST':
-            uploaded_file = flask.request.files['file']
-            uploaded_file.save('static/stream/screen.png')
-
-        return '<img src="/stream/screen.png">'

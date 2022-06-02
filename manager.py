@@ -7,12 +7,9 @@ import secure
 import random
 import jinja2
 
-from turbo_flask import Turbo
-
 def register(app: flask.Flask):
     app.secret_key = random.sample('ABCDEF0123456789', 6)
     secure_headers = secure.Secure()
-    turbo = Turbo(app)
 
     view_urls = {}
 

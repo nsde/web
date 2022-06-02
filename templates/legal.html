@@ -1,37 +1,67 @@
-{% with title="Legal", description="Terms of Service, Privacy Policy", image="law.jpg" %}
+{% with title="Legal", description="Terms of Service, Privacy Policy & more", image="law.jpg" %}
 {% include '_top.html' %}
 {% endwith %}
 
+<h1>License</h1>
+
+<h1>Terms of Service</h1>
+
+<h1>Privacy Policy</h1>
 <h2>Exceptions</h2>
 <p>I sometimes <i>need</i> to store data for technical reasons.
-    In this case, I'm doing my best to make it as private and secure as possible:
+    In this case, I am doing my best to make it as private and secure as possible:
     personal information is usually encrypted/hashed and stored securely.
 
     The following exceptions describe <strong>what</strong> data is stored on <strong>which</strong> service.
     
     <ul>
-        <li><a href="https://security.stackexchange.com/questions/74113/do-i-have-to-hash-users-ip-addresses-when-i-log-them">Unhashed IP address</a></li>
-        <li>I'm only using this data to prevent spam and DDoS attacks, I swear.</li>
-        <li>Why unhashed? Because firstly, they can easily be <a href="https://iphashes.com/">cracked with some websites</a> and also, I need to blacklist them.</li>
-        <li>Obviously, I won't use the IP to track you or to sell this data to anyone. It's just stored on my servers and not shared with anyone else.</li>
-        <li>Here's a screenshot of me getting thousands of requests in just a few seconds:</li>
-        <img src="https://i.ibb.co/98d9W7Z/image.png">
+        <li>
+            <details>
+                <summary>
+                    <strong>Entered form data/user generated content</strong>
+                    <li>REASON: I am only using this data to prevent spam and DDoS attacks.</li>
+                    <li>PAGES: Various. Examples include novaport, </li>
+                    <img src="/images/novaport-legal.png">
+                </summary>
+                <ul>
+                    <strong><a href="https://security.stackexchange.com/questions/74113/do-i-have-to-hash-users-ip-addresses-when-i-log-them">Unhashed IP address</a></strong>
+                    <li>REASON: I am only using this data to prevent spam and DDoS attacks.</li>
+                    <li>Why unhashed? <a href="https://skymonitor.com/why-hash-dont-anonimize-an-ip-address-and-what-this-affects-gdpr/">Because</a> firstly, they can easily be <a href="https://iphashes.com/">cracked with some websites</a> and also, I need to blacklist them.</li>
+                    <li>Obviously, I will not use the IP to track you or to sell this data to anyone. It is just stored on my servers and not shared with anyone else.</li>
+                    <li>Here s a screenshot of me getting thousands of requests in just a few seconds:</li>
+                    <li>PAGES: Various. Examples include novaport, </li>
+                    <img src="/images/spam.png">
+                </ul>
+            </details>
+        </li>
+        <li>
+            <details>
+                <summary>
+                    <strong><a href="https://security.stackexchange.com/questions/74113/do-i-have-to-hash-users-ip-addresses-when-i-log-them">Unhashed IP address</a></strong>
+                </summary>
+                <ul>
+                    <li>I am only using this data to prevent spam and DDoS attacks, I swear.</li>
+                    <li>Why unhashed? <a href="https://skymonitor.com/why-hash-dont-anonimize-an-ip-address-and-what-this-affects-gdpr/">Because</a> firstly, they can easily be <a href="https://iphashes.com/">cracked with some websites</a> and also, I need to blacklist them.</li>
+                    <li>Obviously, I will not use the IP to track you or to sell this data to anyone. It is just stored on my servers and not shared with anyone else.</li>
+                    <li>A screenshot of me getting thousands of requests in just a few seconds:</li>
+                    <img src="https://i.ibb.co/9p37qys/spam.png">
+                </ul>
+            </details>
+        </li>
     </ul>
 </p>
 
-<h2>Privacy</h1>
-
-<p>I simply (if not otherwise noted) don't track or store anything about you.
+<p>I simply (if not otherwise noted) do not track or store anything about you.
     No need to trust me, just take a look at <a href="https://github.com/nsde/web">this website's source code</a>.
 </p>
 
-<p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact me.</p>
 
 <h2>Consent</h2>
-<p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
+<p>By using my website, you hereby consent to my Privacy Policy and agree to its terms.</p>
 
 <h2>Children's Information</h2>
-<p>Another part of our priority is adding protection for children while using the internet. We encourage parents and
+<p>Another part of my priority is adding protection for children while using the internet. We encourage parents and
     guardians to observe, participate in, and/or monitor and guide their online activity.</p>
-
+    
+<p>If you have additional questions or require more information about privacy, terms of service or similar, do not hesitate to <a href="/contact">contact me</a>.</p>
 {% include '_bottom.html' %}

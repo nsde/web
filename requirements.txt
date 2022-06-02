@@ -1,13 +1,13 @@
-stem
-flask
-mcipc
-secure
-psutil
-distro
-qrcode
-pyyaml>=6.0
-requests
-markdown
-Flask-QRcode
-Flask-Caching
-Flask-Limiter
+stem # tor
+flask # web
+mcipc # gaming
+secure # manager
+psutil # misc
+distro # misc
+qrcode # tools
+pyyaml>=6.0 # tools
+requests # api
+markdown # blog
+Flask-QRcode # tools
+Flask-Caching # web
+Flask-Limiter # web

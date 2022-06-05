@@ -37,7 +37,7 @@ tools.yml('data/error_modules', {})
 for module in modules:
     try:
         exec(f'import {module}')
-        exec(f'{module}.register(app)')
+        exec(f'{module}.register(app, cache)')
     except Exception as e:
         print(f'[ERROR] {module}: {e}')
         
@@ -49,19 +49,19 @@ for module in modules:
 def ip_whitelist():
     return tools.ip(flask.request) in tools.yml('config/no-ratelimit-ips')
 
-@app.before_request
-def block_method():
-    ip = tools.ip(flask.request)
-    yaml_log = tools.yml('data/log')
+# @app.before_request
+# def block_method():
+#     ip = tools.ip(flask.request)
+#     yaml_log = tools.yml('data/log')
     
-    if not yaml_log.get(ip):
-        yaml_log[ip] = 0
+#     if not yaml_log.get(ip):
+#         yaml_log[ip] = 0
 
-    yaml_log[ip] += 1
-    tools.yml('data/log', yaml_log)
+#     yaml_log[ip] += 1
+#     tools.yml('data/log', yaml_log)
 
-    if ip in tools.yml('config/banned-ips'):
-        flask.abort(403, 'IP ban')
+#     if ip in tools.yml('config/banned-ips'):
+#         flask.abort(403, 'IP ban')
 
 dictConfig({
     'version': 1,
@@ -80,4 +80,4 @@ dictConfig({
 })
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=tools.yml('config/main')['port'], debug=True)
+    app.run(port=tools.yml('config/main')['port'], debug=True)

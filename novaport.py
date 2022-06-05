@@ -5,7 +5,7 @@ import markupsafe
 
 from datetime import datetime
 
-def register(app: flask.Flask):
+def register(app: flask.Flask, *args, **kwargs):
     @app.route('/novaport')
     def novaport():
         return flask.render_template('novaport-upload.html')

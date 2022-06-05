@@ -50,7 +50,7 @@ def get_info(post: str):
         'last_update': last_update
     }
 
-def register(app: flask.Flask):
+def register(app: flask.Flask, *args, **kwargs):
     @app.route('/blog')
     def blog_main():
         return flask.redirect('/blog/@ONLIX')

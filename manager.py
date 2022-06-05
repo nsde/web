@@ -7,7 +7,7 @@ import secure
 import random
 import jinja2
 
-def register(app: flask.Flask):
+def register(app: flask.Flask, *args, **kwargs):
     app.secret_key = random.sample('ABCDEF0123456789', 6)
     secure_headers = secure.Secure()
 

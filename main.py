@@ -6,7 +6,7 @@ import flask
 import requests
 import markupsafe
 
-def register(app: flask.Flask):
+def register(app: flask.Flask, *args, **kwargs):
     DEFAULT_MODULES = ['tools', 'web']
     
     @app.route('/')

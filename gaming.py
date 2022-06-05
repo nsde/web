@@ -15,7 +15,7 @@ try:
 except: # server offline
     pass
 
-def register(app: flask.Flask):
+def register(app: flask.Flask, *args, **kwargs):
     @app.route('/shopcraft')
     def shopcraft():
         return flask.render_template('mc-shop.html', articles=[

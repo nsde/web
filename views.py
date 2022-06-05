@@ -5,7 +5,7 @@ import random
 import requests
 import markupsafe
 
-def register(app: flask.Flask):
+def register(app: flask.Flask, *args, **kwargs):
     @app.route('/view/new', methods=['GET', 'POST'])
     def view_create():
         if flask.request.method == 'GET':

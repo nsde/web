@@ -8,7 +8,7 @@ import subprocess
 
 from werkzeug.utils import secure_filename
 
-def register(app: flask.Flask):
+def register(app: flask.Flask, *args, **kwargs):
     @app.route('/personify')
     def personify():
         return flask.render_template('personify.html', p=requests.get('https://random-data-api.com/api/users/random_user').json())

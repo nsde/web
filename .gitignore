@@ -19,6 +19,7 @@ closed.py
 *closed*
 /closed
 /*.closed
+# (yes, I am paranoid)
 
 # Could contain secret UGC
 data/views/*

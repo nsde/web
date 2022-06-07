@@ -6,6 +6,7 @@ from logging.config import dictConfig
 from flask_limiter.util import get_remote_address
 from werkzeug.middleware.proxy_fix import ProxyFix
 
+import time
 import flask
 
 import tools
@@ -79,5 +80,9 @@ dictConfig({
     }
 })
 
-if __name__ == '__main__':
+def main():
     app.run(port=tools.yml('config/main')['port'], debug=True)
+    open('logs/last_restart.txt', 'w').write(str(time.time()))
+
+if __name__ == '__main__':
+    main()

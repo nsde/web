@@ -1,4 +1,5 @@
 import tools
+
 import flask
 import markdown
 import markupsafe
@@ -36,7 +37,7 @@ def register(app: flask.Flask, *args, **kwargs):
         for message in channel_data:
             messages.append({
                 'author': message['author'],
-                'time': datetime.utcfromtimestamp(message['timestamp']).strftime('%Y/%m/%d %H:%M'),
+                'time': tools.unix_to_readable(message['timestamp']),
                 'html': markdown.markdown(markupsafe.escape(message['text'])).replace('<p>', '').replace('</p>', ''),
             })
 

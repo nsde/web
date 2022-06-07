@@ -4,6 +4,7 @@ import qrcode
 import base64
 
 from io import BytesIO
+from datetime import datetime
 
 def fix_formatting(text: str):
     return text.replace('  ', '&nbsp;').replace('\n', '\n<br>\n')
@@ -29,6 +30,9 @@ def yml(path: str, edit_to=None):
 
     with open(path, 'w') as f:
         yaml.dump(edit_to, f, sort_keys=False, default_flow_style=False, indent=4)
+
+def unix_to_readable(unix):
+    return datetime.utcfromtimestamp(float(unix)).strftime('%Y/%m/%d %H:%M')
 
 def generate_qr(data):
     qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=4)

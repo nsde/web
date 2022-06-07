@@ -16,6 +16,8 @@ def register(app: flask.Flask, *args, **kwargs):
     @app.route('/modules')
     def modules():
         modules = []
+        module_count_all = 0
+        module_count_active = 0
 
         for m in os.listdir():
             if m.endswith('.py') and not 'closed' in m:
@@ -23,6 +25,8 @@ def register(app: flask.Flask, *args, **kwargs):
                 
                 if name in DEFAULT_MODULES:
                     continue
+
+                module_count_all += 1
 
                 decs = []
                 
@@ -41,12 +45,22 @@ def register(app: flask.Flask, *args, **kwargs):
                 if name in tools.yml('data/error_modules'):
                     status = 'error'
 
+                if status == 'active': # asking again, because a module can be "active" and "error" at the same time
+                    module_count_active += 1
+
                 modules.append({
-                    'name': name.title(),
+                    'name': m,
                     'status': status,
                     'decs': decs,
                     'url': f'https://github.com/nsde/web/blob/master/{m}',
                     'error': tools.yml('data/error_modules').get(name)
                 })
 
-        return tools.render('modules.html', modules=modules)
+        return tools.render('modules.html',
+            modules=modules,
+            module_count_all=module_count_all,
+            module_count_active=module_count_active,
+            hidden_service=open('static/data/hidden_service.txt').read(),
+            last_start=tools.unix_to_readable(open('logs/last_start.txt').read()),
+            last_restart=tools.unix_to_readable(open('logs/last_restart.txt').read()),
+        )

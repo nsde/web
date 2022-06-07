@@ -1,6 +1,15 @@
 {% with title="LixModules", description="Module Dashboard (by the way: this is supposed to be public!)", image="hardware.jpg" %} {% include '_top.html' %} {% endwith %}
 
-<h3><i class="bi bi-boxes"></i> Backend modules</h3>
+<h3><i class="bi bi-info-circle"></i> General Information</h3>
+<p><strong>HiddenService ¹:</strong> {{ hidden_service }}</p>
+<p><strong>Last start ²:</strong> {{ last_start }}</p>
+<p><strong>Last restart ³:</strong> {{ last_restart }}</p>
+
+<p><i>¹ Empty? The hidden service can take ~20 seconds after a restart to update and start!</i></p>
+<p><i>² When the backend is started manually.</i></p>
+<p><i>³ Whenever a file is changed, the server restarts the program automatically.</i></p>
+
+<h3><i class="bi bi-boxes"></i> Backend modules ({{ module_count_active }}/{{ module_count_all }})</h3>
 
 <div class="posts">
     {% for module in modules %}
@@ -19,7 +28,7 @@
 
                 {% if module.decs %}
                     {% for dec in module.decs %}
-                    <a href="https://onlix.me{{ dec }}"><button style="display: inline;"><i class="bi bi-boxes"></i> {{ dec }}</button></a>
+                    <a href="https://onlix.me{{ dec }}"><button class="white {{ 'bg-red' if module.error else 'bg-green' }}" style="display: inline;"><i class="bi bi-link-45deg"></i> {{ dec }}</button></a>
                     {% endfor %}
                 {% endif %}
 

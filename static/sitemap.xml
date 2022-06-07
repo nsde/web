@@ -2,26 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://onlix.me/</loc>
-    <lastmod>2022-04-07</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2022-06-07</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>https://onlix.me/contact</loc>
-    <lastmod>2022-04-07</lastmod>
+    <lastmod>2022-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://onlix.me/legal</loc>
-    <lastmod>2022-04-07</lastmod>
+    <lastmod>2022-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://onlix.me/blog/@ONLIX</loc>
-    <lastmod>2022-04-07</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2022-06-07</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 </urlset>

@@ -1,13 +1,16 @@
-stem # tor
-flask # web
-mcipc # gaming
-secure # manager
-psutil # misc
-distro # misc
-qrcode # tools
-pyyaml>=6.0 # tools
-requests # api
-markdown # blog
-Flask-QRcode # tools
-Flask-Caching # web
-Flask-Limiter # web
+distro>=1.6.0
+Flask>=2.0.2
+Flask_Caching>=1.10.1
+Flask_Limiter>=2.2.0
+Flask_QRcode>=3.0.0
+Jinja2>=3.0.3
+Markdown>=3.3.6
+MarkupSafe>=2.0.1
+mcipc>=2.3.5
+psutil>=5.9.0
+PyYAML>=6.0
+qrcode>=7.3.1
+requests>=2.26.0
+secure>=0.3.0
+stem>=1.8.0
+Werkzeug>=2.2.0.dev0

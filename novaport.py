@@ -8,7 +8,7 @@ from datetime import datetime
 def register(app: flask.Flask, *args, **kwargs):
     @app.route('/novaport')
     def novaport():
-        return flask.render_template('novaport-upload.html')
+        return tools.render('novaport-upload.html')
 
     @app.route('/novaport/<code>', defaults={'channel': ':'})
     @app.route('/novaport/<code>/<channel>')
@@ -24,7 +24,7 @@ def register(app: flask.Flask, *args, **kwargs):
             if not export:
                 raise Exception('View not found')
         except Exception as e:
-            return flask.render_template('novaport-upload.html', error=str(e))
+            return tools.render('novaport-upload.html', error=str(e))
 
         if channel == ':':
             channel = list(export.keys())[0]
@@ -40,7 +40,7 @@ def register(app: flask.Flask, *args, **kwargs):
                 'html': markdown.markdown(markupsafe.escape(message['text'])).replace('<p>', '').replace('</p>', ''),
             })
 
-        return flask.render_template('novaport.html',
+        return tools.render('novaport.html',
             export_code=code,
             current_channel=channel,
             channel_list=list(export.keys()),

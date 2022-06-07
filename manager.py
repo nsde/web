@@ -37,8 +37,8 @@ def register(app: flask.Flask, *args, **kwargs):
         template = f'{current_path}.html'
 
         try:
-            return flask.render_template(template)
+            return tools.render(template)
         except Exception as e:
-            if template == e:
-                return flask.render_template(f'error.html', title='Path or file not found!', description=f'Sorry, you probably visited an old or invalid site!')
-            return flask.render_template(f'error.html', title='Problems with the template', description=f'Sorry, this isn\'t your fault! An issue occurred while trying to render the template.')
+            if template == str(e):
+                return tools.render(f'error.html', title='Path or file not found!', description=f'Sorry, you probably visited an old or invalid site!')
+            return tools.render(f'error.html', title='Problems with the template', description=f'Sorry, this isn\'t your fault! An issue occurred while trying to render the template.')

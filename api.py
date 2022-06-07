@@ -13,7 +13,7 @@ def register(app: flask.Flask, cache, *args, **kwargs):
         with open('static/styles/lila.css') as f:
             css_data = f.read()
         response = flask.make_response(css_data, 200)
-        response.mimetype = "text/plain"
+        response.mimetype = "text/css"
         return response
 
     @app.route('/api/post')

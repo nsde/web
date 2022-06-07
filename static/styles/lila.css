@@ -325,7 +325,7 @@ body>header {
     
     text-align: center;
     position: relative;
-    padding: 0 0.5rem 2rem 0.5rem;
+    padding: 0 0 2rem 0.5rem;
     box-sizing: border-box;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 50px 50px 0 rgba(0, 0, 0, 0.1);
 
@@ -396,7 +396,7 @@ body>header.transparent-8::before {
 }
 
 body>header * {
-    position: relative;
+    /* position: relative; */
 }
 
 /* ================ NAVBAR ================ */
@@ -405,13 +405,17 @@ nav {
     font-size: 1rem;
     line-height: 2;
     padding: 1rem 0 0 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(6, 6, 6, 0.202);
 }
 
 nav.stay-left {
     position: fixed;
 }
 
-/* Use flexbox to allow items to wrap, as needed */
 nav ul,
 nav ol {
     align-content: space-around;
@@ -428,9 +432,7 @@ nav ul li {
     display: inline-block;
 }
 
-nav a,
-nav a:visited {
-    /* background-color: var(--bg); */
+nav a {
     border: 1px solid var(--border);
     border-radius: 5px;
     
@@ -441,6 +443,29 @@ nav a:visited {
     
     transition: .3s;
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    min-width: 160px;
+
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    display: block;
+}
+
+.dropdown:hover, .dropdown-content {
+    display: block;
+}
+
 
 nav a.current {
     border-bottom: var(--accent) solid;
@@ -1529,29 +1554,27 @@ button.to-top.icon {
 /* SIMPLE CLASSES */
 /* Colors */
 
-.red {
-    color: rgb(219, 72, 72);
-}
+.red {color: red;}
+.orange {color: orange;}
+.yellow {color: yellow;}
+.green {color: rgb(37, 193, 37);}
+.blue {color: rgb(76, 76, 243);}
+.magenta {color: magenta;}
+.teal {color: teal;}
+.white {color: white;}
+.black {color: black;}
+.gray {color: gray;}
 
-.blue {
-    color: rgb(20, 114, 207);
-}
-
-.yellow {
-    color: rgb(240, 240, 62);
-}
-
-.green {
-    color: rgb(58, 226, 58);
-}
-
-.magenta {
-    color: rgb(225, 49, 137);
-}
-
-.teal {
-    color: rgb(0, 150, 136);
-}
+.bg-red {background-color: red;}
+.bg-orange {background-color: orange;}
+.bg-yellow {background-color: yellow;}
+.bg-green {background-color: green;}
+.bg-blue {background-color: blue;}
+.bg-magenta {background-color: magenta;}
+.bg-teal {background-color: teal;}
+.bg-white {background-color: white;}
+.bg-black {background-color: black;}
+.bg-gray {background-color: gray;}
 
 /* Fonts */
 .bold {

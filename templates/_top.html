@@ -5,8 +5,8 @@
 <head>
     <title>{{ title }} · ONLIX</title>
 
-    <link href="/styles/lila.css"  rel="stylesheet">
-    <link href="/styles/bi.css"    rel="stylesheet">
+    <link href="/styles/lila.css" rel="stylesheet">
+    <link href="/styles/bi.css" rel="stylesheet">
 
     <meta charset="utf-8">
 
@@ -57,7 +57,7 @@
     <body class="">
         {% endif %}
             <div id="⤒"></div>
-            <header class="{{ cover_classes or 'transparent-35' }}" style="--image: url('https://onlix.me/images/{{ image or 'wave.jpg' }}')">
+            <header class="{{ cover_classes or 'transparent-35' }}" style="--image: url('https://onlix.me/images/{{ image or 'waves.jpg' }}')">
 
             <nav>
                 {% if title == "Home" %}
@@ -78,7 +78,14 @@
                 <a href="/contact"><i class="bi bi-envelope"></i> Contact</a>
                 {% endif %}
 
-                <a href="https://github.com/nsde" target="_blank"><i class="bi bi-github"></i> GitHub <i class="bi bi-box-arrow-up-right small" style="opacity: 0.5;"></i></a>
+                <!-- <div class="dropdown"> -->
+                    <a class="dropdown-button" href="https://github.com/nsde" target="_blank"><i class="bi bi-journal-code"></i> Projects <i class="bi bi-box-arrow-up-right small" style="opacity: 0.5;"></i></a>
+                    <!-- <div class="dropdown-content">
+                        <a href="https://github.com/nsde/lixvpn"><i class="bi bi-share"></i> LivVPN</a>
+                        <a href="https://github.com/nsde/lilacss"><i class="bi bi-braces-asterisk"></i> LilaCSS</a>
+                        <a href="https://github.com/nsde/strobe"><i class="bi bi-lightning"></i> Strobe</a>
+                    </div>
+                </div> -->
             </nav>
             <h1>{{ title }}</h1>
             <p>{{ description }}</p>

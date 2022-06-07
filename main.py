@@ -1,7 +1,7 @@
 import blog
+import tools
 
 import os
-import tools
 import flask
 import requests
 import markupsafe
@@ -11,7 +11,7 @@ def register(app: flask.Flask, *args, **kwargs):
     
     @app.route('/')
     def home():        
-        return flask.render_template('home.html', posts=blog.get_posts()[:5])
+        return tools.render('home.html', posts=blog.get_posts()[:5])
 
     @app.route('/modules')
     def modules():
@@ -49,4 +49,4 @@ def register(app: flask.Flask, *args, **kwargs):
                     'error': tools.yml('data/error_modules').get(name)
                 })
 
-        return flask.render_template('modules.html', modules=modules)
+        return tools.render('modules.html', modules=modules)

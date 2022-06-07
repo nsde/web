@@ -18,7 +18,7 @@ except: # server offline
 def register(app: flask.Flask, *args, **kwargs):
     @app.route('/shopcraft')
     def shopcraft():
-        return flask.render_template('mc-shop.html', articles=[
+        return tools.render('mc-shop.html', articles=[
             {
                 'image': 'https://imgs.search.brave.com/PVJIp0wz0OfZVeyZuQEIs7fVtZN1qd9z9xvdciIJu8M/rs:fit:160:160:1/g:ce/aHR0cDovL2ltZzMu/d2lraWEubm9jb29r/aWUubmV0L19fY2Iy/MDEyMTExMDE5MDEx/NC9taW5lY3JhZnQv/aW1hZ2VzLzgvOGYv/R2hhc3RfVGVhci5w/bmc',
                 'price': '4',
@@ -52,14 +52,14 @@ def register(app: flask.Flask, *args, **kwargs):
             with Client('127.0.0.1', 25565) as client:
                 server_data = client.stats(full=True)
         except:
-            return flask.render_template('error.html', title='Minecraft Server Offline', description='Sorry, you can\'t view this Minecraft server\'s stats, because it\'s offline (or starting)!')
+            return tools.render('error.html', title='Minecraft Server Offline', description='Sorry, you can\'t view this Minecraft server\'s stats, because it\'s offline (or starting)!')
 
         plugin_list = []
 
         if server_data.plugins:
             plugin_list = list(server_data.plugins.values())[0]
 
-        return flask.render_template('status_mc.html',
+        return tools.render('status_mc.html',
             players=server_data.players,
             player_count=f'{server_data.num_players}/{server_data.max_players}' if server_data else '0/0',
             version=server_data.version if server_data else 'Offline',
@@ -83,7 +83,7 @@ def register(app: flask.Flask, *args, **kwargs):
         ram = psutil.virtual_memory()
         disk = psutil.disk_usage('/')
 
-        return flask.render_template(f'status.html',
+        return tools.render(f'status.html',
             cpu=psutil.cpu_percent(),
             cpus=psutil.cpu_count(),
             threads=psutil.cpu_count(logical=False),
@@ -120,7 +120,7 @@ def register(app: flask.Flask, *args, **kwargs):
         
         log.reverse()
 
-        return flask.render_template(f'mcclog.html', log=log, server_name=MINECRAFT_SERVER_NAME)
+        return tools.render(f'mcclog.html', log=log, server_name=MINECRAFT_SERVER_NAME)
 
     @app.route('/dbd')
     def dbd():
@@ -159,4 +159,4 @@ def register(app: flask.Flask, *args, **kwargs):
                     'detected': 'ℹ️' if detected else ''
                 })
 
-        return flask.render_template('dbd.html', posts=scraped_posts)
+        return tools.render('dbd.html', posts=scraped_posts)

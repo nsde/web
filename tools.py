@@ -44,3 +44,6 @@ def generate_qr(data):
     img_data = img_data.decode()
 
     return f'data:image/png;base64,{img_data}'
+
+def render(template: str, **kwargs):
+    return flask.render_template(template, **kwargs)

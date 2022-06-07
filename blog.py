@@ -1,3 +1,5 @@
+import tools
+
 import os
 import flask
 import markdown
@@ -62,7 +64,7 @@ def register(app: flask.Flask, *args, **kwargs):
     @app.route('/blog/<post>')
     def blog_post(post):
         if not os.path.isdir(f'blog/{post}'):
-            return flask.render_template('error.html', title='Blog post not found!', description='Maybe the post ID got removed or renamed. In this, use the search box below.')
+            return tools.render('error.html', title='Blog post not found!', description='Maybe the post ID got removed or renamed. In this, use the search box below.')
 
         info = get_info(post)
         recommended_posts = []
@@ -70,7 +72,7 @@ def register(app: flask.Flask, *args, **kwargs):
         # for tag in info['tags']:
         #     recommended_posts.append([post for post in get_posts() if tag in post['tags']][0])
 
-        html = flask.render_template('blog.html', post=post, author=info['author'], tags=info['tags'], last_update=info['last_update'], content=info['md_code'], posts=recommended_posts)
+        html = tools.render('blog.html', post=post, author=info['author'], tags=info['tags'], last_update=info['last_update'], content=info['md_code'], posts=recommended_posts)
         return html.replace('$$ title $$', info['title']).replace('$$ description $$', info['description']).replace('$$ image $$', f'blog/{post}/image')
     
     @app.route('/blog/<post>/<image>')
@@ -88,8 +90,8 @@ def register(app: flask.Flask, *args, **kwargs):
 
         tags = [tag[0] for tag in collections.Counter(tags).most_common()]
         
-        return flask.render_template('posts.html', type='User', text=user, tags=tags, posts=posts)
+        return tools.render('posts.html', type='User', text=user, tags=tags, posts=posts)
 
     @app.route('/blog/+<tag>')
     def blog_tag(tag):
-        return flask.render_template('posts.html', type='Tag', text=tag, posts=[post for post in get_posts() if tag in post['tags']])
+        return tools.render('posts.html', type='Tag', text=tag, posts=[post for post in get_posts() if tag in post['tags']])

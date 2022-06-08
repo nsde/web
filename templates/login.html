@@ -1,0 +1,18 @@
+{% with title="Login", description="Log into the ONLIX account system." %}
+    {% include '_top.html' %}
+{% endwith %}
+
+{% if profile %}
+<h2><i class="bi bi-person-circle"></i>You're logged in as {{ profile.username }} 
+        {% if profile.verified %}
+        <i class="bi bi-patch-check-fill green"></i>
+        {% endif %}
+    !</h2>
+
+<a href="logout"><button><i class="bi bi-door-open red"></i> Log out</button></a>
+
+{% else %}
+<a href="{{ login_with_discord }}"><button class="white bg-discord"><i class="bi bi-discord"></i> Sign in using Discord</button></a>
+{% endif %}
+
+{% include '_bottom.html' %}

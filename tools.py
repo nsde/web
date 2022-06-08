@@ -49,5 +49,7 @@ def generate_qr(data):
 
     return f'data:image/png;base64,{img_data}'
 
-def render(template: str, **kwargs):
-    return flask.render_template(template, **kwargs)
+def render(template: str, notice='', **kwargs):
+    return flask.render_template(template, **kwargs).replace("""            <br>
+            <i id="render-notice"></i>
+""", notice)

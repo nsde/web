@@ -6,12 +6,18 @@ from logging.config import dictConfig
 from flask_limiter.util import get_remote_address
 from werkzeug.middleware.proxy_fix import ProxyFix
 
+import os
 import time
 import flask
+import logging
 
 import tools
 
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.WARN)
+
 app = flask.Flask(__name__, static_url_path='/')
+app.secret_key = os.urandom(24)
 app.config['MAX_CONTENT_LENGTH'] = 1 * 1000 * 1000 * 1000 # 1 GB
 app.config.from_mapping({
     "CACHE_TYPE": "SimpleCache",
@@ -31,9 +37,8 @@ QRcode(app)
 cache = Cache(app)
 # === MODULES ===
 
-modules = tools.yml('config/modules')['active']
-
-tools.yml('data/error_modules', {})
+tools.yml('data/error-modules', {})
+modules = [f.split('.')[0] for f in os.listdir() if (f.endswith('.py') and f.split('.')[0] not in tools.yml('config/disabled-modules'))]
 
 for module in modules:
     try:
@@ -42,9 +47,11 @@ for module in modules:
     except Exception as e:
         print(f'[ERROR] {module}: {e}')
         
-        error_yml = tools.yml('data/error_modules')
+        error_yml = tools.yml('data/error-modules')
         error_yml[module] = str(e)
-        tools.yml('data/error_modules', error_yml)
+        tools.yml('data/error-modules', error_yml)
+    else:
+        print(f'i SUCCESS Loading {module}.py')
 
 @limiter.request_filter
 def ip_whitelist():

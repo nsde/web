@@ -37,12 +37,12 @@ def register(app: flask.Flask, *args, **kwargs):
                         if not '<' in dec:
                             decs.append(dec)
 
-                status = 'inactive'
+                status = 'active'
 
-                if name in tools.yml('config/modules')['active']:
-                    status = 'active'
+                if name in tools.yml('config/disabled-modules'):
+                    status = 'inactive'
                 
-                if name in tools.yml('data/error_modules'):
+                if name in tools.yml('data/error-modules'):
                     status = 'error'
 
                 if status == 'active': # asking again, because a module can be "active" and "error" at the same time
@@ -53,7 +53,7 @@ def register(app: flask.Flask, *args, **kwargs):
                     'status': status,
                     'decs': decs,
                     'url': f'https://github.com/nsde/web/blob/master/{m}',
-                    'error': tools.yml('data/error_modules').get(name)
+                    'error': tools.yml('data/error-modules').get(name)
                 })
 
         return tools.render('modules.html',

@@ -325,14 +325,21 @@ body>header {
     
     text-align: center;
     position: relative;
-    /* padding: 0 0.5rem 2rem 0.5rem; */
     box-sizing: border-box;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 50px 50px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px 0 rgba(80, 70, 70, 0.1), 0 50px 50px 0 rgba(0, 0, 0, 0.1);
 
     align-items: center;
     justify-content: center;
 }
 
+header.tall {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+header.with-nav {
+    padding-top: 4.5rem;
+}
 body>header:not(.no-grid) {
     grid-column: 1 / -1;
 }
@@ -402,14 +409,28 @@ body>header * {
 /* ================ NAVBAR ================ */
 
 nav {
-    font-size: 1rem;
     line-height: 2;
-    padding: 1rem 0 0 0;
     overflow: hidden;
-    position: fixed;
     top: 0;
+    
     width: 100%;
-    background-color: rgba(6, 6, 6, 0.202);
+    font-size: 1rem;
+    padding: 1rem 0 0 0;
+
+}
+
+nav.floating {
+    position: fixed;
+    background-color: #242035ce;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.926);
+
+}
+
+@media (prefers-color-scheme: light) {
+    nav.floating {
+        background-color: #9881f387;
+        box-shadow: 0 0 10px rgba(77, 77, 77, 0.775);
+    }
 }
 
 nav.stay-left {
@@ -424,6 +445,7 @@ nav ol {
     flex-direction: row;
     justify-content: center;
     list-style-type: none;
+    
     margin: 0;
     padding: 0;
 }
@@ -439,8 +461,8 @@ nav a {
     margin: 0 1rem 1rem 0;
     padding: 0.1rem 1rem;
     display: inline-block;
-    text-decoration: none;
     
+    text-decoration: none;
     transition: .3s;
 }
 
@@ -459,13 +481,13 @@ nav a {
 }
 
 .dropdown-content a {
-    display: block;
+    float: left;
+    display: none;
 }
 
 .dropdown:hover, .dropdown-content {
     display: block;
 }
-
 
 nav a.current {
     border-bottom: var(--accent) solid;
@@ -1570,6 +1592,7 @@ button.to-top.icon {
 .bg-yellow {background-color: yellow;}
 .bg-green {background-color: green;}
 .bg-blue {background-color: blue;}
+.bg-discord {background-color: #5865f2;}
 .bg-magenta {background-color: magenta;}
 .bg-teal {background-color: teal;}
 .bg-white {background-color: white;}

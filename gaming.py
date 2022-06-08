@@ -83,7 +83,7 @@ def register(app: flask.Flask, *args, **kwargs):
         ram = psutil.virtual_memory()
         disk = psutil.disk_usage('/')
 
-        return tools.render(f'status.html',
+        return tools.render('status.html',
             cpu=psutil.cpu_percent(),
             cpus=psutil.cpu_count(),
             threads=psutil.cpu_count(logical=False),
@@ -120,7 +120,7 @@ def register(app: flask.Flask, *args, **kwargs):
         
         log.reverse()
 
-        return tools.render(f'mcclog.html', log=log, server_name=MINECRAFT_SERVER_NAME)
+        return tools.render('mcclog.html', log=log, server_name=MINECRAFT_SERVER_NAME)
 
     @app.route('/dbd')
     def dbd():

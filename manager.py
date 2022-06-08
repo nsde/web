@@ -18,10 +18,6 @@ def register(app: flask.Flask, *args, **kwargs):
         secure_headers.framework.flask(response)
         return response
 
-    @app.errorhandler(500)
-    def error_500(error):
-        return '500 error'
-
     @app.errorhandler(404)
     def error_404(error):
         rq = flask.request
@@ -37,8 +33,8 @@ def register(app: flask.Flask, *args, **kwargs):
         template = f'{current_path}.html'
 
         try:
-            return tools.render(template)
+            return tools.render(template, notice='Skipped 404.')
         except Exception as e:
             if template == str(e):
-                return tools.render(f'error.html', title='Path or file not found!', description=f'Sorry, you probably visited an old or invalid site!')
-            return tools.render(f'error.html', title='Problems with the template', description=f'Sorry, this isn\'t your fault! An issue occurred while trying to render the template.')
+                return tools.render('error.html', title='Path or file not found!', description=f'Sorry, you probably visited an old or invalid site!')
+            return tools.render('error.html', title='Problems with the template', description=f'Sorry, this isn\'t your fault! An issue occurred while trying to render the template.')

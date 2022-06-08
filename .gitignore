@@ -1,13 +1,18 @@
 # Clutter
-error_modules.yml
+error-modules.yml
 
 # Security/Privacy
 logs/*
 config/banned-ips.yml
 config/no-ratelimit-ips.yml
 no-ratelimit-ips.yml
-data/error_modules.yml
+data/error-modules.yml
 data/log.yml
+
+# Tokens/Secrets
+*.env
+.env
+.env*
 
 # Large Files
 share/*

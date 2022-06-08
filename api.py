@@ -3,7 +3,7 @@ import tools
 
 import os
 import flask
-import struct
+import getpass
 import markupsafe
 
 def register(app: flask.Flask, cache, *args, **kwargs):
@@ -22,7 +22,7 @@ def register(app: flask.Flask, cache, *args, **kwargs):
 
     @app.route('/api/qr/<data>')
     def api_useless(data):
-        if flask.request.args.get('preview') == 'true': 
+        if flask.request.args.get('show') == 'true': 
             return f'<img src="{tools.generate_qr(data)}">'
         return tools.generate_qr(data)
 

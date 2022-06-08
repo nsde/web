@@ -4,6 +4,8 @@ author: ONLIX
 subtitle: Discord only allows streaming one screen. Or does it? There's a workaround for that!
 ---
 
+[Cover image](https://pixabay.com/photos/hands-ipad-tablet-technology-820272/) by [fancycrave1 on Pixabay](https://pixabay.com/users/fancycrave1-1115284/).
+
 # How to stream two streams on Discord at the same time
 ## OBS - Installation
 OBS (Open Broadcaster Software) is - according to its website:

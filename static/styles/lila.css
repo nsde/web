@@ -229,10 +229,10 @@
         --text-long: linear-gradient(180deg, rgba(220,220,220,1) 0%, rgba(220, 220, 220, 0.666) 71%, rgba(220, 220, 220, 0) 100%);
     }
     
-    img,
+    /* img,
     video {
         opacity: 0.9;
-    }
+    } */
 
     body>header.text-shadow {
         text-shadow: 0px 0px 20px #000000a6, 0px 0px 20px #000000c5, 0px 0px 50px #000000b6, 0px 0px 25px #000000c7, 0px 0px 50px #000000, 0px 0px 25px #000000;
@@ -654,6 +654,35 @@ h3 {
     h4 {
         font-size: 1.25rem;
     }
+}
+
+/* ================== UTILITY/TOOLTIP ================== */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 2px dotted var(--text-light);
+  }
+  
+.tooltip .tip {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.479);
+    color: #fff;
+
+    width: 150px;
+    font-size: 1rem;
+    font-weight: normal;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    position: absolute;
+    z-index: 1;
+    transition: .3s;
+}
+
+.tooltip:hover .tip {
+    opacity: 1;
 }
 
 /* ================== CARDS ================== */
@@ -1645,4 +1674,12 @@ button.to-top.icon {
 
 .circle {
     border-radius: 50%;
+}
+
+.half-transparent {
+    opacity: 0.5;
+}
+
+img.small {
+    width: 50%;
 }

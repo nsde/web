@@ -3,15 +3,22 @@
 {% endwith %}
 
 {% if profile %}
-<h2><i class="bi bi-person-circle"></i>You're logged in as {{ profile.username }} 
+<h2><img class="circle" style="position: relative; top:20px;" src="https://cdn.discordapp.com/avatars/{{ profile.id }}/{{ profile.avatar }}.webp?size=80"> Welcome, {{ profile.username }}<span class="half-transparent">#{{ profile. discriminator}}</span>
         {% if profile.verified %}
-        <i class="bi bi-patch-check-fill green"></i>
+        <div class="tooltip">
+            <i class="bi bi-patch-check-fill green"></i>
+            <span class="tip">Verified E-Mail address</span>
+          </div>
         {% endif %}
     !</h2>
 
-<a href="logout"><button><i class="bi bi-door-open red"></i> Log out</button></a>
+<p><strong>User ID:</strong> {{ profile.id }}</p>
+<p><strong>E-Mail:</strong> {{ email }}</p>
+
+<a href="logout"><button class="white bg-red"><i class="bi bi-door-open"></i> Log out</button></a>
 
 {% else %}
+<p>By logging in, you agree to the <a href="/legal#tos">Terms of Service</a>.</p>
 <a href="{{ login_with_discord }}"><button class="white bg-discord"><i class="bi bi-discord"></i> Sign in using Discord</button></a>
 {% endif %}
 

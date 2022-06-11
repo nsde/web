@@ -10,6 +10,17 @@
     font-weight: 700;
 }
 
+@font-face {
+    font-family: Estafet;
+    src: url("fonts/estafet.otf");
+}
+
+@font-face {
+    font-family: "bootstrap-icons";
+    src: url("fonts/bi.woff") format("woff2"),
+  url("fonts/bi.woff") format("woff");
+  }
+
 :root {
     --theme: "Default";
 
@@ -169,6 +180,26 @@
     --disabled: #d83c3e;
 
     --gradient-accent: linear-gradient(90deg, #6b62f0 0%, #7270e7 50%, #7c70e7 100%)
+}
+
+.company {
+    --theme: "💼 Company";
+    --sans-font: "Estafet", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    --bg: #ffffff;
+    --accent-bg: #202225;
+    --darker-bg: #2f3136;
+    --light-bg: #42464d;
+    --text: #000000;
+    --text-light: #96989d;
+    --border: #222427;
+    --accent: #313639;
+    --accent-light: #d5001c;
+    --code: #313639;
+    --link: #000000;
+    --preformatted: #313639;
+    --marked: #d5001c;
+    --disabled: #d5001c;    
 }
 
 .day {
@@ -1046,7 +1077,6 @@ hr {
 }
 
 mark {
-    color: var(--font);
     padding: 2px 5px;
     border-radius: 4px;
     background: var(--marked);
@@ -1284,7 +1314,7 @@ i#toggle-password {
 }
 
 /* ================ CORD TOOLS ================ */
-.guild-bar {
+.cord .guild-bar {
     height: 100%;
     width: 5rem;
 
@@ -1304,48 +1334,48 @@ i#toggle-password {
     padding: 0;
 }
 
-.branding {
+.cord .branding {
     transition: 0.2s;
     cursor: pointer;
     padding: .5rem;
     text-align: center;
 }
 
-.branding img {
+.cord .branding img {
     border-radius: 50%;
     filter: saturate(0%);
     width: 50px;
 }
 
-.branding img:hover {
+.cord .branding img:hover {
     filter: saturate(100%);
 }
 
-.guild {
+.cord .guild {
     padding-left: .5rem;
     padding-right: .5rem;
     cursor: pointer;
 }
 
-.guild img {
+.cord .guild img {
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
 }
 
-.guild.current {
+.cord .guild.current {
     border-image: linear-gradient(transparent 20%, rgb(255, 255, 255) 20% 80%, transparent 20%) 0 0 0 1 / 1px;
 }
 
-.guild.current img {
+.cord .guild.current img {
     border-radius: 30%;
 }
 
-.guild:hover:not(.current) {
+.cord .guild:hover:not(.current) {
     border-image: linear-gradient(transparent 40%, rgb(255, 255, 255) 30% 50%, transparent 40%) 0 0 0 1 / 1px;
 }
 
-.channel-bar {
+.cord .channel-bar {
     height: 100%;
     width: 15rem;
 
@@ -1365,12 +1395,12 @@ i#toggle-password {
     padding: 0;
 }
 
-.channel-bar .channels {
+.cord .channel-bar .channels {
     margin-top: 1rem;
     padding: 1rem;
 }
 
-.guild-header {
+.cord .guild-header {
     width: 100%;
     padding: 0.5rem;
     border-bottom: 1px solid var(--border);
@@ -1379,16 +1409,16 @@ i#toggle-password {
     position: fixed;
 }
 
-.guild-header span {
+.cord .guild-header span {
     margin: 1rem;
     font-weight: bold;
 }
 
-.guild-header:hover {
+.cord .guild-header:hover {
     background-color: var(--light-bg);
 }
 
-.channel {
+.cord .channel {
     transition: .2s;
     
     display: block;
@@ -1398,33 +1428,33 @@ i#toggle-password {
     top: 2rem;
 }
 
-.channel span {
+.cord .channel span {
     color: var(--text-light);
     margin-top: 5px;
     margin-bottom: 5px;
     text-transform: lowercase;
 }
 
-.channel i {
+.cord .channel i {
     padding-left: 3px;
     padding-right: 3px;
 }
 
-.channel.current {
+.cord .channel.current {
     background-color: var(--light-bg);
 }
 
-.channel.unread span {
+.cord .channel.unread span {
     color: var(--text);
     border-image: linear-gradient(transparent 40%, rgb(255, 255, 255) 30% 50%, transparent 40%) 0 0 0 1 / 2px;
 }
 
-.channel:hover {
+.cord .channel:hover {
     background-color: var(--darker-bg);
     filter: brightness(120%);
 }
 
-.channel-top {
+.cord .channel-top {
     width: 100%;
 
     position: fixed;
@@ -1439,32 +1469,32 @@ i#toggle-password {
     cursor: default;
 }
 
-.channel-top span {
+.cord .channel-top span {
     font-weight: bold;
     font-size: large;
     text-transform: lowercase;
 }
 
-.channel-top span i {
+.cord .channel-top span i {
     font-size: xx-large;
     color: var(--text-light);
     vertical-align: middle;
 }
 
-.channel-box {
+.cord .channel-box {
     padding-left: 20rem;
 }
 
-.messages {
+.cord .messages {
     padding: 1.5rem;
 }
 
-.messages br {
+.cord .messages br {
     padding: 0;
     margin: 0;
 }
 
-.message {
+.cord .message {
     width: 95%;
     margin-bottom: -2rem;
 
@@ -1472,53 +1502,53 @@ i#toggle-password {
     top: 3rem;
 }
 
-.message .avatar {
+.cord .message .avatar {
     border-radius: 50%;
     height: 3rem;
     vertical-align: baseline;
 }
 
-.message .avatar:hover,
-.message .author:hover {
+.cord .message .avatar:hover,
+.cord .message .author:hover {
     cursor: pointer;
     text-decoration: underline;
 }
 
-.message .time {
+.cord .message .time {
     opacity: 0.5;
     font-size: smaller;
 }
 
-.message .time:hover{
+.cord .message .time:hover{
     cursor: default;
 }
 
-.message .box {
+.cord .message .box {
     padding-left: 4rem;
     position: relative;
     top: -3rem;
 }
 
-.message .text {
+.cord .message .text {
     opacity: 0.8;
 }
 
-.message .content *:not(a, u, strong, b, i, em, span, code) {
+.cord .message .content *:not(a, u, strong, b, i, em, span, code) {
     display: block;
 }
 
-.message .content img {
+.cord .message .content img {
     max-height: 25%;
     max-width: 30%;
     border-radius: 1%;
 }
 
-.message .content .tenor-gif-embed {
+.cord .message .content .tenor-gif-embed {
     max-height: 25%;
     max-width: 30%;
 }
 
-.message .reaction {
+.cord .message .reaction {
     display: inline-block;
     padding: .2rem;
     padding-left: .5rem;
@@ -1531,7 +1561,7 @@ i#toggle-password {
     cursor: pointer;
 }
 
-.message .youtube {
+.cord .message .youtube {
     padding: 1rem;
     padding-top: 0.5rem;
     background-color: var(--darker-bg);
@@ -1540,17 +1570,17 @@ i#toggle-password {
     border-radius: 1%;
 }
 
-.message .youtube iframe {
+.cord .message .youtube iframe {
     border-radius: 1%;
 }
 
-.message .youtube span {
+.cord .message .youtube span {
     display: block;
     font-size: small;
     color: var(--text-light);
 }
 
-.message input {
+.cord .message input {
     width: 25%;
     padding: 0.5rem;
     background-color: var(--darker-bg);
@@ -1558,7 +1588,7 @@ i#toggle-password {
     transition: .2s;
 }
 
-.cord a {
+.cord .cord a {
     color: var(--link);
 }
 
@@ -1572,8 +1602,120 @@ i#toggle-password {
     background-color: var(--darker-bg);
 }
 
-.message button {
+.cord .message button {
     color: var(--text);
+}
+
+/* ================ COMPANY ================ */
+.company button {
+    border-radius: 0;
+    box-shadow: none;
+    transition: 0.3s;
+}
+
+.company button:hover {
+    background-color: #d5001c;
+}
+
+.company button.primary {
+    color: black;
+    background-color: white;
+}
+
+.company button:hover {
+    color: white;
+    background-color: #d5001c;
+}
+
+.company button.secondary {
+    color: white;
+    border: 1px solid white;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.company button.secondary:hover {
+    color: #d5001c;
+    border-color: #d5001c;
+}
+
+.company .gallery {
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: auto auto auto;
+    align-items: start;
+    margin-top: -10px;
+}
+
+.company .gallery .item {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.company .gallery .item img {
+    object-fit: cover;
+    width: 100%;
+    height: 50vh;
+    transition: 0.2s all ease-in-out;
+}
+
+.company .gallery .item:hover img {
+    transform: scale(1.1);
+}
+
+.company .gallery .item .info {
+    position: absolute;
+    left: 10%;
+    top: 2.5%;
+    color: white;
+}
+
+.company .gallery .item .info * {
+    color: white;
+    text-shadow: 0 0 40px #000000;
+    line-height: 3rem;
+}
+
+.company .gallery .item .title {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    font-size: 3rem;
+}
+
+.company .gallery .item .subtitle {
+    margin-top: -0.5rem;
+}
+
+.company .gallery .item .buttons {
+    position: absolute;
+    left: 10%;
+    top: 75%;
+}
+
+.company h2.title {
+    font-weight: 400;
+    font-size: 3rem;
+    margin-top: 2rem;
+    margin-left: 12rem;
+    margin-bottom: 1.7rem;
+}
+
+.company .carousel-cell {
+    width: 100%;
+    height: 80vh;
+}
+
+.company nav {
+    height: 125px;
+}
+
+.company img.branding {
+    margin-left: 12rem;
+    transition: 0.2s
+}
+
+.company img.branding:hover {
+    opacity: 0.8;
 }
 
 /* ================ FOOTER ================ */
@@ -1616,6 +1758,23 @@ button.to-top.icon {
 .black {color: black;}
 .gray {color: gray;}
 
+.fg-transparent {color: rgba(0, 0, 0, 0)}
+
+.fg-bg {color: var(--bg);}
+.fg-accent-bg {color: var(--accent-bg);}
+.fg-darker-bg {color: var(--darker-bg);}
+.fg-light-bg {color: var(--light-bg)}
+.fg-text {color: var(--text)}
+.fg-text-light {color: var(--text-light)}
+.fg-border {color: var(--border)}
+.fg-accent {color: var(--accent)}
+.fg-accent-light {color: var(--accent-light)}
+.fg-code {color: var(--code)}
+.fg-link {color: var(--link)}
+.fg-preformatted {color: var(--preformatted)}
+.fg-marked {color: var(--marked)}
+.fg-disabled {color: var(--disabled)}
+
 .bg-red {background-color: red;}
 .bg-orange {background-color: orange;}
 .bg-yellow {background-color: yellow;}
@@ -1627,6 +1786,23 @@ button.to-top.icon {
 .bg-white {background-color: white;}
 .bg-black {background-color: black;}
 .bg-gray {background-color: gray;}
+
+.bg-bg {background-color: var(--bg);}
+.bg-accent-bg {background-color: var(--accent-bg);}
+.bg-darker-bg {background-color: var(--darker-bg);}
+.bg-light-bg {background-color: var(--light-bg)}
+.bg-text {background-color: var(--text)}
+.bg-text-light {background-color: var(--text-light)}
+.bg-border {background-color: var(--border)}
+.bg-accent {background-color: var(--accent)}
+.bg-accent-light {background-color: var(--accent-light)}
+.bg-code {background-color: var(--code)}
+.bg-link {background-color: var(--link)}
+.bg-preformatted {background-color: var(--preformatted)}
+.bg-marked {background-color: var(--marked)}
+.bg-disabled {background-color: var(--disabled)}
+
+.bg-transparent {background-color: rgba(0, 0, 0, 0)}
 
 /* Fonts */
 .bold {
@@ -1674,6 +1850,10 @@ button.to-top.icon {
 
 .circle {
     border-radius: 50%;
+}
+
+.fully-transparent {
+    opacity: 0;
 }
 
 .half-transparent {

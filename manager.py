@@ -30,7 +30,7 @@ def register(app: flask.Flask, *args, **kwargs):
             list(flask.request.args.keys())[0] if flask.request.args.keys() else False
             return flask.redirect(redirects[current_path])
         
-        template = f'{current_path}.html'
+        template = f'{current_path.replace(".closed", "")}.html'
 
         try:
             return tools.render(template, notice='Skipped 404.')

@@ -2,6 +2,12 @@
 error-modules.yml
 
 # Security/Privacy
+share/*
+share
+
+*.mp4
+*.mkv
+
 logs/*
 config/banned-ips.yml
 config/no-ratelimit-ips.yml

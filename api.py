@@ -32,4 +32,12 @@ def register(app: flask.Flask, cache, *args, **kwargs):
 
     @app.route('/api/blog/<post>')
     def api_blog_post(post):
-        return (blog.get_info(post))
+        return blog.get_info(post)
+
+    @app.route('/api/login-demo', methods=['POST'])
+    def login_demo():
+        return {
+            'form': flask.request.form,
+            'data': flask.request.data,
+            'json': flask.request.get_json()
+        }

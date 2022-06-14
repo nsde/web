@@ -790,6 +790,7 @@ main a, footer a,
 main a:visited, footer a:visited {
     color: var(--accent);
     text-decoration: none;
+    transition: .5s;
 }
 
 a.plain, footer a.plain,
@@ -798,10 +799,12 @@ a.plain:visited, footer a.plain:visited {
     text-decoration: none;
 }
 
-a:hover {
+nav a:hover,
+main a:hover,
+footer a:hover {
+
     /* text-decoration: none; */
     opacity: 80%;
-    transition: .5s;
 }
 
 textarea:hover, input:hover, select:hover {
@@ -1657,10 +1660,11 @@ i#toggle-password {
     width: 100%;
     height: 50vh;
     transition: 0.2s all ease-in-out;
+    overflow: hidden;
 }
 
 .company .gallery .item:hover img {
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
 }
 
 .company .gallery .item .info {
@@ -1668,6 +1672,7 @@ i#toggle-password {
     left: 10%;
     top: 2.5%;
     color: white;
+    text-shadow: 0 0 40px #000000;
 }
 
 .company .gallery .item .info * {
@@ -1705,17 +1710,79 @@ i#toggle-password {
     height: 80vh;
 }
 
+.company .carousel-cell img {
+    outline: 1px solid red;
+    object-fit: cover;
+    object-position: 50% 100%;
+    /* width: 100%; */
+    /* height: 80vh; */
+}
+
 .company nav {
     height: 125px;
 }
 
 .company img.branding {
     margin-left: 12rem;
-    transition: 0.2s
+    height: 70px;
+    margin-top: 20px;
+    transition: 0.2s;
+    padding-bottom: 20px;
 }
 
 .company img.branding:hover {
+    cursor: pointer;
     opacity: 0.8;
+}
+
+.company .discover {
+    height: 280px;
+    margin-left: 12rem;
+}
+
+.company .discover .tile {
+    /* height: 280px; */
+    float: left;
+    width: 20vw;
+}
+
+.company .discover .tile img {
+    width: 100%;
+    height: 100%;
+}
+
+.company .discover .tile a {
+    color: black;
+    text-decoration: none;
+    transition: 0.3s;  
+}
+
+.company .discover .tile a:hover {
+    color: #d5001c;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.company .discover .tile a i.bi {
+    color: #d5001c;
+}
+
+.company .footer {
+    padding-top: 20px;
+    padding-left: 200px;
+    padding-bottom: 50px;
+    color: white;
+    background-color: #191f22;
+}
+
+.company .footer a {
+    color: white;
+    transition: 0.3s;
+}
+
+.company .footer a:hover {
+    color: #d5001c;
+    text-decoration: none;
 }
 
 /* ================ FOOTER ================ */
@@ -1739,7 +1806,7 @@ button.to-top.icon {
     outline: none;
 }
 
-*::selection {
+*::selection:not(.reset-selection) {
     color: var(--text) !important;
     background-color: var(--marked) !important;
 }

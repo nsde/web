@@ -1,0 +1,13 @@
+{% with title="Login", description="Log into the ONLIX account system." %}
+    {% include '_top.html' %}
+{% endwith %}
+
+<form method="post" action="/api/login-demo">
+    Username: <input name="user" type="text">
+    <br>
+    Password: <input name="pass" type="password">
+    <br>
+    <input type="submit" value="Log In">
+</form>
+
+{% include '_bottom.html' %}

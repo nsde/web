@@ -23,6 +23,7 @@ data/log.yml
 
 # Large Files
 share/*
+cdn/*
 
 # Closed source
 closed.py

@@ -28,7 +28,7 @@
 
                 {% if module.decs %}
                     {% for dec in module.decs %}
-                    <a href="https://onlix.me{{ dec }}"><button class="white {{ 'bg-red' if module.error else 'bg-green' }}" style="display: inline;"><i class="bi bi-link-45deg"></i> {{ dec }}</button></a>
+                    <a href="https://onlix.me{{ dec }}"><button class="white {{ 'bg-red' if module.error or module.status == 'inactive' else 'bg-green' }}" style="display: inline;"><i class="bi bi-link-45deg"></i> {{ dec }}</button></a>
                     {% endfor %}
                 {% endif %}
 

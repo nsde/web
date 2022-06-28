@@ -440,6 +440,7 @@ body>header * {
 /* ================ NAVBAR ================ */
 
 nav {
+    z-index: 1337;
     line-height: 2;
     overflow: hidden;
     top: 0;

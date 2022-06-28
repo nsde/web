@@ -13,4 +13,4 @@ def register(app: flask.Flask, cache, *args, **kwargs):
             add_header('Access-Control-Allow-Headers', 'X-Requested-With')
             add_header('Access-Control-Allow-Headers', 'Authorization')
             add_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
-            return response
+        return response

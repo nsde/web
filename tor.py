@@ -1,8 +1,8 @@
-import tools
-
 import yaml
 
 from stem.control import Controller
+
+import tools
 
 PORT = tools.yml('config/main')['port']
 TOR_DIR = '/var/lib/tor/hidden_service/'

@@ -14,7 +14,7 @@ import logging
 import tools
 
 log = logging.getLogger('werkzeug')
-log.setLevel(logging.WARN)
+log.setLevel(logging.ERROR)
 
 app = flask.Flask(__name__, static_url_path='/')
 app.secret_key = os.urandom(24)

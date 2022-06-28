@@ -32,8 +32,11 @@ def register(app: flask.Flask, *args, **kwargs):
             if flask.session.get('discord_token'): # LOGGED IN
                 discord_account = OAuth2Session(CLIENT_ID, token=flask.session['discord_token'])
                 profile = discord_account.get(f'{DISCORD_API_URL}/users/@me').json()
-                e = profile['email']
-                return tools.render('login.html', profile=profile, email=f'{e[:2]}***@{e.split("@")[1][:2]}***.{e.split(".")[-1]}')
+                email_full = profile.get('email')
+                if email_full:
+                    email = f'{email_full[:2]}***@{email_full.split("@")[1][:2]}***.{email_full.split(".")[-1]}'
+                
+                return tools.render('login.html', profile=profile, email=email or '[No access]')
             
             else: # NOT LOGGED IN
                 oauth = OAuth2Session(CLIENT_ID, redirect_uri=REDIRECT_URI, scope=SCOPES)

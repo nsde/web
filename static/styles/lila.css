@@ -1083,6 +1083,7 @@ hr {
 mark {
     padding: 2px 5px;
     border-radius: 4px;
+    color: var(--text);
     background: var(--marked);
 }
 
